@@ -1,0 +1,12 @@
+source $VIMRUNTIME/defaults.vim
+
+set encoding=utf8
+set tabstop=4
+set expandtab
+set autoindent
+set colorcolumn=80
+set number
+
+au BufRead,BufNewFile *.nix set filetype=nix
+autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType markdown,text set nonumber

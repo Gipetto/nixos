@@ -1,0 +1,19 @@
+# MacOS
+.DS_Store
+
+# Jetbrains
+.idea
+nbproject
+
+# python
+*.pyc
+
+# code
+.vscode
+
+# asdf
+.tool-versions
+
+# vim
+.*.swp
+.*.swo

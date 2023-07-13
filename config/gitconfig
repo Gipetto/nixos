@@ -1,0 +1,107 @@
+[core]
+  abbrev = 10
+  editor = vim
+  pager = less
+
+[color]
+  ui = auto
+
+[diff]
+  color = always
+  algorithm = histogram
+  renames = copies
+  colorMoved = default
+  wsErrorHighlight = all
+
+[web]
+  browser = firefox
+
+[branch]
+  autoSetupMerge = always
+
+[rerere]
+  enabled = true
+
+[stash]
+  showPatch = true
+
+[status]
+  short = true
+  branch = true
+
+[pager]
+  color = true
+
+[tag]
+  sort = version:refname
+
+[log]
+  color = always
+  date = iso
+
+[gc]
+  pruneExpire = 1.weeks.ago
+  worktreePruneExpire = 1.month.ago
+
+[grep]
+  lineNumber = true
+
+[help]
+  autoCorrect = 20
+
+[pretty]
+  abbrev = "format:%Cgreen%h%Creset %C(yellow)[%ci]%Creset %s"
+
+[alias]
+	# shorthand aliases
+	co = checkout
+	ci = commit
+	cia = commit --amend -C@
+	st = "!f() { echo ''; git status -s $@; echo ''; }; f"
+
+	# list these aliases
+	alias = "!git config --get-regexp 'alias.*' | sed -e \"s|^alias\\.||\" | sed -E -e \"s|^([a-z]+) (.*)$|$(tput bold setaf 5)\\1$(tput sgr0) \\2|\""
+
+	# show log of just current branch
+	branchlog = "!git log --not HEAD"
+	# copy current branch name to clipboard
+	cb = "!(/usr/bin/env echo -n \"$(git rev-parse --abbrev-ref HEAD)\" | pbcopy; echo `tput setaf 5`'Branch name copied to clipboard'`tput sgr0`)"
+	# create a new branch from the current branch and track its remote
+	child = "!sh -c 'git push origin $(git rev-parse --abbrev-ref HEAD); git checkout --track -b $1 origin/$(git rev-parse --abbrev-ref HEAD);' - "
+	# show a list of changed files
+	changes = diff --name-status -r
+	# open a comparison on Github
+	cm = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/compare/master...$(git rev-parse --abbrev-ref HEAD)#files_bucket\""
+	# show diff with files cached for commit
+	dc = diff --cached
+	# Diff and open in vscode
+	dc = "!f() { git diff $@ > /tmp/_.diff; code -n /tmp/_.diff; }; f"
+	# delete merged branches
+	dmerged = "!git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d"
+	# Open the current branch on Github
+	gh = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/tree/$(git rev-parse --abbrev-ref HEAD)\""
+	# show last commit summary
+	last = log -1 HEAD
+	# pretty log output
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+	# log output without branching
+	llg = "!git log --pretty=format:'%Cred%h%Creset - %Cblue%an%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' $* | sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\\)/\\1)/' | less -FXRS"
+	# push current branch to its remote branch of the same name
+	pb = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	pbu = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	# open a PR on Github
+	pr = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/pull/new/$(git rev-parse --abbrev-ref HEAD)\""
+	# open a PR on Github against the branch's parent, not master
+	prc = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/pull/new/$(git rev-parse --abbrev-ref HEAD@{upstream} | sed 's/origin\\///')...$(git rev-parse --abbrev-ref HEAD)\""
+	# init those submodules
+	subup = "!(git submodule sync; git submodule update --init --recursive;)"
+	# show a properly sorted list of tags
+	tg = "!git log --tags --simplify-by-decoration --pretty=\"format:[%ai] %C(yellow)%H%Creset - %Cgreen%D%Creset\""
+	# un-stage all files that have been staged/cached for commit
+	unstage = reset HEAD --
+	# perform soft reset to head, don't blow away changes
+	undo = reset --soft HEAD@{1}
+	# pull from remote tracking branch in to current branch
+	up = "!git pull origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	# merge upstream branch
+	uup = "!git pull upstream \"$(git rev-parse --abbrev-ref HEAD)\""
