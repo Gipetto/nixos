@@ -7,6 +7,8 @@ set autoindent
 set colorcolumn=80
 set number
 
+set listchars=eol:¬,tab:⇢\ ,trail:·,extends:>,precedes:<,space:·
+
 au BufRead,BufNewFile *.nix set filetype=nix
 autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType markdown,text set nonumber

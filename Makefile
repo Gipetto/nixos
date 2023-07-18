@@ -1,26 +1,28 @@
 .PHONY: init-darwin
 
-GITHUB_URL = https://github.com/Gipetto/nixos
+NIX_DAEMON = /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+NIX_SH = /nix/var/nix/profiles/default/etc/profile.d/nix.sh
 
 init-nixos:
 	# Build then test to ensure we can easily recover if something fails
-	sudo nixos-rebuild build --flake $(GITHUB_URL)
-	sudo nixos-rebuild test --flake $(GITHUB_URL)
-	sudo nixos-rebuild switch --flake $(GITHUB_URL)
+	sudo nixos-rebuild build --flake .
+	sudo nixos-rebuild test --flake .
+	sudo nixos-rebuild switch --flake .
 
 init-darwin:
-	# Nix
-	sh <(curl -L https://nixos.org/nix/install)
+	xcode-select --install || true # Though you probably don't have `make` without this
+	curl -L https://nixos.org/nix/install | sh -s -- --daemon --yes
 	mkdir -p ~/.config/nix
-	echo "experimental-features = nix-command flakes" >> ~/.config/nix.conf
-	
-	# Initial Build (verify this!)
-	nix-env -iA nixpkgs.git
-	git clone $(GITHUB_URL) ~/.nixos
-	cd ~/.nixos
-	nix build .#darwinConfigurations.<host>.system
-	./result/sw/bin/darwin-rebuild switch --flake .#<host>
+	echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+
+install-darwin:
+	. $(NIX_DAEMON); . $(NIX_SH); \
+	  nix build .#darwinDefault; \
+	  ./result/sw/bin/darwin-rebuild switch --flake .#darwinDefault
 
 rebuild-darwin:
-	darwin-rebuild switch --flake .#<host>
+	darwin-rebuild switch --flake .#darwinDefault
 
+darwin-reset:
+	sudo mv -v /etc/bashrc.backup-before-nix /etc/bashrc; \
+	  sudo mv -v /etc/zshrc.backup-before-nix /etc/bashrc;

@@ -4,7 +4,7 @@
     enable = true;
    
     shellAliases = {
-      ls = "exa";
+      # ls = "exa";
       mv = "mv --verbose";
       rm = "rm --verbose";
     };
@@ -18,7 +18,7 @@
 
     initExtra = ''
       # enable a `.zshrc.local` for ad-hoc config 
-      # since this config is version controlled
+      # since this config is generated at build time
       if test -f ~/.zshrc.local; then
         . ~/.zshrc.local
       fi

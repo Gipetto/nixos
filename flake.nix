@@ -3,20 +3,29 @@
   
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgsDarwin.url = "github:NixOS/nixpkgs/nixpkgs-23.05-darwin";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    darwin.url = "github:lnl7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };  
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgsDarwin";
+    };  
   };
 
   outputs = { 
     self, 
-    nixpkgs, 
+    nixpkgs,
+    nixpkgsDarwin, 
     nix, 
     nixos-hardware, 
     home-manager,
     darwin
-  }: {
+  }:
+  {
     nixosConfigurations = {
       nab5 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -36,10 +45,11 @@
     };
 
     darwinConfigurations = {
-      WookiebookMax = darwin.lib.darwinSystem {
-        system = "x86_64-darwin";
+      darwinDefault = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
         modules = [
           ./common/environment.nix
+          ./common/darwin.nix
           ./common/fonts.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -49,5 +59,5 @@
         ];
       };
     };
-  };
+  };  
 }

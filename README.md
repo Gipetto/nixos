@@ -2,24 +2,56 @@
 
 ## Install
 
-Install process is currently dumb basic:
+Install process is currently dumb basic.
 
-- Install NixOS
-- Check out this repo to `/etc/nixos`
-- Run `sudo nixos-rebuild switch`
+### NixOS
 
-## Zsh
+To restore a known host:
+
+```sh
+sudo mv /etc/nixos /etc/nixos-orig
+sudo mkdir /etc/nixos
+sudo chmod 0775 /etc/nixos
+git clone git@github.com:Gipetto/nixos.git /etc/nixos
+cd /etc/nixos
+```
+
+If this is a new host:
+- create host specific files in the `hosts` directory
+- update `flake.nix` to reflect necessary changes
+
+```sh
+make init-nixos
+```
+
+**Open Question:** what is the best way to do hardware configuration in the 
+new flake world?
+
+### MacOS
+
+```sh
+git clone git@github.com:Gipetto/nixos.git ~/.nixos
+cd ~/.nixos
+make init-darwin
+make install-darwin
+```
+
+- [Uninstall Script](https://github.com/jacix/nixbits/blob/32f15fbb9927566a3052f7a7e0642508363399d6/nix-uninstall.sh)
+
+## Notes
+
+### Zsh
 
 - Local ad-hoc configuration can be done by adding a `~/.zshrc.local` file
 
-## Git
+### Git
 
 - The included `config/gitconfig` is registered as an include in `/etc/gitconfig`
 - The included `config/gitignore` is registered as a global exludes file in `/etc/gitconfig`
 - The declarations in home manager are supplied in `~/.config/git/gitconfig`
 - Local overrides can still be made by adding and populating a `~/.gitconfig` file
 
-## Docs
+### Docs
 
 - [NixOS Manual](https://nixos.org/manual/nixos/stable/)
 - [Home Manager](https://nix-community.github.io/home-manager/index.html#ch-nix-flakes)
@@ -30,7 +62,7 @@ Install process is currently dumb basic:
 Find details on Packages, NixOS options and Flakes: 
 [https://search.nixos.org](https://search.nixos.org)
 
-## Nix-Env (pre nix-commands)
+## Nix-Env
 
 | Operation | Command |
 | --------- | ------- |
@@ -59,22 +91,13 @@ Find details on Packages, NixOS options and Flakes:
 | Garbage collect | `nix-store --gc` |
 | Remove old & garbage collect | `nix-collect-garbage -d` |
 
-## Systemctl
-
-Not NixOS specific.
-
-| Operation | Command |
-| --------- | ------- |
-| List running services | `systemctl --type=service --state=running` |
-| Show timers | `systemctl list-timers` |
-
-## Mounting Drives
+## Mounting Drives (NixOS)
 
 To permanently mount a drive, rebuild the hardware-configuration after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
 
 ``` sh
-$ nixos-regenerate-config
-$ nixos-rebuild switch
+nixos-regenerate-config
+nixos-rebuild switch
 ```
 
 ## Test in VM

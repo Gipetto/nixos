@@ -1,7 +1,7 @@
 [core]
   abbrev = 10
   editor = vim
-  pager = less
+  pager = bat
 
 [color]
   ui = auto
@@ -76,7 +76,9 @@
 	dc = diff --cached
 	# Diff and open in vscode
 	dc = "!f() { git diff $@ > /tmp/_.diff; code -n /tmp/_.diff; }; f"
-	# delete merged branches
+	# pretty diff with bat
+    bdiff = "!f() { git --no-pager diff --name-only --relative --diff-filter=d | xargs bat --diff; }; f"
+    # delete merged branches
 	dmerged = "!git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d"
 	# Open the current branch on Github
 	gh = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/tree/$(git rev-parse --abbrev-ref HEAD)\""

@@ -64,6 +64,8 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
       hdparm
       lm_sensors
     ];
+
+    shells = with pkgs; [ zsh ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

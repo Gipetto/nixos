@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   environment = {
-    sessionVariables = {
+    variables = {
       VISUAL = "vim";
       PAGER = "less";
       LESS = "-eFRX";
@@ -27,10 +27,7 @@
         vimrcConfig.customRC = builtins.readFile ../config/vimrc;
       })
     ];
-
-    shells = with pkgs; [ zsh ];
   };
 
   programs.zsh.enable = true;
-  programs.vim.defaultEditor = true;
 }

@@ -4,12 +4,22 @@
   # From what I understand they need to stay in sync.
   home.stateVersion = "23.05";
 
+  home.packages = with pkgs; [
+    bat
+    exa
+    git
+    htop
+    wget
+  ];
+
   imports = [
-    ../common/zsh.nix
+    ./zsh.nix
   ];
 
   home.file.".curlrc".source = ../config/curlrc;
   home.file.".wgetrc".source = ../config/wgetrc;
+
+  programs.home-manager.enable = true;
 
   programs.git = {
     enable = true;

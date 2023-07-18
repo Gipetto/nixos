@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 {
-  fonts.fonts = with pkgs; [
-    hasklig
-    (nerfonts.override { fonts = [ "Meslo" ]; })
-  ];
+  fonts = {
+    fontDir.enable = true;
+    fonts = with pkgs; [
+      hasklig
+      (nerdfonts.override { fonts = [ "Meslo" ]; })
+    ];
+  };
 }
