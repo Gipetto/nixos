@@ -13,7 +13,8 @@
   ];
 
   imports = [
-    ./zsh.nix
+    ./programs/tmux.nix
+    ./programs/zsh.nix
   ];
 
   home.file.".curlrc".source = ../config/curlrc;
@@ -52,7 +53,7 @@
   };
 
   programs.jq.enable = true;
-
+  
   # Contains duplicate declarations from `common/configuration.nix` 
   # so that the root user gets the same nicities.
   programs.vim = {

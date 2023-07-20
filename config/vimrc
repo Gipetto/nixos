@@ -1,14 +1,23 @@
 source $VIMRUNTIME/defaults.vim
 
-set encoding=utf8
-set tabstop=4
-set expandtab
+set encoding=utf-8
+scriptencoding utf-8
+
 set autoindent
 set colorcolumn=80
+set expandtab
 set number
+set smartcase
+set tabstop=4
+set ttyfast
 
-set listchars=eol:¬,tab:⇢\ ,trail:·,extends:>,precedes:<,space:·
+set showbreak=↪\
+set listchars=eol:↲,tab:⇢\ ,trail:·,extends:>,precedes:<,space:·
 
 au BufRead,BufNewFile *.nix set filetype=nix
 autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType markdown,text set nonumber
+
+" map `w!!` for when we forgot to open with sudo
+cmap w!! %!sudo tee > /dev/null %
+

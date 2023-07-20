@@ -1,15 +1,16 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, lib, ... }:
 
 {
   imports = [ 
+    ../common/locale.nix
     # Include the results of the hardware scan.
     ./nab5-hardware-configuration.nix
   ];
 
+  
   # Bootloader
   boot = {
     loader.systemd-boot.enable = true;
@@ -56,13 +57,32 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     };
   };
 
-  nix.daemonCPUSchedPolicy = "batch";
+  nix = {
+    daemonCPUSchedPolicy = "batch";
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
+
+  boot = {
+    tmp.cleanOnBoot = true;
+  };
+
+  console = {
+    earlySetup = true;
+    font = "${pkgs.kbd}/share/consolefonts/Lat2-Terminus16.psfu.gz";
+  };
 
   # Packages
   environment = {
     systemPackages = with pkgs; [
+      curl
+      gnumake
       hdparm
       lm_sensors
+      rsync
     ];
 
     shells = with pkgs; [ zsh ];
@@ -108,4 +128,11 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
   fileSystems."/".options = [ "noatime" "discard" ];
   fileSystems."/mnt/data".options = [ "noatime" "discard" ];
   fileSystems."/mnt/diskface".options = [ "noatime" "discard" "nodev" ];
+
+  # Stupid n00b hack to list all installed packages in /etc/current-system-packages
+  environment.etc."current-system-packages".text = let
+    packages = builtins.map (p: "${p.name}") config.environment.systemPackages;
+    sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
+    formatted = builtins.concatStringsSep "\n" sortedUnique;
+  in formatted;
 }

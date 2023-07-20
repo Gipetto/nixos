@@ -21,7 +21,9 @@ If this is a new host:
 - update `flake.nix` to reflect necessary changes
 
 ```sh
-make init-nixos
+make init
+# test to make sure it looks good
+make install
 ```
 
 **Open Question:** what is the best way to do hardware configuration in the 
@@ -32,8 +34,8 @@ new flake world?
 ```sh
 git clone git@github.com:Gipetto/nixos.git ~/.nixos
 cd ~/.nixos
-make init-darwin
-make install-darwin
+make init
+make install
 ```
 
 - [Uninstall Script](https://github.com/jacix/nixbits/blob/32f15fbb9927566a3052f7a7e0642508363399d6/nix-uninstall.sh)

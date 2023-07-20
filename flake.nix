@@ -11,7 +11,6 @@
     };  
     darwin = {
       url = "github:lnl7/nix-darwin";
-      #inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgsDarwin";
     };  
   };
@@ -33,7 +32,6 @@
           nixos-hardware.nixosModules.common-cpu-intel
           ./hosts/nab5.nix
           ./common/configuration.nix
-          ./common/environment.nix
           ./common/users.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
@@ -48,8 +46,8 @@
       darwinDefault = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./common/environment.nix
-          ./common/darwin.nix
+          ./hosts/darwin.nix
+          ./common/configuration.nix
           ./common/fonts.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;

@@ -5,8 +5,8 @@
    
     shellAliases = {
       # ls = "exa";
-      mv = "mv --verbose";
-      rm = "rm --verbose";
+      mv = "mv -v";
+      rm = "rm -v";
     };
 
     localVariables = {
