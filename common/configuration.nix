@@ -10,10 +10,6 @@
     };
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
-
   environment = {
     variables = {
       VISUAL = "vim";

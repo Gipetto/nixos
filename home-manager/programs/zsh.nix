@@ -24,6 +24,12 @@
       fi
     '';
 
+    profileExtra = ''
+      setopt hist_ignore_dups
+      setopt hist_expire_dups_first
+      setopt hist_ignore_space
+    '';
+
     oh-my-zsh = {
       enable = true;
       plugins = [ 

@@ -12,6 +12,8 @@
     wget
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   imports = [
     ./programs/tmux.nix
     ./programs/zsh.nix
@@ -53,6 +55,7 @@
   };
 
   programs.jq.enable = true;
+  programs.nix-index.enable = true;
   
   # Contains duplicate declarations from `common/configuration.nix` 
   # so that the root user gets the same nicities.

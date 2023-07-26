@@ -15,7 +15,6 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  programs.nix-index.enable = true;
   programs.zsh.enable = true;
   
   users.users.shawn.home = /Users/shawn;
