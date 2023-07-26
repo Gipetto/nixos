@@ -31,8 +31,14 @@
   };
 
   powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
+  # This next line doesn't appear to work
   powerManagement.powerUpCommands = ''
 ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
+  '';
+
+  systemd.sleep.extraConfig = ''
+    AllowHibernation=no
+    AllowSuspend=no
   '';
 
   networking = {
