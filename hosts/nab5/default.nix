@@ -5,9 +5,9 @@
 
 {
   imports = [ 
-    ../common/locale.nix
+    ../../common/locale.nix
     # Include the results of the hardware scan.
-    ./nab5-hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   

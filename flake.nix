@@ -30,7 +30,7 @@
         system = "x86_64-linux";
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
-          ./hosts/nab5.nix
+          ./hosts/nab5
           ./common/configuration.nix
           ./common/users.nix
           home-manager.nixosModules.home-manager {
