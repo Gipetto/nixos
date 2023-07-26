@@ -6,6 +6,7 @@ scriptencoding utf-8
 set autoindent
 set colorcolumn=80
 set expandtab
+set linebreak
 set number
 set smartcase
 set tabstop=4
