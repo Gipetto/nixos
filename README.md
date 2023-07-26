@@ -77,6 +77,13 @@ Find details on Packages, NixOS options and Flakes:
 | Info (full) | `nix-env -qaP --description --json --meta '.*package.*'` |
 | List packages in the current environment<br>(non-system packages) | `nix-env -qa --installed "*"` |
 
+## Nix Commands
+
+| Operation | Command |
+| --------- | ------- |
+| Search | `nix search nixpkgs 'package' |
+| Upgrade | `nixos-rebuild switch --upgrade` |
+
 ## Nix-Shell
 
 | Operation | Command |
