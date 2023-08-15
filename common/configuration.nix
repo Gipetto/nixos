@@ -22,6 +22,7 @@
       exa
       git
       htop
+      python3
       screen
       wget
       ((vim_configurable.override { }).customize {

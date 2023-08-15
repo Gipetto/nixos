@@ -3,6 +3,8 @@ source $VIMRUNTIME/defaults.vim
 set encoding=utf-8
 scriptencoding utf-8
 
+syntax enable
+
 set autoindent
 set colorcolumn=80
 set expandtab

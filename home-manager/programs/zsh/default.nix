@@ -34,8 +34,12 @@
       enable = true;
       plugins = [ 
         "git" 
+        "git-prompt"
       ];
-      theme = "eastwood";
+      theme = "wookiee";
+      custom = "$HOME/.config/oh-my-zsh";
     };
   };
+
+  home.file.".config/oh-my-zsh/themes/wookiee.zsh-theme".source = ./custom/wookiee.zsh-theme;
 }

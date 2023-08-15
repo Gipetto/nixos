@@ -14,9 +14,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  #direnv.enable = true;
+
   imports = [
     ./programs/tmux.nix
-    ./programs/zsh.nix
+    ./programs/zsh
   ];
 
   home.file.".curlrc".source = ../config/curlrc;
