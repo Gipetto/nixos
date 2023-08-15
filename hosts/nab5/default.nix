@@ -4,13 +4,13 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ 
+  imports = [
     ../../common/locale.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
-  
+
   # Bootloader
   boot = {
     loader.systemd-boot.enable = true;
@@ -57,7 +57,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
         group = "rootless";
       };
     };
-    
+
     groups = {
       rootless = {};
     };

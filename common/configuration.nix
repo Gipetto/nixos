@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:  
+{ config, pkgs, lib, ... }:
 {
   nix = {
     settings = {
@@ -25,11 +25,14 @@
       python3
       screen
       wget
-      ((vim_configurable.override { }).customize {
+      ((vim-full.override { }).customize {
         # Contains duplicate declarations from `home-manager/shawn.nix`
         # so that the root user get the same nicities.
         vimrcConfig.packages.myplugins = with pkgs.vimPlugins; {
-          start = [ vim-nix ];
+          start = [
+            vim-nix
+            vim-better-whitespace
+          ];
           opt = [];
         };
         vimrcConfig.customRC = builtins.readFile ../config/vimrc;

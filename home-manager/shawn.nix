@@ -5,9 +5,6 @@
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
-    bat
-    exa
-    git
     htop
     wget
   ];
@@ -23,6 +20,7 @@
 
   home.file.".curlrc".source = ../config/curlrc;
   home.file.".wgetrc".source = ../config/wgetrc;
+  #home.file.".vim/vimrc".source = ../config/vimrc;
 
   programs.home-manager.enable = true;
 
@@ -58,14 +56,13 @@
 
   programs.jq.enable = true;
   programs.nix-index.enable = true;
-  
-  # Contains duplicate declarations from `common/configuration.nix` 
-  # so that the root user gets the same nicities.
+
   programs.vim = {
     enable = true;
     defaultEditor = true;
     plugins = with pkgs.vimPlugins; [
       vim-nix
+      vim-better-whitespace
     ];
     extraConfig = builtins.readFile ../config/vimrc;
   };

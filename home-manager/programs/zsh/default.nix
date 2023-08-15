@@ -2,7 +2,7 @@
 {
   programs.zsh = {
     enable = true;
-   
+
     shellAliases = {
       # ls = "exa";
       mv = "mv -v";
@@ -17,7 +17,7 @@
     };
 
     initExtra = ''
-      # enable a `.zshrc.local` for ad-hoc config 
+      # enable a `.zshrc.local` for ad-hoc config
       # since this config is generated at build time
       if test -f ~/.zshrc.local; then
         . ~/.zshrc.local
@@ -25,6 +25,7 @@
     '';
 
     profileExtra = ''
+      zstyle ':omz:module:git:alias' skip 'yes'
       setopt hist_ignore_dups
       setopt hist_expire_dups_first
       setopt hist_ignore_space
@@ -32,8 +33,8 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
+      plugins = [
+        "git"
         "git-prompt"
       ];
       theme = "wookiee";

@@ -16,7 +16,7 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
 
   programs.zsh.enable = true;
-  
+
   users.users.shawn.home = /Users/shawn;
 
   # https://github.com/LnL7/nix-darwin/tree/master/modules/system/defaults
@@ -48,5 +48,5 @@
       # Enable (true) to have one space across all displays
       spans-displays = true;
     };
-  };  
+  };
 }

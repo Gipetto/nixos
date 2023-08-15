@@ -1,15 +1,33 @@
-source $VIMRUNTIME/defaults.vim
+" This tells vim-sensible that it is already loaded. Unfortunately
+" this needs to be done because home-manager will include this plugin
+" without any way to stop it (please do let me know if there's a way
+" that I don't know of).
+"
+" vim-sensible **will** attempt to not override user supplied settings,
+" but these settings need to come from the user's $HOME directory.
+"
+" However nix prevents the loading of ~/.vimrc, ~/.vim/vimrc, and
+" ~/.vim/after files so there's no way to override it.
+"
+" Sorry, vim-sensible, it seems like nix has damned you.
+"
+" let g:loaded_sensible = 'yes'
 
 set encoding=utf-8
 scriptencoding utf-8
 
+source $VIMRUNTIME/defaults.vim
+
 syntax enable
 
 set autoindent
+set backspace=indent,eol,start
 set colorcolumn=80
 set expandtab
+set exrc " load additional rc from cwd
 set linebreak
 set number
+set sm " matching braces
 set smartcase
 set tabstop=4
 set ttyfast
@@ -23,4 +41,8 @@ autocmd FileType markdown,text set nonumber
 
 " map `w!!` for when we forgot to open with sudo
 cmap w!! %!sudo tee > /dev/null %
+
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:show_spaces_that_precede_tabs=1
 
