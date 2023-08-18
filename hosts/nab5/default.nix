@@ -59,7 +59,9 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     };
 
     groups = {
-      rootless = {};
+      rootless = {
+        members = [ "shawn" ];
+      };
     };
   };
 
