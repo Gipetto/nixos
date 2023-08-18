@@ -38,13 +38,6 @@ precmd_vcs_info() {
     RPROMPT=
 }
 
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' enable git svn hg
-zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:*' check-for-staged-changes true
-zstyle ':vcs_info:git:*' formats '%b '
-zstyle ':vcs_info:git:unstagedstr' format '%BM%b:%m '
-
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
