@@ -36,6 +36,7 @@
       plugins = [
         "git"
         "git-prompt"
+        "pipenv"
       ];
       theme = "wookiee";
       custom = "$HOME/.config/oh-my-zsh";

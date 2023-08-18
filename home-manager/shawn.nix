@@ -6,6 +6,8 @@
 
   home.packages = with pkgs; [
     htop
+    pipenv
+    python311
     wget
   ];
 
