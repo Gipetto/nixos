@@ -3,6 +3,9 @@
   editor = vim
   pager = bat
 
+[init]
+  defaultBranch = main
+
 [color]
   ui = auto
 
