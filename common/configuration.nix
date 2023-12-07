@@ -19,7 +19,7 @@
 
     systemPackages = with pkgs; [
       bat
-      exa
+      eza
       git
       htop
       python3

@@ -36,7 +36,7 @@
     };
   };
 
-  programs.exa = {
+  programs.eza = {
     enable = true;
     extraOptions = [
       "--classify"
