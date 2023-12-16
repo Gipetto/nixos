@@ -2,7 +2,7 @@
 {
   # Can I use a variable to link this to the global nixos version?
   # From what I understand they need to stay in sync.
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
     htop
