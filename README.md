@@ -100,6 +100,13 @@ Find details on Packages, NixOS options and Flakes:
 | Garbage collect | `nix-store --gc` |
 | Remove old & garbage collect | `nix-collect-garbage -d` |
 
+## Show installed packages
+| Operation | Command |
+| --------- | ------- |
+| List packages in current environment | `nix-env -q` |
+| List packages in current system & current environment | `nix-store -q --requisites /run/current-system ~/.nix-profile` |
+| List direct dependencies of the current system | `nix-store -q --references /run/current-system` |
+
 ## Mounting Drives (NixOS)
 
 To permanently mount a drive, rebuild the hardware-configuration after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
