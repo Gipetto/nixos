@@ -33,6 +33,7 @@
           ./hosts/nab5
           ./common/configuration.nix
           ./common/users.nix
+          ./common/autoupgrade.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
