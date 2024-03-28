@@ -55,6 +55,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
         isSystemUser = true;
         description = "Docker rootless user";
         group = "rootless";
+        extraGroups = [ "video" "render" ];
       };
     };
 
