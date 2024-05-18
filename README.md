@@ -82,7 +82,8 @@ Find details on Packages, NixOS options and Flakes:
 | Operation | Command |
 | --------- | ------- |
 | Search | `nix search nixpkgs 'package'` |
-| Upgrade | `nixos-rebuild switch --upgrade` |
+| Upgrade? | `nixos-rebuild switch --upgrade` |
+| Upgrade | `nix flake update`<br>`sudo nixos-rebuild switch --flake .` |
 
 ## Nix-Shell
 
