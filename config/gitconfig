@@ -2,7 +2,7 @@
   abbrev = 10
   editor = vim
   pager = bat
-  autocrlf = true
+  autocrlf = false
 
 [init]
   defaultBranch = main
