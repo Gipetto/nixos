@@ -41,6 +41,8 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     AllowSuspend=no
   '';
 
+  #sound.enable = true;
+
   networking = {
     networkmanager.enable = true;
     hostName = "nab5";
@@ -88,8 +90,11 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
   environment = {
     systemPackages = with pkgs; [
       curl
+      dmidecode
+      glxinfo
       gnumake
       hdparm
+      inxi
       lm_sensors
       rsync
     ];
@@ -136,7 +141,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
 
   fileSystems."/".options = [ "noatime" "discard" ];
   fileSystems."/mnt/data".options = [ "noatime" "discard" ];
-  fileSystems."/mnt/diskface".options = [ "noatime" "discard" "nodev" ];
+#  fileSystems."/mnt/diskface".options = [ "noatime" "discard" "nodev" ];
 
   # Stupid n00b hack to list all installed packages in /etc/current-system-packages
   environment.etc."current-system-packages".text = let
