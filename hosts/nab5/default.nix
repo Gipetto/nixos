@@ -133,6 +133,10 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     liveRestore = false;
     autoPrune.enable = true;
     autoPrune.dates = "weekly";
+    daemon.settings = {
+      experimental = false;
+      userland-proxy = false;
+    };
     #rootless = {
     #  enable = true;
     #  setSocketVariable = true;
