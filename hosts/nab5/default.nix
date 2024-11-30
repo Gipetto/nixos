@@ -136,6 +136,9 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     daemon.settings = {
       experimental = false;
       userland-proxy = false;
+      dns = [
+        "192.168.1.1"
+      ];
     };
     #rootless = {
     #  enable = true;
