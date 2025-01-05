@@ -28,9 +28,16 @@
 
   hardware = {
     bluetooth.enable = false;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver
+      ];
+    };
   };
 
-  powerManagement.cpuFreqGovernor = lib.mkForce "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
   # This next line doesn't appear to work
   powerManagement.powerUpCommands = ''
 ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
