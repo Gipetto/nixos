@@ -29,7 +29,12 @@
       setopt hist_ignore_dups
       setopt hist_expire_dups_first
       setopt hist_ignore_space
+
+      # configure makefile completion
+      zstyle ':completion:*:make:*:targets' call-command true
+      zstyle ':completion:*:*:make:*' tag-order 'targets'
     '';
+
 
     oh-my-zsh = {
       enable = true;
