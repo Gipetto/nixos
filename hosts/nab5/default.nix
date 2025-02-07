@@ -102,6 +102,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
       gnumake
       hdparm
       inxi
+      intel-gpu-tools
       lm_sensors
       rsync
     ];
