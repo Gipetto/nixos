@@ -21,6 +21,7 @@
       bat
       eza
       git
+      btop
       htop
       python3
       screen
