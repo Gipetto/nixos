@@ -5,6 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgsDarwin.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +22,7 @@
     nixpkgs,
     nixpkgsDarwin,
     nix,
+    nixos-unstable,
     nixos-hardware,
     home-manager,
     darwin
@@ -43,12 +46,14 @@
       };
       macbook-nix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+	specialArgs = { inherit nixos-unstable; };
         modules = [
           nixos-hardware.nixosModules.common-cpu-intel
           ./hosts/macbook-nix
           ./common/configuration.nix
           ./common/users.nix
           ./common/autoupgrade.nix
+          ./common/fonts.nix
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

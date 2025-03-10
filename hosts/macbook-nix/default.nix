@@ -15,9 +15,26 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    kernelParams = [ "i916.fastboot=1" ];
+    #kernelModules = [ 
+    #  "wl" 
+    #];
+    kernelParams = [ 
+      "i916.fastboot=1" 
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
-    initrd.kernelModules = [ "i915" ];
+    initrd.kernelModules = [ 
+      "i915" 
+    ];
+    #blacklistedKernelModules = [
+    #  "b43" 
+    #  "ssb" 
+    #  "brcmfmac" 
+    #  "brcmsmac" 
+    #  "bcma" 
+    #];
+    #extraModulePackages = with config.boot.kernelPackages; [ 
+    #  broadcom_sta 
+    #]; 
   };
   
   networking = {
@@ -47,6 +64,7 @@
         intel-vaapi-driver
       ];
     };
+    enableAllFirmware = true;
   };
 
   # Enable the X11 windowing system.
