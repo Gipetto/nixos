@@ -41,6 +41,21 @@
           }
         ];
       };
+      macbook-nix = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          nixos-hardware.nixosModules.common-cpu-intel
+          ./hosts/macbook-nix
+          ./common/configuration.nix
+          ./common/users.nix
+          ./common/autoupgrade.nix
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.shawn = import ./home-manager/shawn.nix;
+          }
+        ];
+      };
     };
 
     darwinConfigurations = {
