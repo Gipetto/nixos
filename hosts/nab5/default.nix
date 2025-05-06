@@ -70,7 +70,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
 
     groups = {
       rootless = {
-        members = [ "shawn" ];
+        members = [ "shawn" "docker" ];
       };
     };
   };
@@ -164,4 +164,11 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     sortedUnique = builtins.sort builtins.lessThan (lib.unique packages);
     formatted = builtins.concatStringsSep "\n" sortedUnique;
   in formatted;
+
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/15 * * * * shawn /srv/docker/web/webapp/scripts/crontab >> /tmp/cron.log"
+    ];
+  };
 }
