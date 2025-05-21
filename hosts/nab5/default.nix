@@ -104,6 +104,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
       inxi
       intel-gpu-tools
       lm_sensors
+      pciutils
       rsync
     ];
 
