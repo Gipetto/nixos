@@ -68,5 +68,17 @@
     ];
     extraConfig = builtins.readFile ../config/vimrc;
   };
+
+  # programs.vscode = {
+  #   enable = true;
+
+  #   userSettings = {
+  #     "editor.formatOnSave" = true;
+  #     "editor.tabSize" = 2;
+  #     "files.insertFinalNewline" = true;
+  #     "debug.javascript.autoAttachFilter": "disabled";
+  #     "debug.javascript.automaticallyTunnelRemoteServer": false;
+  #   };
+  # };
 }
 
