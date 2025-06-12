@@ -12,8 +12,10 @@ ifeq ("$(PLATFORM)","Darwin")
 	# May need to answer "no" when asked to use determinite's version of Nix
 	curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 	mkdir -p ~/.config/nix
-	sudo echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
-	nix --extra-experimental-features nix-command run nix-darwin/nix-darwin-24.11#darwin-rebuild -- --flake .#darwinDefault switch
+	# sudo echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
+	/nix/var/nix/profiles/default/bin/nix \
+		--extra-experimental-features nix-command \
+    run nix-darwin/nix-darwin-24.11#darwin-rebuild -- --flake .#darwinDefault switch
 else
 	# Build then test to ensure we can easily recover if something fails
 	sudo nixos-rebuild build --flake .
