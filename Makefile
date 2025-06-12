@@ -8,8 +8,10 @@ NIX_SH := /nix/var/nix/profiles/default/etc/profile.d/nix.sh
 init:
 ifeq ("$(PLATFORM)","Darwin")
 	xcode-select --install || true # Though you probably don't have `make` without this
-	# curl -L https://nixos.org/nix/install | sh -s -- --daemon --yes
-	# May need to answer "no" when asked to use determinite's version of Nix
+	# This is a PITA on reinstall, so do the backups manually
+	sudo cp /etc/zshrc /etc/zshrc.pre-nix-install
+	sudo cp /etc/zprofile /etc/zshrc.pre-nix-install
+	# Need to answer "no" when asked to use determinite's version of Nix
 	curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 	mkdir -p ~/.config/nix
 	# sudo echo "experimental-features = nix-command flakes" >> /etc/nix/nix.conf
