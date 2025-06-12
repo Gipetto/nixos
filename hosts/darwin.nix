@@ -1,5 +1,9 @@
 { config, pkgs, nixpkgs, ... }:
 {
+  # This seems to be in flux as of 2025/06/12
+  # https://github.com/nix-darwin/nix-darwin/issues/1384#issuecomment-2777553302
+  system.stateVersion = 5;
+
   nix = {
     useDaemon = true;
     gc = {

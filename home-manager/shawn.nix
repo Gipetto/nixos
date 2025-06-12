@@ -45,7 +45,7 @@
       "--time-style=long-iso"
     ];
     git = true;
-    icons = true;
+    icons = "auto";
   };
 
   programs.bat = {

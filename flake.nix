@@ -2,27 +2,27 @@
   description = "WookieeNix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgsDarwin.url = "github:NixOS/nixpkgs/nixpkgs-24.05-darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgsDarwin.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    darwin = {
-      url = "github:lnl7/nix-darwin";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
       inputs.nixpkgs.follows = "nixpkgsDarwin";
     };
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
     nixpkgsDarwin,
     nix,
     nixos-hardware,
     home-manager,
-    darwin
+    nix-darwin
   }:
   {
     nixosConfigurations = {
@@ -44,8 +44,9 @@
     };
 
     darwinConfigurations = {
-      darwinDefault = darwin.lib.darwinSystem {
+      darwinDefault = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/darwin.nix
           ./common/configuration.nix
