@@ -11,7 +11,9 @@
     wget
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  # Apparently shouldn't set this in this manner while
+  # also using `home-manager.userGlobalPkgs`
+  #nixpkgs.config.allowUnfree = true;
 
   #direnv.enable = true;
 

@@ -16,7 +16,7 @@
       GIT_PS1_SHOWDIRTYSTATE = "true";
     };
 
-    initExtra = ''
+    initContent = ''
       # enable a `.zshrc.local` for ad-hoc config
       # since this config is generated at build time
       if test -f ~/.zshrc.local; then
