@@ -97,7 +97,7 @@ Find details on Packages, NixOS options and Flakes:
 | --------- | ------- |
 | Remove all generations | `nix-env --delete-generations old` |
 | Remove specific generations | `nix-env --delete-generations 10 11 14` |
-| Remove generagions by age | `nix-env --delete-generations 14d` |
+| Remove generations by age | `nix-env --delete-generations 14d` |
 | Garbage collect | `nix-store --gc` |
 | Remove old & garbage collect | `nix-collect-garbage -d` |
 
