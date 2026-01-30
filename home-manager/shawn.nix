@@ -10,6 +10,7 @@
     ./programs/tmux.nix
     ./programs/utils.nix
     ./programs/vim.nix
+    ./programs/vlc.nix
     ./programs/vscode.nix
     ./programs/zsh
   ];
