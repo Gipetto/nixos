@@ -2,18 +2,22 @@
 
 ## Install
 
-Install process is currently dumb basic.
+Install nix (if not NixOS or nix already installed) and check out this repo in to ~/Projects.
 
-### NixOS
-
-To restore a known host:
+Specifically not bootstrapping the host in the install script to make this a process that's friendly to bootstrapping new hosts.
 
 ```sh
-sudo mv /etc/nixos /etc/nixos-orig
-sudo mkdir /etc/nixos
-sudo chmod 0775 /etc/nixos
-git clone git@github.com:Gipetto/nixos.git /etc/nixos
-cd /etc/nixos
+curl -fsSL https://raw.githubusercontent.com/gipetto/nixos/main/install.sh | bash
+```
+
+### Post-install: NixOS
+
+To restore a new NixOS host:
+
+```sh
+sudo cp /etc/nixos /etc/nixos-orig
+git clone git@github.com:Gipetto/nixos.git ~/Projects/nixos
+cd ~/Projects/nixos
 ```
 
 If this is a new host:
@@ -22,23 +26,26 @@ If this is a new host:
 
 ```sh
 make init
-# test to make sure it looks good
-make install
+make rebuild
 ```
 
 **Open Question:** what is the best way to do hardware configuration in the 
 new flake world?
 
-### MacOS
+### Post-install: Linux (Non-NixOS)
 
 ```sh
-git clone git@github.com:Gipetto/nixos.git ~/.nixos
-cd ~/.nixos
-make init
-make install
+cd ~/Projects/nixos
+make rebuild
 ```
 
-- [Uninstall Script](https://github.com/jacix/nixbits/blob/32f15fbb9927566a3052f7a7e0642508363399d6/nix-uninstall.sh)
+### Post-install: MacOS
+
+```sh
+cd ~/Projects/nixos
+make init
+make rebuild
+```
 
 ## Notes
 
@@ -64,26 +71,20 @@ make install
 Find details on Packages, NixOS options and Flakes: 
 [https://search.nixos.org](https://search.nixos.org)
 
-## Nix-Env
-
-| Operation | Command |
-| --------- | ------- |
-| Search | `nix-env -qaP '.*package.*'` |
-| Install | `nix-env -i package-name` |
-| Upgrade | `nix-channel --update nixpkgs`<br>`nix-env --upgrade '*'` |
-| Uninstall | `nix-env --uninstall package-name` |
-| Rollback | `nix-env --rollback` |
-| Info (short) | `nix-env -qaP --description '.*package.*'` |
-| Info (full) | `nix-env -qaP --description --json --meta '.*package.*'` |
-| List packages in the current environment<br>(non-system packages) | `nix-env -qa --installed "*"` |
 
 ## Nix Commands
 
 | Operation | Command |
 | --------- | ------- |
-| Search | `nix search nixpkgs 'package'` |
-| Upgrade? | `nixos-rebuild switch --upgrade` |
-| Upgrade | `nix flake update`<br>`sudo nixos-rebuild switch --flake .` |
+| Search | `nix search nixpkgs -t name 'package'` |
+| Update flake inputs | `nix flake update` |
+| Apply config (NixOS) | `sudo nixos-rebuild switch --flake .#nab5` |
+| Apply config (Darwin) | `darwin-rebuild switch --flake .#darwinDefault` |
+| Apply config (Linux HM) | `nix run .#homeConfigurations.tower` |
+
+**A full upgrade cycle consists of:**
+- Update flake inputs
+- Apply config
 
 ## Nix-Shell
 
@@ -110,12 +111,8 @@ Find details on Packages, NixOS options and Flakes:
 
 ## Mounting Drives (NixOS)
 
-To permanently mount a drive, rebuild the hardware-configuration after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
+To permanently mount a drive, update the `configuration.nix` for that host after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
 
-``` sh
-nixos-regenerate-config
-nixos-rebuild switch
-```
 
 ## Test in VM
 
@@ -126,3 +123,13 @@ nixos-rebuild build-vm --flake https://github.com/Gipetto/nixos/tarball/master
 
 [More Info on VMs](https://nixos.org/manual/nixos/stable/)
 
+
+## Uninstall (Mac, non-NixOS Linux)
+
+[Uninstalling Nix (Determinate)](https://docs.determinate.systems/nix/installation/uninstalling)
+
+``` sh
+curl -fsSL https://install.determinate.systems/nix/uninstall > uninstall.sh
+less uninstall.sh  # review
+sh uninstall.sh
+```

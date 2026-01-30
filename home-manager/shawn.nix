@@ -5,26 +5,26 @@
   home.stateVersion = "23.11";
 
   home.packages = with pkgs; [
-    htop
-    pipenv
-    python311
+    bat
+    btop
+    eza
     wget
+    zoxide
   ];
 
-  # Apparently shouldn't set this in this manner while
-  # also using `home-manager.userGlobalPkgs`
-  #nixpkgs.config.allowUnfree = true;
-
-  #direnv.enable = true;
-
   imports = [
+    ./programs/firefox
     ./programs/tmux.nix
+    ./programs/vscode.nix
     ./programs/zsh
   ];
 
   home.file.".curlrc".source = ../config/curlrc;
   home.file.".wgetrc".source = ../config/wgetrc;
-  #home.file.".vim/vimrc".source = ../config/vimrc;
+
+  # direnv.enable = true;
+  xdg.configFile."direnv/direnv.toml".source = ../config/direnv/direnv.toml;
+
 
   programs.home-manager.enable = true;
 
@@ -70,17 +70,5 @@
     ];
     extraConfig = builtins.readFile ../config/vimrc;
   };
-
-  # programs.vscode = {
-  #   enable = true;
-
-  #   userSettings = {
-  #     "editor.formatOnSave" = true;
-  #     "editor.tabSize" = 2;
-  #     "files.insertFinalNewline" = true;
-  #     "debug.javascript.autoAttachFilter": "disabled";
-  #     "debug.javascript.automaticallyTunnelRemoteServer": false;
-  #   };
-  # };
 }
 

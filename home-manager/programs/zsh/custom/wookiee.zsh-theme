@@ -1,5 +1,11 @@
 # vim:ft=zsh ts=2 sw=2 sts=2
 
+# Dates:
+# https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/
+
+# Colors:
+# for code in {000..255}; do print -P -- "$code: %F{$code}Color%f"; done
+
 prompt_context() {
     local user=`whoami`
     local hostname=`hostname`
@@ -15,9 +21,11 @@ prompt_context() {
     fi
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="["
-ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-ZSH_THEME_GIT_PROMPT_SEPARATOR=" "
+FORCE_RUN_VCS_INFO=1
+
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 #ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
 #ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[red]%}%{●%G%}"
 #ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[red]%}%{✖%G%}"
@@ -42,6 +50,5 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 
 
-PROMPT='$(prompt_context)%{$fg[cyan]%}[%~% ]%{$reset_color%}$(prompt_git)${reset_color}
+PROMPT='%F{245}%D{%b %d} %D{%H:%M:%S} 〉%f$(prompt_context)%{$fg[cyan]%}%~%  〉%{$reset_color%}$(prompt_git)${reset_color}
 %B$%b '
-

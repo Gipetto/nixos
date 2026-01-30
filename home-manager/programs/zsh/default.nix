@@ -4,25 +4,17 @@
     enable = true;
 
     shellAliases = {
-      # ls = "exa";
       mv = "mv -v";
       rm = "rm -v";
     };
 
     localVariables = {
       VISUAL = "vim";
+      EDITOR = "vim";
       PAGER = "less";
       LESS = "-eFRX";
       GIT_PS1_SHOWDIRTYSTATE = "true";
     };
-
-    initContent = ''
-      # enable a `.zshrc.local` for ad-hoc config
-      # since this config is generated at build time
-      if test -f ~/.zshrc.local; then
-        . ~/.zshrc.local
-      fi
-    '';
 
     profileExtra = ''
       zstyle ':omz:module:git:alias' skip 'yes'
@@ -35,18 +27,18 @@
       zstyle ':completion:*:*:make:*' tag-order 'targets'
     '';
 
-
     oh-my-zsh = {
       enable = true;
       plugins = [
         "git"
         "git-prompt"
-        "pipenv"
       ];
       theme = "wookiee";
       custom = "$HOME/.config/oh-my-zsh";
     };
   };
+
+  programs.zsh.initContent = builtins.readFile ./init-extra.sh;
 
   home.file.".config/oh-my-zsh/themes/wookiee.zsh-theme".source = ./custom/wookiee.zsh-theme;
 }
