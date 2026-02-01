@@ -34,4 +34,26 @@
   };
 
   xdg.configFile."direnv/direnv.toml".source = ../../config/direnv/direnv.toml;
+
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "github.com" = {
+        user = "git";
+        addKeysToAgent = "yes";
+        useKeychain = if pkgs.stdenv.isDarwin then "yes" else null;  
+      };
+      "nab5" = {
+        user = "shawn";
+        hostname = "nab5.wookiee.internal";
+      };
+      "tower" = {
+        user = "shawn";
+        hostname = "tower.wookiee.internal";
+      };
+      "*.ssh.wpengine.net" = {
+        addressFamily = "inet";
+      };
+    };
+  };
 }

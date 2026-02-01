@@ -3,6 +3,10 @@
   programs.zsh = {
     enable = true;
 
+    plugins = [
+      "ssh-agent"
+    ];
+
     shellAliases = {
       mv = "mv -v";
       rm = "rm -v";
@@ -32,6 +36,7 @@
       plugins = [
         "git"
         "git-prompt"
+        "ssh-agent"
       ];
       theme = "wookiee";
       custom = "$HOME/.config/oh-my-zsh";
