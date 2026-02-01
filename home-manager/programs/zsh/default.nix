@@ -4,7 +4,7 @@
     enable = true;
 
     plugins = [
-      "ssh-agent"
+#      "ssh-agent"
     ];
 
     shellAliases = {

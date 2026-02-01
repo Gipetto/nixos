@@ -15,6 +15,10 @@
     ./programs/zsh
   ];
 
-  programs.home-manager.enable = true;
-  programs.nix-index.enable = true;
+  #programs.home-manager.enable = true;
+  #programs.nix-index.enable = true;
+  #home-manager.useGlobalPkgs = true;
+  #home-manager.useUserPackages = true;
+  #home-manager.backupFileExtension = "backup";
+  #home-manager.nixpkgs.config.allowUnfree = true;
 }

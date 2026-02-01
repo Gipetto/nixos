@@ -1,11 +1,11 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, unstable, inputs, ... }:
 let
   vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
 in
 {
   programs.vscode = {
     enable = true;
-    package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.vscode; 
+    #package = unstable.vscode; 
     profiles.default = {
       userSettings = {
         "accessibility.dimUnfocused.enabled" = true;
