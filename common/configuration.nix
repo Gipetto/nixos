@@ -18,12 +18,7 @@
     };
 
     systemPackages = with pkgs; [
-      bat
-      eza
       git
-      btop
-      htop
-      python3
       screen
       wget
       ((vim-full.override { }).customize {

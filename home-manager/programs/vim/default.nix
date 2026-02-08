@@ -7,6 +7,6 @@
       vim-nix
       vim-better-whitespace
     ];
-    extraConfig = builtins.readFile ../../config/vimrc;
+    extraConfig = builtins.readFile ./config/vimrc;
   };
 }

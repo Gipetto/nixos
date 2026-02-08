@@ -26,7 +26,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     export IS_LINUX=1
     export PATH="$HOME/.local/bin:$PATH"
     if command -v lspci >/dev/null 2>&1 && lspci | grep -q "NVIDIA"; then

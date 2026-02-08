@@ -58,13 +58,6 @@
     };
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = (_: true);
-  };
-
-#  programs.home-manager.enable = true;
-#  programs.home-manager.users.shawn = true;
   programs.zsh.enable = true;
   programs.hyprland = {
     enable = true;

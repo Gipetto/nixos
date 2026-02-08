@@ -5,7 +5,7 @@ in
 {
   programs.vscode = {
     enable = true;
-    #package = unstable.vscode; 
+    package = unstable.vscode; 
     profiles.default = {
       userSettings = {
         "accessibility.dimUnfocused.enabled" = true;
@@ -36,12 +36,13 @@ in
         vscode-extensions.ms-python.black-formatter
         vscode-extensions.ms-python.debugpy
         vscode-extensions.ms-python.python
-        vscode-extensions.ms-vscode-remote.remote-containers
-        vscode-extensions.ms-vscode-remote.remote-ssh
-        vscode-extensions.ms-vscode-remote.remote-ssh-edit
         vscode-extensions.ms-vscode.makefile-tools
-        vscode-extensions.ms-vscode.remote-explorer
         vscode-extensions.svelte.svelte-vscode
+        # Unfree, fix later, we can still install these by hand
+        #vscode-extensions.ms-vscode-remote.remote-containers
+        #vscode-extensions.ms-vscode-remote.remote-ssh
+        #vscode-extensions.ms-vscode-remote.remote-ssh-edit
+        #vscode-extensions.ms-vscode.remote-explorer
       ];
     };
   };

@@ -1,24 +1,15 @@
 { config, pkgs, home-manager, ... }:
 {
-  # Can I use a variable to link this to the global nixos version?
-  # From what I understand they need to stay in sync.
   home.stateVersion = "23.11";
 
   imports = [
+    ./common.nix
     ./programs/firefox
-    ./programs/git.nix
-    ./programs/tmux.nix
+    ./programs/fonts.nix
+    ./programs/hyprland
     ./programs/utils.nix
-    ./programs/vim.nix
     ./programs/vlc.nix
     ./programs/vscode.nix
-    ./programs/zsh
+    ./programs/waybar
   ];
-
-  #programs.home-manager.enable = true;
-  #programs.nix-index.enable = true;
-  #home-manager.useGlobalPkgs = true;
-  #home-manager.useUserPackages = true;
-  #home-manager.backupFileExtension = "backup";
-  #home-manager.nixpkgs.config.allowUnfree = true;
 }
