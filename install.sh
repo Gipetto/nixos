@@ -52,11 +52,25 @@ cat <<EOF
 
 Next steps:
 1. If this is a NEW host, add its configuration to the flake:
-   - Linux non-NixOS (e.g., Pop!_OS): add to homeConfigurations.<hostname>
-   - NixOS machine: add to nixosConfigurations and NIXOS_HOSTS in Makefile
-2. Then run:
-      make -C "$FLAKE_DIR" init      # only for NixOS/macOS first-time setup
-   or
-      make -C "$FLAKE_DIR" rebuild   # for non-NixOS Linux or subsequent updates
+   - macOS: already configured as homeConfigurations.shawn@darwin
+   - NixOS machine: add to nixosConfigurations (nab5 and tower already configured)
+
+2. Apply the configuration:
+   On NixOS (nab5, tower):
+     cd $FLAKE_DIR
+     sudo nixos-rebuild switch --flake .#\$(hostname -s)
+   
+   On macOS (darwin):
+     cd $FLAKE_DIR
+     home-manager switch --flake .#"shawn@darwin"
+
+3. Initialize chezmoi for dotfiles:
+     cd $FLAKE_DIR
+     chezmoi init --source $FLAKE_DIR/chezmoi --apply $REPO_URL
+
+4. Or use the Makefile shortcuts:
+     make -C "$FLAKE_DIR" rebuild      # Applies nix config
+     make -C "$FLAKE_DIR" rebuild-chezmoi  # Applies dotfiles
+     make -C "$FLAKE_DIR" sync         # Does everything
 
 EOF

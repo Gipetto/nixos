@@ -1,0 +1,10 @@
+{{- $isLinux := eq .chezmoi.os "linux" -}}
+{{- $isMac := eq .chezmoi.os "darwin" -}}
+{{- $isNab5 := eq .chezmoi.hostname "nab5" -}}
+{{- $isTower := eq .chezmoi.hostname "tower" -}}
+
+[data]
+    isLinux = {{ $isLinux }}
+    isMac = {{ $isMac }}
+    isNab5 = {{ $isNab5 }}
+    isTower = {{ $isTower }}

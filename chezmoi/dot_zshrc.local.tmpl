@@ -1,0 +1,103 @@
+# ~/.zshrc.local
+# Runtime zsh configuration managed by chezmoi
+# 
+# This file contains your dynamic shell config that runs after oh-my-zsh loads
+# (oh-my-zsh itself is configured declaratively in home-manager)
+#
+# Use this for:
+# - Runtime tool initialization (direnv, mise, zoxide)
+# - OS-specific paths and environment
+# - Quick testing/iteration
+# - Machine-specific overrides
+
+# Path updates
+path=(
+  "$HOME/.local/bin"
+  $path
+)
+typeset -U PATH
+
+{{- if .isMac }}
+# ============================================================
+# macOS-specific configuration
+# ============================================================
+export IS_MAC=1
+export PATH="$(brew --prefix)/opt/libpq/bin:$HOME/.local/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/sqlite/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/icu4c@77/lib/pkgconfig"
+export HOMEBREW_CASK_OPTS="--fontdir=/Library/Fonts"
+
+# macOS-only completions/plugins
+if (( $+commands[zsh-autosuggestions] )); then
+    source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if (( $+commands[zsh-syntax-highlighting] )); then
+    source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+{{- end }}
+
+{{- if .isLinux }}
+# ============================================================
+# Linux-specific configuration
+# ============================================================
+export IS_LINUX=1
+export PATH="$HOME/.local/bin:$PATH"
+
+# Enable Vulkan renderer if NVIDIA GPU detected
+if command -v lspci >/dev/null 2>&1 && lspci | grep -q "NVIDIA"; then
+    export WLR_RENDERER=vulkan
+fi
+{{- end }}
+
+# ============================================================
+# Tool-specific initialization (all platforms)
+# ============================================================
+
+# Zoxide (smarter cd)
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
+
+# Mise (version manager)
+if (( $+commands[mise] )); then
+    eval "$(mise activate zsh)"
+    eval "$(mise completion zsh)"
+fi
+
+# Direnv (per-directory environments)
+if (( $+commands[direnv] )); then
+    eval "$(direnv hook zsh)"
+fi
+
+# Eza (better ls)
+if (( $+commands[eza] )); then
+    alias ls="eza --icons=always"
+fi
+
+# Node.js settings (maybe obsolete?)
+export NODE_OPTIONS="--dns-result-order=ipv4first"
+
+{{- if .isTower }}
+# ============================================================
+# Tower workstation-specific
+# ============================================================
+# Add tower-specific config here
+{{- end }}
+
+{{- if .isNab5 }}
+# ============================================================
+# Server-specific
+# ============================================================
+# Add server-specific config here
+{{- end }}
+
+# ============================================================
+# Machine-specific overrides (never committed)
+# ============================================================
+# For truly local stuff, you can add a ~/.zshrc.local.local file
+# (not managed by chezmoi at all)
+if test -f ~/.zshrc.local.local; then
+    . ~/.zshrc.local.local
+fi

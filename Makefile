@@ -1,61 +1,74 @@
+.PHONY: help init update rebuild rebuild-nix rebuild-chezmoi sync check clean
+
 PLATFORM := $(shell uname -s)
-HOSTNAME := $(shell hostname)
+HOSTNAME := $(shell hostname -s)
+USER := $(shell whoami)
 
 # List of hosts that run full NixOS (not just Home Manager)
-NIXOS_HOSTS := nab5
+NIXOS_HOSTS := nab5 tower
 
-NIX_DAEMON := /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-NIX_SH := /nix/var/nix/profiles/default/etc/profile.d/nix.sh
+# Default target
+help:
+	@echo "Available targets:"
+	@echo "  init              - Initialize chezmoi on a new machine"
+	@echo "  update            - Update flake inputs"
+	@echo "  rebuild           - Rebuild both nix and chezmoi"
+	@echo "  rebuild-nix       - Only rebuild nix configuration"
+	@echo "  rebuild-chezmoi   - Only apply chezmoi dotfiles"
+	@echo "  sync              - Update and rebuild everything"
+	@echo "  check             - Check flake validity"
+	@echo "  clean             - Clean up old generations"
 
-# --- INIT: first-time system activation (NixOS or Darwin only) ---
-.PHONY: init
+# Initialize chezmoi on a new machine
 init:
+	@echo "Initializing chezmoi..."
+	@chezmoi init --source $(PWD)/chezmoi https://github.com/Gipetto/nixos.git
+	
+# Update flake inputs
+update:
+	nix flake update
+
+# Rebuild based on platform and hostname
+rebuild-nix:
 ifeq ($(PLATFORM),Darwin)
-	xcode-select --install || true
-	sudo cp /etc/zshrc /etc/zshrc.pre-nix-install || true
-	sudo cp /etc/zprofile /etc/zprofile.pre-nix-install || true
-	curl -fsSL https://install.determinate.systems/nix | sh -s -- install || true
-	mkdir -p ~/.config/nix
-	/nix/var/nix/profiles/default/bin/nix \
-		--extra-experimental-features "nix-command flakes" \
-		build .#darwinConfigurations.darwinDefault.system --out-link ./darwin-system && \
-		./darwin-system/sw/bin/darwin-rebuild switch --flake .#darwinDefault
+	@echo "Rebuilding home-manager (darwin)..."
+	home-manager switch --flake .#"$(USER)@darwin"
 else ifeq ($(PLATFORM),Linux)
 ifneq ($(filter $(HOSTNAME),$(NIXOS_HOSTS)),)
-	sudo nixos-rebuild build --flake .
-	sudo nixos-rebuild test --flake .
-	sudo nixos-rebuild switch --flake .#nixosConfigurations.$(HOSTNAME)
+	@echo "Rebuilding NixOS system ($(HOSTNAME))..."
+	sudo nixos-rebuild switch --flake .#$(HOSTNAME)
 else
-# Chicken and egg problem: we need home-manager to install
-# but we can't install it because later it'll conflict with 
-# home-manager that's managed via the flake
-	NIXPKGS_ALLOW_UNFREE=1 nix shell nixpkgs#home-manager -c \
-		home-manager switch --flake .#$(HOSTNAME) --impure -b backup
+	@echo "Unknown Linux host: $(HOSTNAME)"
+	@echo "Add $(HOSTNAME) to NIXOS_HOSTS in Makefile or create homeConfiguration"
+	@exit 1
 endif
 else
-	$(error Unsupported platform: $(PLATFORM))
+	@echo "Unsupported platform: $(PLATFORM)"
+	@exit 1
 endif
 
-# --- REBUILD: idempotent config sync (works everywhere) ---
-.PHONY: rebuild
-rebuild:
-ifeq ($(PLATFORM),Darwin)
-	darwin-rebuild switch --flake .#darwinDefault
-else ifeq ($(PLATFORM),Linux)
+# Apply chezmoi dotfiles
+rebuild-chezmoi:
+	@echo "Applying chezmoi dotfiles..."
+	@chezmoi apply
+
+# Rebuild both
+rebuild: rebuild-nix rebuild-chezmoi
+
+# Full sync
+sync: update rebuild
+
+# Check flake validity
+check:
+	nix flake check
+
+# Garbage collection
+clean:
+	@echo "Cleaning old generations..."
 ifneq ($(filter $(HOSTNAME),$(NIXOS_HOSTS)),)
-	sudo nixos-rebuild switch --flake .#nixosConfigurations.$(HOSTNAME)
+	sudo nix-collect-garbage -d
 else
-	NIXPKGS_ALLOW_UNFREE=1 home-manager switch --flake .#$(HOSTNAME) --impure -b backup
+	nix-collect-garbage -d
 endif
-else
-	$(error Unsupported platform: $(PLATFORM))
-endif
-
-# .PHONY: install-vscode-debian
-# install-vscode-debian:
-# 	@echo "Adding VS Code repository..."
-# 	@curl -fsSL https://code.visualstudio.com/keys/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/packages.microsoft.gpg > /dev/null
-# 	@echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
-# 	@sudo apt update -qq
-# 	@sudo apt install -y code
-# 	@echo "✓ VS Code installed via system package manager (auto-updates enabled)"
+	@echo "Optimizing nix store..."
+	nix-store --optimise

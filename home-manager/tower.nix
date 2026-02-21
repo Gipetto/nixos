@@ -1,11 +1,48 @@
-{ config, pkgs, unstable, inputs, ... }:
+{ config, pkgs, lib, inputs, ... }:
+
 let
   vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
 in
 {
+  imports = [ 
+    ./common.nix 
+    ./programs/firefox.nix
+  ];
+
+  home.username = "shawn";
+  home.homeDirectory = "/home/shawn";
+  home.stateVersion = "23.11";
+
+  # Workstation-specific packages
+  home.packages = with pkgs; [
+    # GUI applications
+    firefox
+    vlc
+    
+    # Fonts
+    nerd-fonts.hasklug
+    
+    # CLI utilities
+    zoxide
+  ];
+
+  # Font configuration
+  fonts.fontconfig.enable = true;
+
+  # ============================================================
+  # Programs with FULL config in home-manager
+  # ============================================================
+  
+  # 1Password
+  programs._1password.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "shawn" ];
+  };
+
+  # VSCode with extensions and settings
   programs.vscode = {
     enable = true;
-    package = unstable.vscode; 
     profiles.default = {
       userSettings = {
         "accessibility.dimUnfocused.enabled" = true;
@@ -38,12 +75,29 @@ in
         vscode-extensions.ms-python.python
         vscode-extensions.ms-vscode.makefile-tools
         vscode-extensions.svelte.svelte-vscode
-        # Unfree, fix later, we can still install these by hand
+        # Unfree extensions - can install manually if needed
         #vscode-extensions.ms-vscode-remote.remote-containers
         #vscode-extensions.ms-vscode-remote.remote-ssh
         #vscode-extensions.ms-vscode-remote.remote-ssh-edit
         #vscode-extensions.ms-vscode.remote-explorer
       ];
     };
+  };
+
+  # ============================================================
+  # Programs ENABLED here but CONFIGURED in chezmoi
+  # ============================================================
+  
+  # Hyprland - enabled here, config in chezmoi
+  wayland.windowManager.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    # Configuration is in chezmoi: ~/.config/hypr/hyprland.conf
+  };
+
+  # Waybar - enabled here, config in chezmoi
+  programs.waybar = {
+    enable = true;
+    # Configuration is in chezmoi: ~/.config/waybar/config.jsonc and style.css
   };
 }

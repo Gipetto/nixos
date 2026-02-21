@@ -1,0 +1,9 @@
+# Machine-specific files that should never be managed by chezmoi
+.zshrc.local
+.config/git/config.local
+
+# SOPS private keys (if you add them later)
+.config/sops/age/keys.txt
+
+# Other local overrides
+.local/

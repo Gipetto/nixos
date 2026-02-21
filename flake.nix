@@ -2,142 +2,112 @@
   description = "WookieeNix";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-unstable = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
-    nixpkgsDarwin.url = "github:NixOS/nixpkgs/nixpkgs-25.05-darwin";
+    # Stable for NixOS server (nab5)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    
+    # Unstable for workstation (tower) and macOS home-manager (darwin)
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    
+    # Hardware modules for NixOS
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    
+    # Home-manager follows unstable
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgsDarwin";
-    };
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
-  outputs = inputs@{
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    nixpkgsDarwin,
-    nix,
-    nixos-hardware,
-    home-manager,
-    nix-darwin,
-    nix-vscode-extensions,
-  }:
-  let
-     mkPkgs = { flake, system }: import flake {
-       inherit system;
-       config = {
-         allowUnfree = true;
-       };
-     };
-  in
-  {
-    # Full NixOS Installs
-    nixosConfigurations = {
-      nab5 = nixpkgs.lib.nixosSystem {
-        pkgs = mkPkgs { 
-          flake = nixpkgs; 
-          system = "x86_64-linux"; 
-        };
-        specialArgs = {
-          inherit inputs home-manager;
-          unstable = mkPkgs { 
-            flake = nixpkgs-unstable; 
-            system="x86_64-linux"; 
-          };
-        };
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          ./hosts/nab5
-          ./common/autoupgrade.nix
-          ./common/configuration.nix
-          ./common/users.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.pkgs = mkPkgs { 
-              flake = nixpkgs; 
-              system = "x86_64-linux"; 
-            };
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              unstable = mkPkgs { 
-                flake = nixpkgs-unstable; 
-                system="x86_64-linux"; 
-              };
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.shawn = import ./home-manager/common.nix;
-          }
-        ];
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, ... }: 
+    let
+      # Helper to make pkgs with allowUnfree
+      mkPkgs = { flake, system }: import flake {
+        inherit system;
+        config.allowUnfree = true;
       };
-      tower = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-# 	      pkgs = mkPkgs { 
-#           flake = nixpkgs; 
-#           system = "x86_64-linux";
-#         };
-        pkgs = import nixpkgs {
+    in
+    {
+      # NixOS configurations
+      nixosConfigurations = {
+        # Server - stable channel
+        nab5 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          config.allowUnfree = true;
-        };
-        specialArgs = {
-          inherit inputs;
-          unstable = mkPkgs { 
-            flake = nixpkgs-unstable; 
-            system = "x86_64-linux";
+          pkgs = mkPkgs { flake = nixpkgs; system = "x86_64-linux"; };
+          specialArgs = {
+            # Make unstable available for specific packages if needed
+            unstable = mkPkgs { flake = nixpkgs-unstable; system = "x86_64-linux"; };
           };
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-intel
+            ./hosts/nab5
+            ./common/autoupgrade.nix
+            ./common/configuration.nix
+            ./common/users.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.shawn = import ./home-manager/nab5.nix;
+                extraSpecialArgs = {
+                  unstable = mkPkgs { flake = nixpkgs-unstable; system = "x86_64-linux"; };
+                };
+              };
+            }
+          ];
         };
-        modules = [
-          nixos-hardware.nixosModules.common-cpu-amd
-          ./hosts/tower
-          ./common/autoupgrade.nix
-          ./common/configuration.nix
-          ./common/users.nix
-          home-manager.nixosModules.home-manager { 
-	        home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.shawn = import ./home-manager/shawn.nix;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-            };
-          }
-        ];
-      };
-    };
 
-    # darwinConfigurations = {
-    #   # Generic MacOS config
-    #   darwinDefault = nix-darwin.lib.darwinSystem {
-    #    	pkgs = mkPkgs { 
-    #       flake = nixpkgs; 
-    #       system = "aarch64-linux";
-    #     };
-    #     specialArgs = {
-    #       inherit inputs;
-    #       unstable = mkPkgs { 
-    #         flake = nixpkgs-unstable; 
-    #         system="aarch64-linux"; 
-    #       };
-    #     };
-    #     modules = [
-    #       ./hosts/darwin.nix
-    #       ./common/configuration.nix
-    #       home-manager.darwinModules.home-manager {
-    #         home-manager.useGlobalPkgs = true;
-    #         home-manager.useUserPackages = true;
-    #         # TODO: make a limited darwin config that doesn't fully configure things like firefox
-    #         home-manager.users.shawn = import ./home-manager/shawn.nix;
-    #       }
-    #     ];
-    #   };
-    # };
-  };
+        # Workstation - unstable channel
+        tower = nixpkgs-unstable.lib.nixosSystem {
+          system = "x86_64-linux";
+          pkgs = mkPkgs { flake = nixpkgs-unstable; system = "x86_64-linux"; };
+          specialArgs = {
+            inherit home-manager;
+          };
+          modules = [
+            nixos-hardware.nixosModules.common-cpu-amd
+            ./hosts/tower
+            ./common/configuration.nix
+            ./common/users.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.shawn = import ./home-manager/tower.nix;
+              };
+            }
+          ];
+        };
+      };
+
+      # Standalone home-manager for macOS
+      homeConfigurations = {
+        "shawn@darwin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs { flake = nixpkgs-unstable; system = "aarch64-darwin"; }; # or x86_64-darwin
+          modules = [
+            ./home-manager/darwin.nix
+            {
+              home = {
+                username = "shawn";
+                homeDirectory = "/Users/shawn";
+                stateVersion = "24.05";
+              };
+            }
+          ];
+        };
+      };
+
+      # Dev shells for working on this config
+      devShells = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ] (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in pkgs.mkShell {
+          packages = with pkgs; [
+            nixpkgs-fmt
+            nil  # nix LSP
+            chezmoi
+          ];
+        }
+      );
+    };
 }
