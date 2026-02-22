@@ -33,10 +33,6 @@
         nab5 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs { flake = nixpkgs; system = "x86_64-linux"; };
-          specialArgs = {
-            # Make unstable available for specific packages if needed
-            unstable = mkPkgs { flake = nixpkgs-unstable; system = "x86_64-linux"; };
-          };
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
             ./hosts/nab5
@@ -49,9 +45,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.shawn = import ./home-manager/nab5.nix;
-                extraSpecialArgs = {
-                  unstable = mkPkgs { flake = nixpkgs-unstable; system = "x86_64-linux"; };
-                };
               };
             }
           ];
