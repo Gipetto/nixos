@@ -50,6 +50,7 @@
 
   programs.jq.enable = true;
   programs.nix-index.enable = true;
+  programs.yazi.enable = true;
 
   # Tmux with full configuration (used on all hosts)
   programs.tmux = {
