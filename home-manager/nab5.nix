@@ -5,7 +5,7 @@
 
   home.username = "shawn";
   home.homeDirectory = "/home/shawn";
-  home.stateVersion = "23.11";
+  home.stateVersion = "26.05";
 
   # Server-specific packages (minimal, CLI only)
   home.packages = with pkgs; [

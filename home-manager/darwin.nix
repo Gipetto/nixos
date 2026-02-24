@@ -3,7 +3,6 @@
 {
   imports = [ 
     ./common.nix 
-    ./programs/firefox.nix
   ];
 
   home.username = "shawn";

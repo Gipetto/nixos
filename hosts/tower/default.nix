@@ -1,27 +1,74 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [ 
     ./hardware-configuration.nix
   ];
 
-  # Tower-specific filesystem (separate /home partition)
-  fileSystems."/home" = {
-    fsType = "ext4";
-    device = "/dev/disk/by-uuid/34f36b8f-3c7d-4b7e-b430-2fd4c75205ce";
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+    settings = {
+      max-jobs = "auto";
+      cores = 16;
+      extra-sandbox-paths = [
+        config.programs.ccache.cacheDir
+      ];
+    };
   };
 
-  # Boot configuration
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.grub.enable = false;
+  nixpkgs.overlays = [
+    inputs.nix-vscode-extensions.overlays.default
+  ];
 
-  # Networking
-  networking.hostName = "tower";
-  networking.networkmanager.enable = true;
+  boot = {
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
+      };
+      efi.canTouchEfiVariables = true;
+      timeout = 2;
+      grub.enable = false;
+    };
+    tmp = {
+      cleanOnBoot = true;
+      useTmpfs = true;
+      tmpfsSize = "50%"; # use up to 32gb of ram for tmpfs
+    };
+    initrd = {
+      systemd.enable = true;
+      kernelModules = [ 
+        "nvidia" 
+        "nvidia_modeset" 
+        "nvidia_uvm" 
+        "nvidia_drm" 
+      ];
+    };
+    kernel = {
+      sysctl = {
+        "vm.swappiness" = 10; # prefer ram over swap
+        "vm.vfs_cache_pressure" = 50; # prefer to keep more in cache
+      };
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "nvidia_drm.modeset=1"
+      "nvme_core.default_ps_max_latency_us=0"
+    ];
+    consoleLogLevel = 3;
+  };
 
-  # Timezone and locale
+  networking = {
+    hostName = "tower";
+    networkmanager.enable = true;
+  };
+
   time.timeZone = "America/Denver";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -36,27 +83,119 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Keyboard layout
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  console = {
+    earlySetup = true;
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
   };
 
-  # Hyprland (tower-specific)
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  systemd = {
+    services = {
+      nix-daemon.serviceConfig.LimitNOFILE = 1048576;
+      NetworkManager-wait-online.enable = false;
+    };
+    settings = {
+      Manager = {
+        DefaultTimeoutStartSec = "10s";
+        DefaultTimeoutStopSec = "10s";
+      };
+    };
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    cpu = {
+      amd.updateMicrocode = true;
+    };
+  };
+
+  powerManagement.cpuFreqGovernor = "schedutil";
+
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    ccache = {
+      enable = true;
+    };
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+    };
+    xserver = {
+      videoDrivers = [
+        "nvidia"
+      ];
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    greetd = {
+      enable = true;
+      settings = {
+        terminal.vt = 1;
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd ${pkgs.writeShellScript "start-hyprland" ''
+            export LIBVA_DRIVER_NAME=nvidia
+            export GBM_BACKEND=nvidia-drm
+            export __GLX_VENDOR_LIBRARY_NAME=nvidia
+            export WLR_NO_HARDWARE_CURSORS=1
+            exec ${config.programs.hyprland.package}/bin/start-hyprland
+          ''}";
+          user = "greeter";
+        };
+      };
+    };
+    fstrim = {
+      enable = true;
+    };
   };
   
-  # System packages (tower-specific, minimal)
   environment.systemPackages = with pkgs; [
-    vim      # For root user
-    waybar   # Desktop
-    kitty    # Terminal
+    pigz # parallel gzip
+    pbzip2 # parallel bzip2
+    pixz # parallel xz
+    kitty
+    waybar
   ];
 
-  # SSH
-  services.openssh.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    liveRestore = false;
+    autoPrune.enable = true;
+    autoPrune.dates = "weekly";
+    daemon.settings = {
+      experimental = false;
+      userland-proxy = false;
+      dns = [
+        "192.168.1.1"
+      ];
+    };
+    #rootless = {
+    #  enable = true;
+    #  setSocketVariable = true;
+    #};
+  };
+
+  fileSystems."/".options = [
+    "noatime"
+    "nodiratime"
+  ];
 
   system.stateVersion = "25.11";
 }

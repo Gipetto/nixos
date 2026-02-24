@@ -34,13 +34,19 @@ fi
 
 # --- STEP 2: Install git via Nix ---
 echo "→ Installing git via Nix..."
-nix shell nixpkgs#git -c true  # ensures git is available in this session
+nix \
+	--extra-experimental-features flakes \
+	--extra-experimental-features nix-command \
+	shell nixpkgs#git -c true  # ensures git is available in this session
 
 # --- STEP 3: Clone config repo ---
 mkdir -p "$PROJECTS_DIR"
 if [ ! -d "$FLAKE_DIR" ]; then
   echo "→ Cloning config repo to $FLAKE_DIR"
-  nix shell nixpkgs#git -c git clone "$REPO_URL" "$FLAKE_DIR"
+  nix \
+	  --extra-experimental-features flakes \
+	  --extra-experimental-features nix-command \
+	  shell nixpkgs#git -c git clone "$REPO_URL" "$FLAKE_DIR"
 else
   echo "→ Config repo already exists at $FLAKE_DIR"
 fi
@@ -64,13 +70,8 @@ Next steps:
      cd $FLAKE_DIR
      home-manager switch --flake .#"shawn@darwin"
 
-3. Initialize chezmoi for dotfiles:
-     cd $FLAKE_DIR
-     chezmoi init --source $FLAKE_DIR/chezmoi --apply $REPO_URL
-
-4. Or use the Makefile shortcuts:
+3. Or use the Makefile shortcuts:
      make -C "$FLAKE_DIR" rebuild      # Applies nix config
-     make -C "$FLAKE_DIR" rebuild-chezmoi  # Applies dotfiles
      make -C "$FLAKE_DIR" sync         # Does everything
 
 EOF
