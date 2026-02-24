@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./hardware-configuration.nix
   ];
 
@@ -41,11 +41,11 @@
     };
     initrd = {
       systemd.enable = true;
-      kernelModules = [ 
-        "nvidia" 
-        "nvidia_modeset" 
-        "nvidia_uvm" 
-        "nvidia_drm" 
+      kernelModules = [
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
       ];
     };
     kernel = {
@@ -130,6 +130,11 @@
     ccache = {
       enable = true;
     };
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "shawn" ];
+    };
   };
 
   services = {
@@ -165,7 +170,7 @@
       enable = true;
     };
   };
-  
+
   environment.systemPackages = with pkgs; [
     pigz # parallel gzip
     pbzip2 # parallel bzip2
