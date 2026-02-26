@@ -68,7 +68,7 @@ Next steps:
    
    On macOS (darwin):
      cd $FLAKE_DIR
-     home-manager switch --flake .#"shawn@darwin"
+     home-manager switch --flake .#darwin
 
 3. Or use the Makefile shortcuts:
      make -C "$FLAKE_DIR" rebuild      # Applies nix config

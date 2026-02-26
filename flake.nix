@@ -89,7 +89,7 @@
 
       # Standalone home-manager for macOS
       homeConfigurations = {
-        "shawn@darwin" = home-manager.lib.homeManagerConfiguration {
+        darwin = home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs { 
             flake = nixpkgs-unstable; 
             system = "aarch64-darwin"; 
@@ -98,8 +98,8 @@
             ./home-manager/darwin.nix
             {
               home = {
-                username = "shawn";
-                homeDirectory = "/Users/shawn";
+                username = builtins.getEnv "USER";
+                homeDirectory = builtins.getEnv "HOME";
                 stateVersion = "24.05";
               };
             }
