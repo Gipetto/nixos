@@ -3,14 +3,17 @@
   imports = [ ./common.nix ];
 
   home = {
-    username = builtins.getEnv "USER";
-    homeDirectory = builtins.getEnv "HOME";
+    username = "shawn";
+    homeDirectory = "/home/shawn";
     stateVersion = "26.05";
   };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs; 
+    };
     backupFileExtension = "bkp";
   };
 

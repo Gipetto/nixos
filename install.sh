@@ -68,7 +68,7 @@ Next steps:
    
    On macOS (darwin):
      cd $FLAKE_DIR
-     home-manager switch --flake .#darwin
+     nix run .#hm -- switch -b "bkp" --flake .#darwin
 
 3. Or use the Makefile shortcuts:
      make -C "$FLAKE_DIR" rebuild      # Applies nix config

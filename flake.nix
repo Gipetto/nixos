@@ -13,7 +13,7 @@
   };
 
   outputs = { 
-    self, 
+    self,
     nixpkgs, 
     nixpkgs-unstable, 
     nixos-hardware, 
@@ -25,6 +25,11 @@
       mkPkgs = { flake, system }: import flake {
         inherit system;
         config.allowUnfree = true;
+      };
+      mkDarwinUser = user: {
+        home.username = user;
+        home.homeDirectory = "/Users/${user}";
+        home.stateVersion = "26.05";
       };
     in
     {
@@ -72,14 +77,27 @@
       };
 
       homeConfigurations = {
-        darwin = home-manager.lib.homeManagerConfiguration {
+        "shawn@darwin" = home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs { 
             flake = nixpkgs-unstable; 
             system = "aarch64-darwin"; 
           };
           modules = [
             ./home-manager/darwin.nix
+            (mkDarwinUser "shawn")
           ];
+          extraSpecialArgs = { inherit inputs; };
+        };
+        "shawnp@darwin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = mkPkgs { 
+            flake = nixpkgs-unstable; 
+            system = "aarch64-darwin"; 
+          };
+          modules = [
+            ./home-manager/darwin.nix
+            (mkDarwinUser "shawnp")
+          ];
+          extraSpecialArgs = { inherit inputs; };
         };
       };
 
@@ -97,5 +115,12 @@
           ];
         }
       );
+
+      apps = {
+        aarch64-darwin.hm = {
+          type = "app";
+          program = "${home-manager.packages.aarch64-darwin.home-manager}/bin/home-manager";
+        };
+      };
     };
 }

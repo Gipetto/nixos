@@ -24,7 +24,7 @@ update:
 rebuild:
 ifeq ($(PLATFORM),Darwin)
 	@echo "Rebuilding home-manager (darwin)..."
-	home-manager switch --flake .#darwin
+	nix run .#hm -- switch -b "bkp" --flake .#$(USER)@darwin
 else ifeq ($(PLATFORM),Linux)
 ifneq ($(filter $(HOSTNAME),$(NIXOS_HOSTS)),)
 	@echo "Rebuilding NixOS system ($(HOSTNAME))..."
