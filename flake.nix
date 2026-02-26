@@ -29,7 +29,6 @@
     in
     {
       nixosConfigurations = {
-        # Server - stable channel
         nab5 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs { 
@@ -44,17 +43,11 @@
             ./common/users.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "bkp";
-                users.shawn = import ./home-manager/nab5.nix;
-              };
+              home-manager.users.shawn = import ./home-manager/nab5.nix;
             }
           ];
         };
 
-        # Workstation - unstable channel
         tower = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs { 
@@ -72,22 +65,12 @@
             ./common/users.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  # necessary to provide inputs to home-manager for vscode extensions
-                  inherit inputs; 
-                };
-                users.shawn = import ./home-manager/tower.nix;
-                backupFileExtension = "bkp";
-              };
+              home-manager.users.shawn = import ./home-manager/tower.nix;
             }
           ];
         };
       };
 
-      # Standalone home-manager for macOS
       homeConfigurations = {
         darwin = home-manager.lib.homeManagerConfiguration {
           pkgs = mkPkgs { 
@@ -96,19 +79,16 @@
           };
           modules = [
             ./home-manager/darwin.nix
-            {
-              home = {
-                username = builtins.getEnv "USER";
-                homeDirectory = builtins.getEnv "HOME";
-                stateVersion = "24.05";
-              };
-            }
           ];
         };
       };
 
       # Dev shells for working on this config
-      devShells = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ] (system:
+      devShells = nixpkgs.lib.genAttrs [ 
+        "x86_64-linux" 
+        "aarch64-darwin" 
+        "x86_64-darwin" 
+      ] (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in pkgs.mkShell {
           packages = with pkgs; [

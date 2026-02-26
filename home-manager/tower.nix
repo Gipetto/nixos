@@ -9,11 +9,21 @@
 	  ./programs/waybar
   ];
 
-  home.username = "shawn";
-  home.homeDirectory = "/home/shawn";
-  home.stateVersion = "26.05";
+  home = {
+    username = builtins.getEnv "USER";
+    homeDirectory = builtins.getEnv "HOME";
+    stateVersion = "26.05";
+  };
+  
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inherit inputs; 
+    };
+    backupFileExtension = "bkp";
+  };
 
-  # Workstation-specific packages
   home.packages = with pkgs; [
     bibata-cursors
     firefox
@@ -22,6 +32,8 @@
     zoxide
   ];
 
+  # Damn you hyprland!
+  # Why must I override your cursor?
 	home.pointerCursor = {
 		gtk.enable = true;
 		name = "Bibata-Modern-Classic";

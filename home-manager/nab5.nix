@@ -1,16 +1,18 @@
 { config, pkgs, ... }:
-
 {
   imports = [ ./common.nix ];
 
-  home.username = "shawn";
-  home.homeDirectory = "/home/shawn";
-  home.stateVersion = "26.05";
+  home = {
+    username = builtins.getEnv "USER";
+    homeDirectory = builtins.getEnv "HOME";
+    stateVersion = "26.05";
+  };
 
-  # Server-specific packages (minimal, CLI only)
-  home.packages = with pkgs; [
-    htop
-  ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "bkp";
+  };
 
-  # Note: nab5 is CLI only, so no Firefox/Hyprland/Waybar/VSCode configs
+  home.packages = with pkgs; [];
 }
