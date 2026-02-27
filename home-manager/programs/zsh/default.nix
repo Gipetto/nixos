@@ -6,7 +6,7 @@ in
 {
   programs.zsh = {
     enable = true;
-
+    enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
@@ -64,10 +64,6 @@ in
       # Darwin-specific
       (lib.optionalString pkgs.stdenv.isDarwin ''
         export IS_MAC=1
-        if (( $+commands[mise] )); then
-          eval "$(mise activate zsh)"
-          eval "$(mise completion zsh)"
-        fi
       '')
 
       # Linux-specific

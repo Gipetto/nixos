@@ -73,9 +73,7 @@ in
 
       merge.conflictStyle = "zdiff3";
 
-      safe.directory = [
-        "/opt/homebrew/*"
-      ];
+      safe.directory = [];
 
       alias = {
         co = "checkout";
