@@ -43,9 +43,15 @@
       "--long"
       "--header"
       "--time-style=long-iso"
+      "--icons=always"
     ];
     git = true;
     icons = "auto";
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.jq.enable = true;
@@ -58,6 +64,7 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableZshIntegration = true;
     config = {
       global = {
       log_format = "-";

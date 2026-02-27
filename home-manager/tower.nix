@@ -29,7 +29,6 @@
     firefox
     hyprlauncher
     vlc
-    zoxide
   ];
 
   # Damn you hyprland!
