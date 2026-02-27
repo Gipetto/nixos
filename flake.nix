@@ -95,6 +95,7 @@
           };
           modules = [
             ./home-manager/darwin.nix
+            ./home-manager/wander.nix
             (mkDarwinUser "shawnp")
           ];
           extraSpecialArgs = { inherit inputs; };

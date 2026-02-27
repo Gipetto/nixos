@@ -4,17 +4,20 @@
   home.packages = with pkgs; [
     bat
     btop
-    gnumake
-    wget
-    ripgrep
+    bruno
+    bruno-cli
+    curl
     fd
-    jq
-    
     gh
+    gnumake
+    jq
     lazygit
-    
     nil          # nix LSP
     nixpkgs-fmt  # nix formatter
+    ripgrep
+    sqlite
+    wget
+    yq
   ];
 
   imports = [

@@ -109,6 +109,19 @@ Find details on Packages, NixOS options and Flakes:
 | List packages in current system & current environment | `nix-store -q --requisites /run/current-system ~/.nix-profile` |
 | List direct dependencies of the current system | `nix-store -q --references /run/current-system` |
 
+# Discover package configuration options
+
+```sh
+$ nix repl
+```
+
+Then
+
+``` sh
+:lf .
+homeConfigurations."shawnp@darwin".options.programs.zsh
+```
+
 ## Mounting Drives (NixOS)
 
 To permanently mount a drive, update the `configuration.nix` for that host after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
