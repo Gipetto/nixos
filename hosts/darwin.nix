@@ -43,9 +43,13 @@
       wvous-br-corner = 4;
     };
     defaults.finder = {
+      _FXEnableColumnAutoSizing = true;
+      # "icnv" = Icon view, "Nlsv" = List view, "clmv" = Column View, "Flwv" = Gallery View
       FXPreferredViewStyle = "Nlsv";
+      NewWindowTarget = "Home";
       ShowPathbar = true;
       ShowStatusBar = true;
+      QuitMenuItem = true;
     };
     defaults.spaces = {
       # By default (false) each display has its own space
