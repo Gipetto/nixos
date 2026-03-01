@@ -9,8 +9,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
-  #programs.home-manager.enable = true;
   
   # Bootloader
   boot = {
@@ -48,8 +46,6 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     AllowHibernation=no
     AllowSuspend=no
   '';
-
-  #sound.enable = true;
 
   networking = {
     networkmanager.enable = true;

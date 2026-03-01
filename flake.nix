@@ -48,7 +48,15 @@
             ./common/users.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.shawn = import ./home-manager/nab5.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs; 
+                };
+                backupFileExtension = "bkp";
+                users.shawn = import ./home-manager/nab5.nix;
+              };
             }
           ];
         };
@@ -70,7 +78,15 @@
             ./common/users.nix
             home-manager.nixosModules.home-manager
             {
-              home-manager.users.shawn = import ./home-manager/tower.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  inherit inputs; 
+                };
+                backupFileExtension = "bkp";
+                users.shawn = import ./home-manager/tower.nix;
+              };
             }
           ];
         };

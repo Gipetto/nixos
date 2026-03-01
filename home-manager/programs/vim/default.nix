@@ -1,4 +1,4 @@
-{ config, environment, pkgs, home-manager, ... }:
+{ pkgs, ... }:
 {
   programs.vim = {
     enable = true;
