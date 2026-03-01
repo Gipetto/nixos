@@ -20,6 +20,10 @@ help:
 update:
 	nix flake update
 
+# Update just the private fonts flake
+update-fonts:
+	nix flake update private-fonts
+
 # Rebuild based on platform and hostname
 rebuild:
 	@echo "Updating submodules..."

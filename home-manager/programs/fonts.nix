@@ -6,5 +6,10 @@
     inputs.private-fonts.packages.${pkgs.stdenv.hostPlatform.system}.berkeley-mono
   ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    antialiasing = true;
+    hinting = "slight";
+    subpixelRendering = "rgb";
+  };
 }
