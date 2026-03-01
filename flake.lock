@@ -101,13 +101,48 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1772198003,
+        "narHash": "sha256-I45esRSssFtJ8p/gLHUZ1OUaaTaVLluNkABkk6arQwE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "dd9b079222d43e1943b6ebd802f04fd959dc8e61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "private-fonts": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1772354957,
+        "narHash": "sha256-WyYF7ZJuU3ou2w/vdF3ERwyNLEPc4W8e7WSRyQmKdKQ=",
+        "ref": "refs/heads/main",
+        "rev": "232f21a1fd9eb79cb930c344fb2e322326a8c6be",
+        "revCount": 3,
+        "type": "git",
+        "url": "file:./fonts"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./fonts"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-unstable": "nixpkgs-unstable"
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "private-fonts": "private-fonts"
       }
     }
   },

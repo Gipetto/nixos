@@ -90,7 +90,7 @@ in
         pb = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\"";
         pbu = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"";
         dmerged = "!git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d";
-        subup = "!(git submodule sync; git submodule update --init --recursive;)";
+        subup = "!(git submodule sync; git submodule update --init --recursive --remote;)";
         tg = "!git log --tags --simplify-by-decoration --pretty=\"format:[%ai] %C(yellow)%H%Creset - %Cgreen%D%Creset\"";
         cb = "!(/usr/bin/env echo -n \"$(git rev-parse --abbrev-ref HEAD)\" | pbcopy; echo \"Branch name copied to clipboard\")";
         gh = "!open \"$(git remote -v | grep origin | grep push | cut -f 2 | cut -d \" \" -f 1 | sed -e \"s|git@\\(.*\\):\\(.*\\).git|https://\\1/\\2|\")/tree/$(git rev-parse --abbrev-ref HEAD)\"";

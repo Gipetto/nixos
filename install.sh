@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_URL="https://github.com/gipetto/nixos"
+REPO_URL="git@github.com:gipetto/nixos.git"
 PROJECTS_DIR="$HOME/Projects"
 FLAKE_DIR="$PROJECTS_DIR/nixos"
 
@@ -14,7 +14,6 @@ if command -v nix &>/dev/null; then
   echo "→ Nix already installed"
 else
   if [ "$PLATFORM" = "Linux" ]; then
-    # Skip on actual NixOS (nix is already present)
     if [ -e /etc/NIXOS ]; then
       echo "→ Running on NixOS—skipping Nix install"
     else
@@ -51,7 +50,14 @@ else
   echo "→ Config repo already exists at $FLAKE_DIR"
 fi
 
-# --- STEP 4: Instructions for new hosts ---
+# --- STEP 4: Init submodules ---
+echo "→ Initializing submodules..."
+nix \
+  --extra-experimental-features flakes \
+  --extra-experimental-features nix-command \
+  shell nixpkgs#git -c git -C "$FLAKE_DIR" submodule update --init --recursive
+
+# --- STEP 5: Instructions for new hosts ---
 cat <<EOF
 
 ✅ Bootstrapping complete!

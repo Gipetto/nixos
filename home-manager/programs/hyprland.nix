@@ -6,7 +6,7 @@
     settings = {
       monitor = "DP-2, 3440x1440@144, 0x0, 1";
 
-      "$terminal"    = "kitty";
+      "$terminal"    = "ghostty";
       "$fileManager" = "yazi";
       "$menu"        = "hyprlauncher";
       "$mainMod"     = "SUPER";

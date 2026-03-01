@@ -4,6 +4,7 @@
   imports = [
     ./common.nix
     ./programs/fonts.nix
+    ./programs/ghostty
 	  ./programs/hyprland.nix
     ./programs/vscode.nix
 	  ./programs/waybar
@@ -31,7 +32,4 @@
 		size = 24;
 		hyprcursor.enable = true;
 	};
-
-  programs.kitty.enable = true;
-  fonts.fontconfig.enable = true;
 }

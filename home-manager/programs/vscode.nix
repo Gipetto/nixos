@@ -1,11 +1,10 @@
 { config, pkgs, lib, inputs,  ... }:
 let
+  fontSize = if pkgs.stdenv.isDarwin then 13 else 14;
   vscode-extensions = inputs.nix-vscode-extensions
     .extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in
 {
-
-  # VSCode with extensions and settings
   programs.vscode = {
     enable = true;
     profiles.default = {
@@ -18,7 +17,7 @@ in
         "chat.commandCenter.enabled" = false;
         "editor.fontFamily" = "'Berkeley Mono', 'Monaspace Neon Var', 'Menlo', Monaco, 'Courier New', monospace";
         "editor.fontLigatures" = "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'calt', 'dlig'";
-        "editor.fontSize" = 13;
+        "editor.fontSize" = fontSize;
         "editor.fontVariations" = true;
         "editor.formatOnSave" = true;
         "editor.inlayHints.enabled" = "off";
@@ -27,7 +26,7 @@ in
         "files.insertFinalNewline" = true;
         "svelte.plugin.svelte.defaultScriptLanguage" = "ts";
         "svg.preview.mode" = "svg";
-        "terminal.integrated.fontSize" = "13";
+        "terminal.integrated.fontSize" = fontSize;
         "workbench.colorTheme" = "Default Light+";
       };
       extensions = [

@@ -86,7 +86,7 @@
 
   console = {
     earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-v32n.psf.gz";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-v24n.psf.gz";
   };
 
   systemd = {
@@ -170,12 +170,16 @@
     fstrim = {
       enable = true;
     };
+    avahi = {
+      enable = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
     pigz # parallel gzip
     pbzip2 # parallel bzip2
     pixz # parallel xz
+    ghostty
     kitty
     waybar
   ];

@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    private-fonts = {
+      # Private flake for housing free & paid fonts.
+      # Repo is always private to respect the paid font creators.
+      url = "git+file:./fonts";
+      flake = true;
+    };
   };
 
   outputs = { 

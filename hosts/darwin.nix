@@ -21,8 +21,6 @@
   
   programs.zsh.enable = true;
 
-  users.users.shawn.home = /Users/shawnp;
-
   # https://github.com/LnL7/nix-darwin/tree/master/modules/system/defaults
   system = {
     defaults.NSGlobalDomain = {
