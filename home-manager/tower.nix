@@ -20,7 +20,9 @@
     bibata-cursors
     firefox
     hyprlauncher
+    inputs.hyprkeys.packages.${pkgs.stdenv.hostPlatform.system}.default
     vlc
+    wl-clipboard
   ];
 
   # Damn you hyprland!

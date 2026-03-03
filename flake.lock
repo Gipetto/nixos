@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "hyprkeys": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772470913,
+        "narHash": "sha256-y23D+lMyQ1IEUmzrkJIdZJJazrUmk3xue3ZqK0P+IgQ=",
+        "owner": "Gipetto",
+        "repo": "hyprkeys",
+        "rev": "44b8dbf749886d37bf223d6b009bfacb3a40fef9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Gipetto",
+        "repo": "hyprkeys",
+        "type": "github"
+      }
+    },
     "nix-vscode-extensions": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -137,6 +157,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "hyprkeys": "hyprkeys",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",

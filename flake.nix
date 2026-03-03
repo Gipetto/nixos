@@ -16,6 +16,10 @@
       url = "git+file:./fonts";
       flake = true;
     };
+    hyprkeys = {
+      url = "github:Gipetto/hyprkeys";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { 

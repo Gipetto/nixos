@@ -35,6 +35,7 @@ in
     shellAliases = {
       mv = "mv -v";
       rm = "rm -v";
+      hyprkeys = "hyprkeys -t light";
     };
 
     localVariables = {
