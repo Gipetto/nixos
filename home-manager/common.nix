@@ -35,8 +35,12 @@
   programs.bat = {
     enable = true;
     config = {
+      color = "always";
       theme = "Coldark-Cold";
       italic-text = "always";
+      map-syntax = [
+        ".zshrc.local:sh"
+      ];
     };
   };
 
