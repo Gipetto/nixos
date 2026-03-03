@@ -15,6 +15,10 @@
       };
       options = "--delete-older-than 7d";
     };
+    settings = {
+      max-jobs = "auto";
+      cores = 10;
+    };
   };
 
   nixpkgs.hostPlatform = "aarch64-darwin";
