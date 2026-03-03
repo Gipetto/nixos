@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    bash
     bat
     btop
     bruno

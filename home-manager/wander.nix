@@ -8,6 +8,7 @@ in
 {
   home.packages = with pkgs; [
     biome
+    claude-code
     colima
     dbmate
     deno
