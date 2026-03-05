@@ -12,7 +12,6 @@
 
   environment = {
     variables = {
-      VISUAL = "vim";
       PAGER = "less";
       LESS = "-eFRX";
     };

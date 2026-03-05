@@ -1,10 +1,9 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-source $VIMRUNTIME/defaults.vim
-
 syntax enable
 
+set notermguicolors
 set autoindent
 set backspace=indent,eol,start
 set colorcolumn=80
@@ -22,7 +21,6 @@ set listchars=eol:↲,tab:⇢\ ,trail:·,extends:>,precedes:<,space:·
 
 set mouse=v
 
-au BufRead,BufNewFile *.nix set filetype=nix
 autocmd FileType nix setlocal shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType markdown,text set nonumber
 
@@ -33,9 +31,17 @@ let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:show_spaces_that_precede_tabs=1
 
-" Ctrl-P to fuzzy find files
-nnoremap <C-p> :Files<CR>
-" Ctrl-B to switch between open buffers
-nnoremap <C-b> :Buffers<CR>
-" Ctrl-F to search in files
-nnoremap <C-f> :Rg<CR>
+lua << EOF
+vim.lsp.config('nil_ls', {})
+vim.lsp.enable('nil_ls')
+vim.lsp.config('svelte', {})
+vim.lsp.enable('svelte')
+vim.lsp.config('ts_ls', {})
+vim.lsp.enable('ts_ls')
+vim.lsp.config('cssls', {})
+vim.lsp.enable('cssls')
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<C-p>', builtin.find_files, {})
+vim.keymap.set('n', '<C-b>', builtin.buffers, {})
+vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
+EOF

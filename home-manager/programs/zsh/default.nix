@@ -39,8 +39,6 @@ in
     };
 
     localVariables = {
-      VISUAL = "vim";
-      EDITOR = "vim";
       PAGER = "less";
       LESS = "-eFRX";
       GIT_PS1_SHOWDIRTYSTATE = "true";

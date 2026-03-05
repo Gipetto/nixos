@@ -15,10 +15,14 @@
     lazygit
     nil          # nix LSP
     nixpkgs-fmt  # nix formatter
+    nodePackages.svelte-language-server
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
     ripgrep
     sqlite
     wget
     yq
+    (writeShellScriptBin "vim" "exec nvim \"$@\"")
   ];
 
   imports = [
