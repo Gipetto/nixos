@@ -21,6 +21,7 @@ in
     libpq
     mprocs
     nodejs_22
+    pnpm
     postgresql
     yarn
   ];
