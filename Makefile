@@ -15,10 +15,10 @@ help:
 	@echo "  sync              - Update and rebuild everything"
 	@echo "  check             - Check flake validity"
 	@echo "  clean             - Clean up old generations"
-	
+
 # Update flake inputs
 update:
-	nix flake update
+	nix error flake update
 
 # Update just the private fonts flake
 update-fonts:

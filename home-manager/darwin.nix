@@ -5,6 +5,13 @@
     ./common.nix
   ];
 
+  nix = {
+    settings = {
+      max-jobs = "auto";
+      cores = 10;
+    };
+  };
+
   home.packages = with pkgs; [
     _1password-cli
     docker-client

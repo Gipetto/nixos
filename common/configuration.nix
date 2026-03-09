@@ -7,6 +7,7 @@
         "nix-command"
         "flakes"
       ];
+      log-level = "error";
     };
   };
 
