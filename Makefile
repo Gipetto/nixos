@@ -18,7 +18,7 @@ help:
 
 # Update flake inputs
 update:
-	nix error flake update
+	nix flake update
 
 # Update just the private fonts flake
 update-fonts:
