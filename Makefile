@@ -26,8 +26,6 @@ update-fonts:
 
 # Rebuild based on platform and hostname
 rebuild:
-	@echo "Updating submodules..."
-	git submodule update --init --recursive --remote
 ifeq ($(PLATFORM),Darwin)
 	@echo "Rebuilding home-manager (darwin)..."
 	nix run .#hm -- switch -b "bkp" --flake .#$(USER)@darwin

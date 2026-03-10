@@ -13,7 +13,7 @@
     private-fonts = {
       # Private flake for housing free & paid fonts.
       # Repo is always private to respect the paid font creators.
-      url = "git+file:./fonts";
+      url = "git+ssh://git@github.com/Gipetto/fonts";
       flake = true;
     };
     hyprkeys = {

@@ -6,6 +6,7 @@
   ];
 
   nix = {
+    package = pkgs.nix;
     settings = {
       max-jobs = "auto";
       cores = 10;

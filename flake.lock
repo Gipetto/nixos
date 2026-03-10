@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773093840,
-        "narHash": "sha256-u/96NoAyN8BSRuM3ZimGf7vyYgXa3pLx4MYWjokuoH4=",
+        "lastModified": 1773179137,
+        "narHash": "sha256-EdW2bwzlfme0vbMOcStnNmKlOAA05Bp6su2O8VLGT0k=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "bb014746edb2a98d975abde4dd40fa240de4cf86",
+        "rev": "3f98e2bbc661ec0aaf558d8a283d6955f05f1d09",
         "type": "github"
       },
       "original": {
@@ -144,14 +144,15 @@
       "locked": {
         "lastModified": 1772398886,
         "narHash": "sha256-gKZaZaHApwplBPMTi9Ns2Rmy2vbIeG4YvBVbxrfEvyM=",
+        "ref": "refs/heads/main",
         "rev": "821257d2cd36c3c1900f7473d305cc3c68ee36d3",
         "revCount": 8,
         "type": "git",
-        "url": "file:./fonts"
+        "url": "ssh://git@github.com/Gipetto/fonts"
       },
       "original": {
         "type": "git",
-        "url": "file:./fonts"
+        "url": "ssh://git@github.com/Gipetto/fonts"
       }
     },
     "root": {
