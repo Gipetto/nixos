@@ -22,14 +22,14 @@
     };
   };
 
-  outputs = { 
+  outputs = {
     self,
-    nixpkgs, 
-    nixpkgs-unstable, 
-    nixos-hardware, 
+    nixpkgs,
+    nixpkgs-unstable,
+    nixos-hardware,
     home-manager,
-    ... 
-  }@inputs: 
+    ...
+  }@inputs:
     let
       # Helper to make pkgs with allowUnfree
       mkPkgs = { flake, system }: import flake {
@@ -46,9 +46,9 @@
       nixosConfigurations = {
         nab5 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          pkgs = mkPkgs { 
-            flake = nixpkgs; 
-            system = "x86_64-linux"; 
+          pkgs = mkPkgs {
+            flake = nixpkgs;
+            system = "x86_64-linux";
           };
           modules = [
             nixos-hardware.nixosModules.common-cpu-intel
@@ -62,7 +62,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs; 
+                  inherit inputs;
                 };
                 backupFileExtension = "bkp";
                 users.shawn = import ./home-manager/nab5.nix;
@@ -73,9 +73,9 @@
 
         tower = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
-          pkgs = mkPkgs { 
-            flake = nixpkgs-unstable; 
-            system = "x86_64-linux"; 
+          pkgs = mkPkgs {
+            flake = nixpkgs-unstable;
+            system = "x86_64-linux";
           };
           specialArgs = {
             inherit home-manager;
@@ -92,7 +92,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {
-                  inherit inputs; 
+                  inherit inputs;
                 };
                 backupFileExtension = "bkp";
                 users.shawn = import ./home-manager/tower.nix;
@@ -104,9 +104,9 @@
 
       homeConfigurations = {
         "shawn@darwin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs { 
-            flake = nixpkgs-unstable; 
-            system = "aarch64-darwin"; 
+          pkgs = mkPkgs {
+            flake = nixpkgs-unstable;
+            system = "aarch64-darwin";
           };
           modules = [
             ./home-manager/darwin.nix
@@ -115,9 +115,9 @@
           extraSpecialArgs = { inherit inputs; };
         };
         "shawnp@darwin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs { 
-            flake = nixpkgs-unstable; 
-            system = "aarch64-darwin"; 
+          pkgs = mkPkgs {
+            flake = nixpkgs-unstable;
+            system = "aarch64-darwin";
           };
           modules = [
             ./home-manager/darwin.nix
@@ -129,10 +129,10 @@
       };
 
       # Dev shells for working on this config
-      devShells = nixpkgs.lib.genAttrs [ 
-        "x86_64-linux" 
-        "aarch64-darwin" 
-        "x86_64-darwin" 
+      devShells = nixpkgs.lib.genAttrs [
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
       ] (system:
         let pkgs = nixpkgs.legacyPackages.${system};
         in pkgs.mkShell {
