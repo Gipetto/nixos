@@ -23,6 +23,11 @@
     inputs.hyprkeys.packages.${pkgs.stdenv.hostPlatform.system}.default
     vlc
     wl-clipboard
+    xdg-utils
+    # maybe a bit hacky, but alias some common macos commands to linux equivalents
+    (pkgs.writeShellScriptBin "pbcopy" ''exec wl-copy "$@"'')
+    (pkgs.writeShellScriptBin "pbpaste" ''exec wl-paste "$@"'')
+    (pkgs.writeShellScriptBin "open" ''exec xdg-open "$@"'')
   ];
 
   # Damn you hyprland!
@@ -34,4 +39,39 @@
 		size = 24;
 		hyprcursor.enable = true;
 	};
+
+  services.ssh-agent.enable = true;
+
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    extraConfig = "AddressFamily inet";
+
+    matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+      };
+
+      "github.com" = {
+        user = "git";
+        identityFile = "~/.ssh/id_rsa";
+      };
+
+      "top-frog" = {
+        host = "top-frog top-frog.com";
+        user = "gipetto1";
+      };
+
+      "WookiebookMax" = {
+        host = "WookieebookMax WookiebookMax";
+        user = "shawnp";
+        hostname = "WookiebookMax";
+        extraOptions.SetEnv = "TERM=xterm-256color";
+      };
+
+      "nab5" = {
+        extraOptions.SetEnv = "TERM=xterm-256color";
+      };
+    };
+  };
 }

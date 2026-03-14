@@ -15,7 +15,6 @@ in
       plugins = [ 
         "git" 
         "git-prompt" 
-        "ssh-agent" 
       ];
       theme = "wookiee";
       custom = "${config.home.homeDirectory}/.config/oh-my-zsh";
