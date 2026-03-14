@@ -42,12 +42,6 @@
     };
     initrd = {
       systemd.enable = true;
-      kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
-      ];
     };
     kernel = {
       sysctl = {
@@ -61,6 +55,12 @@
       "splash"
       "nvidia_drm.modeset=1"
       "nvme_core.default_ps_max_latency_us=0"
+    ];
+    kernelModules = [
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
     ];
     consoleLogLevel = 3;
   };
