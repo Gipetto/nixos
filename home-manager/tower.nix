@@ -5,7 +5,8 @@
     ./common.nix
     ./programs/fonts.nix
     ./programs/ghostty
-	  ./programs/hyprland
+    ./programs/hypridle.nix
+    ./programs/hyprland
     ./programs/hyprpaper
     ./programs/vscode.nix
 	  ./programs/waybar
