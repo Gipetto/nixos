@@ -32,7 +32,17 @@ let g:strip_whitespace_on_save=1
 let g:show_spaces_that_precede_tabs=1
 
 lua << EOF
-vim.lsp.config('nil_ls', {})
+vim.lsp.config('nil_ls', {
+  settings = {
+    ["nil"] = {
+      nix = {
+        flake = {
+          autoArchive = true,
+        },
+      },
+    },
+  },
+})
 vim.lsp.enable('nil_ls')
 vim.lsp.config('svelte', {})
 vim.lsp.enable('svelte')
@@ -40,7 +50,9 @@ vim.lsp.config('ts_ls', {})
 vim.lsp.enable('ts_ls')
 vim.lsp.config('cssls', {})
 vim.lsp.enable('cssls')
+
 local builtin = require('telescope.builtin')
+
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<C-b>', builtin.buffers, {})
 vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
