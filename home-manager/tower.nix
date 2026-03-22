@@ -23,6 +23,8 @@
     firefox
     hyprlauncher
     inputs.hyprkeys.packages.${pkgs.stdenv.hostPlatform.system}.default
+    lm_sensors
+    nvtopPackages.nvidia
     vlc
     wl-clipboard
     xdg-utils

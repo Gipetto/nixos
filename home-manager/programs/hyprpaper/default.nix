@@ -14,6 +14,7 @@
           fit_mode = "cover";
         }
       ];
+      splash = false;
     };
   };
 }
