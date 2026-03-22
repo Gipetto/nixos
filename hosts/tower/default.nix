@@ -42,6 +42,9 @@
     };
     initrd = {
       systemd.enable = true;
+      kernelModules = [
+        "dm-mod"
+      ];
     };
     kernel = {
       sysctl = {
@@ -139,6 +142,9 @@
   };
 
   services = {
+    lvm = {
+      enable = true;
+    };
     openssh = {
       enable = true;
     };
@@ -216,6 +222,34 @@
     "noatime"
     "nodiratime"
   ];
+
+  fileSystems."/mnt/datum" = {
+    device = "/dev/disk/by-uuid/591b46f6-a26d-45e4-8ffd-6c7a7855500b";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "nodiratime"
+    ];
+  };
+
+  fileSystems."/mnt/containers" = {
+    device = "/dev/disk/by-uuid/875a371f-9b1d-4ccd-baac-aa2f4e7c11ad";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "nodiratime"
+    ];
+  };
+
+  fileSystems."/mnt/scratch" = {
+    device = "/dev/disk/by-uuid/5b91b2c5-5eff-4780-b42a-80e9359b7bfc";
+    fsType = "ext4";
+    options = [
+      "noatime"
+      "nodiratime"
+      "nofail"
+    ];
+  };
 
   system.stateVersion = "25.11";
 }
