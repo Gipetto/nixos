@@ -9,7 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-  
+
   # Bootloader
   boot = {
     loader.systemd-boot.enable = true;
@@ -38,19 +38,16 @@
 
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
   # This next line doesn't appear to work
-  powerManagement.powerUpCommands = ''
-${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
-  '';
 
-  systemd.sleep.extraConfig = ''
-    AllowHibernation=no
-    AllowSuspend=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowHibernation = false;
+    AllowSuspend = false;
+  };
 
   networking = {
     networkmanager.enable = true;
     hostName = "nab5";
-    wireless.enable = false;
+    wireless.enable = lib.mkForce false;
     enableIPv6 = false;
   };
 
@@ -95,7 +92,7 @@ ${pkgs.hdparm}/sbin/hdparm -B 254 /dev/sdb
     systemPackages = with pkgs; [
       curl
       dmidecode
-      glxinfo
+      mesa-demos
       gnumake
       hdparm
       inxi

@@ -44,10 +44,10 @@
     in
     {
       nixosConfigurations = {
-        nab5 = nixpkgs.lib.nixosSystem {
+        nab5 = nixpkgs-unstable.lib.nixosSystem {
           system = "x86_64-linux";
           pkgs = mkPkgs {
-            flake = nixpkgs;
+            flake = nixpkgs-unstable;
             system = "x86_64-linux";
           };
           modules = [
