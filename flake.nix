@@ -110,19 +110,8 @@
           };
           modules = [
             ./home-manager/darwin.nix
-            (mkDarwinUser "shawn")
-          ];
-          extraSpecialArgs = { inherit inputs; };
-        };
-        "shawnp@darwin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = mkPkgs {
-            flake = nixpkgs-unstable;
-            system = "aarch64-darwin";
-          };
-          modules = [
-            ./home-manager/darwin.nix
             ./home-manager/wander.nix
-            (mkDarwinUser "shawnp")
+            (mkDarwinUser "shawn")
           ];
           extraSpecialArgs = { inherit inputs; };
         };
