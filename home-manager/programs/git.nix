@@ -7,14 +7,14 @@ in
   programs.git = {
     enable = true;
 
+    includes = [
+      { path = "${homeDir}/.config/git/config-local"; }
+    ];
+
     settings = {
 			user = {
 				name = "Shawn Parker";
 				email = "shawn@topfroggraphics.com";
-			};
-
-			include = {
-				path = "${homeDir}/.config/git/config-local";
 			};
 
       core = {
