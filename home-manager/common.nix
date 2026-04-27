@@ -20,6 +20,7 @@
     vscode-langservers-extracted
     ripgrep
     sqlite
+    uv
     wget
     yq
     (writeShellScriptBin "vim" "exec nvim \"$@\"")
