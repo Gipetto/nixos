@@ -28,7 +28,7 @@ in
       ignoreSpace = true;
       expireDuplicatesFirst = true;
       extended = true;
-      share = false;
+      share = true;
     };
 
     shellAliases = {
