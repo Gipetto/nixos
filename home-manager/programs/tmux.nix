@@ -23,6 +23,9 @@
       set-window-option -g window-status-current-format '#[bg=blue,fg=cyan,bold]#I#[bg=blue,fg=cyan]:#[fg=white]#W#[fg=dim]#F'
 
       #setw -g window-status-current-format "|#I:#W|"
+
+      # shortcut ctrl-b X to kill the session
+      bind X kill-session
     '';
   };
 }

@@ -17,6 +17,7 @@
   home.packages = with pkgs; [
     _1password-cli
     docker-client
+    iterm2
   ];
 
   # ensure that pathing is correct when loading login shells in vscode
@@ -25,4 +26,17 @@
       echo 'path=("$HOME/.nix-profile/bin" $path)' >> "$HOME/.zprofile"
     fi
   '';
+
+  home.sessionVariables = {
+    _ZO_EXCLUDE_DIRS = "${config.home.homeDirectory};${config.home.homeDirectory}/Projects/Wander";
+    UV_TOOL_DIR = "${config.home.homeDirectory}/.local/share/uv/tools";
+  };
+
+  # Prevent biome from testing on every derivation...
+  nixpkgs.overlays = [
+    (final: prev: {
+      biome = prev.biome.overrideAttrs { doCheck = false; };
+    })
+  ];
+
 }

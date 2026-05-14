@@ -5,8 +5,6 @@
     bash
     bat
     btop
-    bruno
-    bruno-cli
     curl
     fd
     gh

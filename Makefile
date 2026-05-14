@@ -28,7 +28,7 @@ update-fonts:
 rebuild:
 ifeq ($(PLATFORM),Darwin)
 	@echo "Rebuilding home-manager (darwin)..."
-	nix run .#hm -- switch -b "bkp" --flake .#$(USER)@darwin
+	nix run .#hm -- switch -b "bkp" --flake .#$(USER)@darwin --show-trace -L
 else ifeq ($(PLATFORM),Linux)
 ifneq ($(filter $(HOSTNAME),$(NIXOS_HOSTS)),)
 	@echo "Rebuilding NixOS system ($(HOSTNAME))..."
@@ -57,3 +57,6 @@ else
 endif
 	@echo "Optimizing nix store..."
 	nix-store --optimise
+
+upgrade-nix:
+	sudo determinate-nixd upgrade
