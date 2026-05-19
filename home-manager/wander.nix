@@ -6,8 +6,12 @@ let
   ]);
 in
 {
+  imports = [
+    ./programs/worktrunk.nix
+  ];
+
   home.packages = with pkgs; [
-    biome
+    # biome
     claude-code
     colima
     dbmate
@@ -21,7 +25,6 @@ in
     libpq
     mprocs
     nodejs_22
-    opencode
     pnpm
     postgresql
     yarn

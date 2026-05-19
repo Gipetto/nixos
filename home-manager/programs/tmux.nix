@@ -26,6 +26,9 @@
 
       # shortcut ctrl-b X to kill the session
       bind X kill-session
+
+      set -g pane-border-lines heavy
+      set -g pane-border-indicators arrows
     '';
   };
 }

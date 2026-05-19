@@ -18,6 +18,7 @@
     _1password-cli
     docker-client
     iterm2
+    opencode
   ];
 
   # ensure that pathing is correct when loading login shells in vscode

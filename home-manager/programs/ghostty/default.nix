@@ -40,4 +40,9 @@
       adjust-cell-height = "5%";
     };
   };
+
+  system.activationScripts.copyApps.text = ''
+    rm -rf /Applications/Ghostty.app
+    cp -rL ${pkgs.ghostty}/Applications/Ghostty.app /Applications/
+  '';
 }
