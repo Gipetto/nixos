@@ -88,4 +88,6 @@
   };
 
   programs.home-manager.enable = true;
+
+  news.enable = false;
 }
