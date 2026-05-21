@@ -29,6 +29,14 @@
 
       set -g pane-border-lines heavy
       set -g pane-border-indicators arrows
+
+      # vi-style copy mode
+      set-window-option -g mode-keys vi
+      bind -T copy-mode-vi v send-keys -X begin-selection
+      bind -T copy-mode-vi V send-keys -X select-line
+      bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
     '';
   };
 }

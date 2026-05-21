@@ -89,5 +89,5 @@
 
   programs.home-manager.enable = true;
 
-  news.enable = false;
+  news.display = "silent";
 }
