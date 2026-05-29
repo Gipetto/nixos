@@ -13,6 +13,7 @@ in
   home.packages = with pkgs; [
     # biome
     claude-code
+    codex
     colima
     dbmate
     deno
