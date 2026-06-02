@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
@@ -6,13 +6,9 @@
     ./programs/fonts.nix
   ];
 
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      max-jobs = "auto";
-      cores = 10;
-    };
-  };
+  xdg.configFile."nix/nix.conf".text = ''
+    cores = 10
+  '';
 
   home.packages = with pkgs; [
     _1password-cli
@@ -21,12 +17,14 @@
     opencode
   ];
 
-  # ensure that pathing is correct when loading login shells in vscode
-  home.activation.zprofileNixPath = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    if ! grep -q 'nix-profile/bin' "$HOME/.zprofile" 2>/dev/null; then
-      echo 'path=("$HOME/.nix-profile/bin" $path)' >> "$HOME/.zprofile"
-    fi
-  '';
+  targets.darwin = {
+    copyApps.enable = true;
+    linkApps.enable = false;
+  };
+
+  home.sessionPath = [
+    "${config.home.homeDirectory}/.nix-profile/bin"
+  ];
 
   home.sessionVariables = {
     _ZO_EXCLUDE_DIRS = "${config.home.homeDirectory};${config.home.homeDirectory}/Projects/Wander";

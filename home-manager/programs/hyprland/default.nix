@@ -3,6 +3,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
+    configType = "hyprlang";
     settings = {
       monitor = "DP-2, 3440x1440@144, 0x0, 1";
 

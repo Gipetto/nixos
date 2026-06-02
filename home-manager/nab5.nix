@@ -5,7 +5,7 @@
   home = {
     username = "shawn";
     homeDirectory = "/home/shawn";
-    stateVersion = "26.05";
+    stateVersion = "23.11";
   };
 
   home.packages = with pkgs; [];

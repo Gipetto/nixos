@@ -5,7 +5,7 @@
     #flake = inputs.self.outPath;
     flags = [
       "--update-input"
-      "nixpkgs"
+      "nixpkgs-unstable"
       "-L" # print build logs
     ];
     dates = "02:00";

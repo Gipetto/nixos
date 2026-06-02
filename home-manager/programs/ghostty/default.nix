@@ -37,12 +37,10 @@
         else "global:super+shift+grave_accent=toggle_quick_terminal";
       window-width = 125;
       window-height = 76;
+      window-new-tab-position = "end";
       adjust-cell-height = "5%";
     };
   };
 
-  system.activationScripts.copyApps.text = ''
-    rm -rf /Applications/Ghostty.app
-    cp -rL ${pkgs.ghostty}/Applications/Ghostty.app /Applications/
-  '';
+  targets.darwin.copyApps.enable = lib.mkIf pkgs.stdenv.isDarwin true;
 }

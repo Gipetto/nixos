@@ -67,7 +67,10 @@
 
   programs.jq.enable = true;
   programs.nix-index.enable = true;
-  programs.yazi.enable = true;
+  programs.yazi = {
+    enable = true;
+    shellWrapperName = "yy";
+  };
 
   home.file.".config/curl/curlrc".source = ./programs/curl/curlrc;
   home.file.".wgetrc".source = ./programs/wget/wgetrc;
@@ -89,5 +92,6 @@
 
   programs.home-manager.enable = true;
 
+  manual.manpages.enable = false;
   news.display = "silent";
 }

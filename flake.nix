@@ -2,7 +2,6 @@
   description = "WookieeNix";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     home-manager = {
@@ -24,7 +23,6 @@
 
   outputs = {
     self,
-    nixpkgs,
     nixpkgs-unstable,
     nixos-hardware,
     home-manager,
@@ -39,7 +37,7 @@
       mkDarwinUser = user: {
         home.username = user;
         home.homeDirectory = "/Users/${user}";
-        home.stateVersion = "26.05";
+        home.stateVersion = "24.05";
       };
     in
     {
@@ -118,17 +116,18 @@
       };
 
       # Dev shells for working on this config
-      devShells = nixpkgs.lib.genAttrs [
+      devShells = nixpkgs-unstable.lib.genAttrs [
         "x86_64-linux"
         "aarch64-darwin"
-        "x86_64-darwin"
       ] (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in pkgs.mkShell {
-          packages = with pkgs; [
-            nixpkgs-fmt
-            nil  # nix LSP
-          ];
+        let pkgs = nixpkgs-unstable.legacyPackages.${system};
+        in {
+          default = pkgs.mkShell {
+            packages = with pkgs; [
+              nixpkgs-fmt
+              nil  # nix LSP
+            ];
+          };
         }
       );
 

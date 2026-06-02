@@ -15,7 +15,7 @@
   home = {
     username = "shawn";
     homeDirectory = "/home/shawn";
-    stateVersion = "26.05";
+    stateVersion = "23.11";
   };
 
   home.packages = with pkgs; [
@@ -47,32 +47,30 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    extraConfig = "AddressFamily inet";
 
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
+        AddressFamily = "inet";
+        AddKeysToAgent = "yes";
       };
 
       "github.com" = {
-        user = "git";
-        identityFile = "~/.ssh/id_rsa";
+        User = "git";
+        IdentityFile = "~/.ssh/id_rsa";
       };
 
-      "top-frog" = {
-        host = "top-frog top-frog.com";
-        user = "gipetto1";
+      "top-frog top-frog.com" = {
+        User = "gipetto1";
       };
 
-      "WookiebookMax" = {
-        host = "WookieebookMax WookiebookMax";
-        user = "shawnp";
-        hostname = "WookiebookMax";
-        extraOptions.SetEnv = "TERM=xterm-256color";
+      "WookieebookMax WookiebookMax" = {
+        User = "shawnp";
+        HostName = "WookiebookMax";
+        SetEnv.TERM = "xterm-256color";
       };
 
       "nab5" = {
-        extraOptions.SetEnv = "TERM=xterm-256color";
+        SetEnv.TERM = "xterm-256color";
       };
     };
   };
