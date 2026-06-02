@@ -1,15 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.ghostty = {
     enable = true;
+    package = if pkgs.stdenv.isDarwin then null else pkgs.ghostty;
     settings = {
       font-family = "Berkeley Mono";
       font-variation = "wght=500";
       font-size = if pkgs.stdenv.isDarwin
-        then 11.5
+        then 13
         else 10.5;
       font-feature = [ "liga=1" "calt=1" ];
-      theme = "iTerm2 Solarized Light";
+      theme = "birren-industrial-light";
       auto-update-channel = "stable";
       mouse-hide-while-typing = true;
       scroll-to-bottom = "keystroke";
@@ -33,7 +34,7 @@
       cursor-text = "#fdf6e3";
       palette = [ "7=#eee8d5" ];
       keybind = if pkgs.stdenv.isDarwin
-        then "global:cmd+shift+grave_accent=toggle_quick_terminal"
+        then "global:cmd+shift+`=toggle_quick_terminal"
         else "global:super+shift+grave_accent=toggle_quick_terminal";
       window-width = 125;
       window-height = 76;
@@ -42,5 +43,5 @@
     };
   };
 
-  targets.darwin.copyApps.enable = lib.mkIf pkgs.stdenv.isDarwin true;
+  xdg.configFile."ghostty/themes/birren-industrial-light".source = ./themes/birren-industrial-light;
 }

@@ -4,6 +4,7 @@
   imports = [
     ./common.nix
     ./programs/fonts.nix
+    ./programs/ghostty
   ];
 
   xdg.configFile."nix/nix.conf".text = ''

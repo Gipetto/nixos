@@ -195,7 +195,6 @@
     pigz # parallel gzip
     pbzip2 # parallel bzip2
     pixz # parallel xz
-    ghostty
     kitty
     waybar
   ];
