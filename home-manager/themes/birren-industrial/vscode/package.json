@@ -1,0 +1,27 @@
+{
+  "name": "birren-industrial",
+  "displayName": "Birren Industrial",
+  "publisher": "shawnp",
+  "description": "Mid-century industrial control room theme",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Birren Industrial Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/birren-industrial-dark.json"
+      },
+      {
+        "label": "Birren Industrial Light",
+        "uiTheme": "vs",
+        "path": "./themes/birren-industrial-light.json"
+      }
+    ]
+  }
+}

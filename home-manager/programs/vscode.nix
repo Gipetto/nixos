@@ -1,10 +1,12 @@
-{ config, pkgs, lib, inputs,  ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   fontSize = if pkgs.stdenv.isDarwin then 13 else 14;
   vscode-extensions = inputs.nix-vscode-extensions
     .extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in
 {
+  imports = [ ./vscode-birren-industrial.nix ];
+
   programs.vscode = {
     enable = true;
     profiles.default = {

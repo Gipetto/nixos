@@ -5,11 +5,17 @@
     ./common.nix
     ./programs/fonts.nix
     ./programs/ghostty
+    ./programs/vscode-birren-industrial.nix
   ];
 
   xdg.configFile."nix/nix.conf".text = ''
     cores = 10
   '';
+
+  programs.vscode = {
+    enable = true;
+    package = null;
+  };
 
   home.packages = with pkgs; [
     _1password-cli

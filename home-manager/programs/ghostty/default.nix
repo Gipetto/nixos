@@ -6,7 +6,8 @@
     settings = {
       font-family = "Berkeley Mono";
       font-variation = "wght=500";
-      font-size = if pkgs.stdenv.isDarwin
+      font-size =
+        if pkgs.stdenv.isDarwin
         then 13
         else 10.5;
       font-feature = [ "liga=1" "calt=1" ];
@@ -33,7 +34,8 @@
       cursor-color = "#657b83";
       cursor-text = "#fdf6e3";
       palette = [ "7=#eee8d5" ];
-      keybind = if pkgs.stdenv.isDarwin
+      keybind =
+        if pkgs.stdenv.isDarwin
         then "global:cmd+shift+`=toggle_quick_terminal"
         else "global:super+shift+grave_accent=toggle_quick_terminal";
       window-width = 125;
@@ -43,5 +45,5 @@
     };
   };
 
-  xdg.configFile."ghostty/themes/birren-industrial-light".source = ./themes/birren-industrial-light;
+  xdg.configFile."ghostty/themes/birren-industrial-light".source = ../../themes/birren-industrial/ghostty/birren-industrial-light;
 }

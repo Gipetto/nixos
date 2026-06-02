@@ -3,7 +3,9 @@ scriptencoding utf-8
 
 syntax enable
 
-set notermguicolors
+set termguicolors
+set background=light
+colorscheme birren-industrial
 set autoindent
 set backspace=indent,eol,start
 set colorcolumn=80
