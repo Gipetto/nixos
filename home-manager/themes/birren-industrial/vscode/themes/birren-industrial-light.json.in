@@ -1,0 +1,373 @@
+{
+  "name": "Birren Industrial Light",
+  "type": "light",
+  "colors": {
+    // Editor Colors
+    "editor.background": "@creamLight@",
+    "editor.foreground": "@industrialCharcoal@",
+    "editorLineNumber.foreground": "@concreteBase@",
+    "editorLineNumber.activeForeground": "@dadoGreen@",
+    "editorCursor.foreground": "@dadoGreen@",
+    "editor.selectionBackground": "@dadoGreen40@",
+    "editor.inactiveSelectionBackground": "@dadoGreen20@",
+    "editor.lineHighlightBackground": "@instrumentCream@",
+    "editor.lineHighlightBorder": "@transparent@",
+    "editorWhitespace.foreground": "@concreteBase40@",
+    "editorIndentGuide.background1": "@concreteBase40@",
+    "editorIndentGuide.activeBackground1": "@dadoGreen80@",
+    "editor.findMatchBackground": "@cautionYellow60@",
+    "editor.findMatchHighlightBackground": "@cautionYellow40@",
+    "editor.findRangeHighlightBackground": "@dadoGreen20@",
+    "editor.wordHighlightBackground": "@dadoGreen30@",
+    "editor.wordHighlightStrongBackground": "@dadoGreen50@",
+    "editorBracketMatch.background": "@dadoGreen40@",
+    "editorBracketMatch.border": "@dadoGreen@",
+    // Sidebar
+    "sideBar.background": "@instrumentCream@",
+    "sideBar.foreground": "@industrialCharcoal@",
+    "sideBar.border": "@concreteBase@",
+    "sideBarTitle.foreground": "@dadoGreen@",
+    "sideBarSectionHeader.background": "@creamDark@",
+    "sideBarSectionHeader.foreground": "@dadoGreen@",
+    "sideBarSectionHeader.border": "@concreteBase@",
+    // Secondary Sidebar (Cursor AI chat)
+    "secondarySideBar.background": "@creamLight@",
+    // Activity Bar
+    "activityBar.background": "@instrumentCream@",
+    "activityBar.foreground": "@dadoGreen@",
+    "activityBar.inactiveForeground": "@concreteBase@",
+    "activityBar.border": "@concreteBase@",
+    "activityBarBadge.background": "@hazardOrange@",
+    "activityBarBadge.foreground": "@instrumentCream@",
+    // Status Bar
+    "statusBar.background": "@instrumentCream@",
+    "statusBar.foreground": "@industrialCharcoal@",
+    "statusBar.border": "@concreteBase@",
+    "statusBar.debuggingBackground": "@hazardOrange@",
+    "statusBar.debuggingForeground": "@instrumentCream@",
+    "statusBar.noFolderBackground": "@instrumentCream@",
+    "statusBarItem.remoteBackground": "@infoBlue@",
+    "statusBarItem.remoteForeground": "@instrumentCream@",
+    // Title Bar
+    "titleBar.activeBackground": "@instrumentCream@",
+    "titleBar.activeForeground": "@industrialCharcoal@",
+    "titleBar.inactiveBackground": "@instrumentCream@",
+    "titleBar.inactiveForeground": "@concreteBase@",
+    "titleBar.border": "@concreteBase@",
+    // Tabs
+    "tab.activeBackground": "@creamLight@",
+    "tab.activeForeground": "@dadoGreen@",
+    "tab.activeBorder": "@dadoGreen@",
+    "tab.activeBorderTop": "@transparent@",
+    "tab.inactiveBackground": "@creamDark@",
+    "tab.inactiveForeground": "@machineryGray@",
+    "tab.border": "@concreteBase@",
+    "tab.hoverBackground": "@creamDark@",
+    "tab.hoverForeground": "@dadoGreen@",
+    // Panel
+    "panel.background": "@creamLight@",
+    "panel.border": "@concreteBase@",
+    "panelTitle.activeBorder": "@dadoGreen@",
+    "panelTitle.activeForeground": "@dadoGreen@",
+    "panelTitle.inactiveForeground": "@machineryGray@",
+    // Terminal
+    "terminal.background": "@creamLight@",
+    "terminal.foreground": "@industrialCharcoal@",
+    "terminal.ansiBlack": "@industrialCharcoal@",
+    "terminal.ansiRed": "@safetyRed@",
+    "terminal.ansiGreen": "@dadoGreen@",
+    "terminal.ansiYellow": "@hazardOrange@",
+    "terminal.ansiBlue": "@infoBlue@",
+    "terminal.ansiMagenta": "@agedRust@",
+    "terminal.ansiCyan": "@dadoGreen@",
+    "terminal.ansiWhite": "@machineryGray@",
+    "terminal.ansiBrightBlack": "@concreteBase@",
+    "terminal.ansiBrightRed": "@safetyRed@",
+    "terminal.ansiBrightGreen": "@seafoam@",
+    "terminal.ansiBrightYellow": "@cautionYellow@",
+    "terminal.ansiBrightBlue": "@seafoam@",
+    "terminal.ansiBrightMagenta": "@agedRust@",
+    "terminal.ansiBrightCyan": "@seafoam@",
+    "terminal.ansiBrightWhite": "@industrialCharcoal@",
+    // Lists and Trees
+    "list.activeSelectionBackground": "@dadoGreen@",
+    "list.activeSelectionForeground": "@instrumentCream@",
+    "list.inactiveSelectionBackground": "@dadoGreen40@",
+    "list.hoverBackground": "@creamDark@",
+    "list.hoverForeground": "@dadoGreen@",
+    "list.focusBackground": "@dadoGreen60@",
+    "list.focusForeground": "@industrialCharcoal@",
+    "list.highlightForeground": "@dadoGreen@",
+    // Buttons
+    "button.background": "@dadoGreen@",
+    "button.foreground": "@instrumentCream@",
+    "button.hoverBackground": "@seafoam@",
+    // Input
+    "input.background": "@white@",
+    "input.border": "@concreteBase@",
+    "input.foreground": "@industrialCharcoal@",
+    "input.placeholderForeground": "@concreteBase@",
+    "inputOption.activeBorder": "@dadoGreen@",
+    "inputValidation.errorBackground": "@safetyRed40@",
+    "inputValidation.errorBorder": "@safetyRed@",
+    "inputValidation.warningBackground": "@hazardOrange40@",
+    "inputValidation.warningBorder": "@hazardOrange@",
+    "inputValidation.infoBackground": "@infoBlue40@",
+    "inputValidation.infoBorder": "@infoBlue@",
+    // Dropdown
+    "dropdown.background": "@white@",
+    "dropdown.border": "@concreteBase@",
+    "dropdown.foreground": "@industrialCharcoal@",
+    // Badges
+    "badge.background": "@hazardOrange@",
+    "badge.foreground": "@instrumentCream@",
+    // Scrollbar
+    "scrollbarSlider.background": "@concreteBase80@",
+    "scrollbarSlider.hoverBackground": "@concreteBaseCC@",
+    "scrollbarSlider.activeBackground": "@machineryGray@",
+    // Notifications
+    "notificationCenter.border": "@concreteBase@",
+    "notifications.background": "@creamDark@",
+    "notifications.border": "@concreteBase@",
+    "notifications.foreground": "@industrialCharcoal@",
+    "notificationLink.foreground": "@dadoGreen@",
+    // Breadcrumbs
+    "breadcrumb.background": "@instrumentCream@",
+    "breadcrumb.foreground": "@machineryGray@",
+    "breadcrumb.focusForeground": "@dadoGreen@",
+    "breadcrumb.activeSelectionForeground": "@dadoGreen@",
+    "breadcrumbPicker.background": "@creamDark@",
+    // Git Decorations
+    "gitDecoration.addedResourceForeground": "@dadoGreen@",
+    "gitDecoration.modifiedResourceForeground": "@hazardOrange@",
+    "gitDecoration.deletedResourceForeground": "@safetyRed@",
+    "gitDecoration.untrackedResourceForeground": "@cautionYellow@",
+    "gitDecoration.ignoredResourceForeground": "@concreteBase@",
+    "gitDecoration.conflictingResourceForeground": "@cautionYellow@",
+    // Diff Editor
+    "diffEditor.insertedTextBackground": "@dadoGreen20@",
+    "diffEditor.removedTextBackground": "@safetyRed20@",
+    // Peek View
+    "peekView.border": "@dadoGreen@",
+    "peekViewEditor.background": "@creamDark@",
+    "peekViewResult.background": "@instrumentCream@",
+    "peekViewTitle.background": "@creamDark@",
+    // Merge Conflicts
+    "merge.currentHeaderBackground": "@dadoGreen40@",
+    "merge.incomingHeaderBackground": "@infoBlue40@",
+    "editorOverviewRuler.currentContentForeground": "@dadoGreen@",
+    "editorOverviewRuler.incomingContentForeground": "@infoBlue@"
+  },
+  "tokenColors": [
+    {
+      "name": "Comment",
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "@machineryGray@",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "String",
+      "scope": [
+        "string",
+        "string.quoted",
+        "string.template"
+      ],
+      "settings": {
+        "foreground": "@dadoGreen@"
+      }
+    },
+    {
+      "name": "String Escape",
+      "scope": [
+        "constant.character.escape",
+        "string.regexp"
+      ],
+      "settings": {
+        "foreground": "@seafoam@"
+      }
+    },
+    {
+      "name": "Number",
+      "scope": [
+        "constant.numeric",
+        "constant.language.boolean",
+        "constant.language.null"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    },
+    {
+      "name": "Constant",
+      "scope": [
+        "constant",
+        "constant.language"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    },
+    {
+      "name": "Keyword",
+      "scope": [
+        "keyword",
+        "keyword.control",
+        "keyword.operator.new",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "@agedRust@"
+      }
+    },
+    {
+      "name": "Operator",
+      "scope": [
+        "keyword.operator",
+        "punctuation.separator",
+        "punctuation.terminator"
+      ],
+      "settings": {
+        "foreground": "@machineryGray@"
+      }
+    },
+    {
+      "name": "Function",
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call"
+      ],
+      "settings": {
+        "foreground": "@hazardOrange@"
+      }
+    },
+    {
+      "name": "Class/Type",
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "@infoBlue@"
+      }
+    },
+    {
+      "name": "Variable",
+      "scope": [
+        "variable",
+        "variable.other",
+        "variable.parameter"
+      ],
+      "settings": {
+        "foreground": "@industrialCharcoal@"
+      }
+    },
+    {
+      "name": "Property",
+      "scope": [
+        "variable.other.property",
+        "variable.other.object.property",
+        "support.variable.property"
+      ],
+      "settings": {
+        "foreground": "@machineryGray@"
+      }
+    },
+    {
+      "name": "Tag",
+      "scope": [
+        "entity.name.tag",
+        "meta.tag"
+      ],
+      "settings": {
+        "foreground": "@agedRust@"
+      }
+    },
+    {
+      "name": "Attribute",
+      "scope": [
+        "entity.other.attribute-name"
+      ],
+      "settings": {
+        "foreground": "@agedRust@"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": [
+        "punctuation.definition",
+        "punctuation.section",
+        "meta.brace"
+      ],
+      "settings": {
+        "foreground": "@machineryGray@"
+      }
+    },
+    {
+      "name": "Markup Bold",
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "foreground": "@agedRust@",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Markup Italic",
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Markup Heading",
+      "scope": [
+        "markup.heading"
+      ],
+      "settings": {
+        "foreground": "@dadoGreen@",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Markup Link",
+      "scope": [
+        "markup.underline.link"
+      ],
+      "settings": {
+        "foreground": "@infoBlue@"
+      }
+    },
+    {
+      "name": "Markup Code",
+      "scope": [
+        "markup.inline.raw",
+        "markup.fenced_code"
+      ],
+      "settings": {
+        "foreground": "@dadoGreen@"
+      }
+    },
+    {
+      "name": "Invalid",
+      "scope": [
+        "invalid",
+        "invalid.illegal"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    }
+  ]
+}

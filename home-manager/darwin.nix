@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
-
+let
+  birrenIndustrial = import ./themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
+in
 {
   imports = [
     ./common.nix
     ./programs/fonts.nix
     ./programs/ghostty
-    ./programs/vscode-birren-industrial.nix
   ];
 
   xdg.configFile."nix/nix.conf".text = ''
@@ -15,6 +16,9 @@
   programs.vscode = {
     enable = true;
     package = null;
+    profiles.default.extensions = [
+      birrenIndustrial
+    ];
   };
 
   home.packages = with pkgs; [

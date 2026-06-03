@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title description">
+  <title id="title">Birren Industrial color palette</title>
+  <desc id="description">Four groups of color swatches for foundations, equipment, operations, and attention.</desc>
+  <rect width="960" height="360" rx="14" fill="#f2ece3"/>
+  <rect x="1" y="1" width="958" height="358" rx="13" fill="none" stroke="#a69f95" stroke-width="2"/>
+  <rect width="960" height="6" rx="3" fill="#5a8a73"/>
+
+  <g font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="#2a2a28">
+    <text x="38" y="43" font-size="25" font-weight="600" letter-spacing="0.2">Birren Industrial</text>
+    <text x="38" y="64" font-size="12" fill="#6b6b68" letter-spacing="1.1">PALETTE / VERSION 1.0.2</text>
+  </g>
+
+  <g font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="#6b6b68" font-size="11" font-weight="600" letter-spacing="1.4">
+    <text x="38" y="98">FOUNDATIONS</text>
+    <text x="268" y="98">EQUIPMENT</text>
+    <text x="498" y="98">OPERATIONS</text>
+    <text x="728" y="98">ATTENTION</text>
+  </g>
+
+  <g transform="translate(38 116)">
+    <rect width="32" height="32" rx="7" fill="#2a2a28"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Industrial Charcoal</text>
+      <text y="15" fill="#6b6b68" font-size="11">#2a2a28</text>
+    </g>
+  </g>
+  <g transform="translate(38 164)">
+    <rect width="32" height="32" rx="7" fill="#3a3a38"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Charcoal Light</text>
+      <text y="15" fill="#6b6b68" font-size="11">#3a3a38</text>
+    </g>
+  </g>
+  <g transform="translate(38 212)">
+    <rect width="32" height="32" rx="7" fill="#e8e0d5" stroke="#a69f95"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Instrument Cream</text>
+      <text y="15" fill="#6b6b68" font-size="11">#e8e0d5</text>
+    </g>
+  </g>
+  <g transform="translate(38 260)">
+    <rect width="32" height="32" rx="7" fill="#f2ece3" stroke="#a69f95"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Cream Light</text>
+      <text y="15" fill="#6b6b68" font-size="11">#f2ece3</text>
+    </g>
+  </g>
+
+  <g transform="translate(268 116)">
+    <rect width="32" height="32" rx="7" fill="#6b6b68"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Machinery Gray</text>
+      <text y="15" fill="#6b6b68" font-size="11">#6b6b68</text>
+    </g>
+  </g>
+  <g transform="translate(268 164)">
+    <rect width="32" height="32" rx="7" fill="#a69f95"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Concrete Base</text>
+      <text y="15" fill="#6b6b68" font-size="11">#a69f95</text>
+    </g>
+  </g>
+  <g transform="translate(268 212)">
+    <rect width="32" height="32" rx="7" fill="#c9b89a"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Dusty Sand</text>
+      <text y="15" fill="#6b6b68" font-size="11">#c9b89a</text>
+    </g>
+  </g>
+
+  <g transform="translate(498 116)">
+    <rect width="32" height="32" rx="7" fill="#5a8a73"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Dado Green</text>
+      <text y="15" fill="#6b6b68" font-size="11">#5a8a73</text>
+    </g>
+  </g>
+  <g transform="translate(498 164)">
+    <rect width="32" height="32" rx="7" fill="#7fb5a0"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Seafoam</text>
+      <text y="15" fill="#6b6b68" font-size="11">#7fb5a0</text>
+    </g>
+  </g>
+  <g transform="translate(498 212)">
+    <rect width="32" height="32" rx="7" fill="#5b7a8e"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Info Blue</text>
+      <text y="15" fill="#6b6b68" font-size="11">#5b7a8e</text>
+    </g>
+  </g>
+
+  <g transform="translate(728 116)">
+    <rect width="32" height="32" rx="7" fill="#8b5a3c"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Aged Rust</text>
+      <text y="15" fill="#6b6b68" font-size="11">#8b5a3c</text>
+    </g>
+  </g>
+  <g transform="translate(728 164)">
+    <rect width="32" height="32" rx="7" fill="#d67d3e"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Hazard Orange</text>
+      <text y="15" fill="#6b6b68" font-size="11">#d67d3e</text>
+    </g>
+  </g>
+  <g transform="translate(728 212)">
+    <rect width="32" height="32" rx="7" fill="#c83e3a"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Safety Red</text>
+      <text y="15" fill="#6b6b68" font-size="11">#c83e3a</text>
+    </g>
+  </g>
+  <g transform="translate(728 260)">
+    <rect width="32" height="32" rx="7" fill="#f2b632"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="#2a2a28" font-size="12" font-weight="500">Caution Yellow</text>
+      <text y="15" fill="#6b6b68" font-size="11">#f2b632</text>
+    </g>
+  </g>
+</svg>

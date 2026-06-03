@@ -1,4 +1,7 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
+let
+  birrenIndustrial = import ../../themes/birren-industrial { inherit pkgs; };
+in
 {
   programs.ghostty = {
     enable = true;
@@ -29,11 +32,6 @@
       macos-titlebar-proxy-icon = "hidden";
       macos-option-as-alt = true;
       scrollback-limit = 16000000;
-      selection-background = "#657b83";
-      selection-foreground = "#fdf6e3";
-      cursor-color = "#657b83";
-      cursor-text = "#fdf6e3";
-      palette = [ "7=#eee8d5" ];
       keybind =
         if pkgs.stdenv.isDarwin
         then "global:cmd+shift+`=toggle_quick_terminal"
@@ -45,5 +43,5 @@
     };
   };
 
-  xdg.configFile."ghostty/themes/birren-industrial-light".source = ../../themes/birren-industrial/ghostty/birren-industrial-light;
+  xdg.configFile."ghostty/themes/birren-industrial-light".source = birrenIndustrial.ghostty.light;
 }

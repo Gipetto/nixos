@@ -1,0 +1,31 @@
+# Birren Industrial version: @version@
+
+background = @instrumentCream@
+foreground = @industrialCharcoal@
+cursor-color = @dadoGreen@
+cursor-text = @instrumentCream@
+selection-background = @dadoGreen@
+selection-foreground = @instrumentCream@
+
+# Normal colors (0-7)
+palette = 0=@industrialCharcoal@
+palette = 1=@safetyRed@
+palette = 2=@dadoGreen@
+palette = 3=@hazardOrange@
+palette = 4=@infoBlue@
+palette = 5=@agedRust@
+palette = 6=@dadoGreen@
+palette = 7=@machineryGray@
+
+# Bright colors (8-15)
+palette = 8=@concreteBase@
+palette = 9=@safetyRed@
+palette = 10=@seafoam@
+palette = 11=@cautionYellow@
+palette = 12=@seafoam@
+palette = 13=@agedRust@
+palette = 14=@seafoam@
+palette = 15=@industrialCharcoal@
+
+# Splits
+split-divider-color = @seafoam@

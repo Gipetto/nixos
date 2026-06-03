@@ -3,7 +3,7 @@
   "displayName": "Birren Industrial",
   "publisher": "shawnp",
   "description": "Mid-century industrial control room theme",
-  "version": "1.0.0",
+  "version": "@version@",
   "engines": {
     "vscode": "^1.60.0"
   },

@@ -1,0 +1,371 @@
+{
+  "name": "Birren Industrial Dark",
+  "type": "dark",
+  "colors": {
+    // Editor Colors
+    "editor.background": "@industrialCharcoal@",
+    "editor.foreground": "@instrumentCream@",
+    "editorLineNumber.foreground": "@machineryGray@",
+    "editorLineNumber.activeForeground": "@seafoam@",
+    "editorCursor.foreground": "@seafoam@",
+    "editor.selectionBackground": "@dadoGreen40@",
+    "editor.inactiveSelectionBackground": "@dadoGreen20@",
+    "editor.lineHighlightBackground": "@charcoalLight@",
+    "editor.lineHighlightBorder": "@transparent@",
+    "editorWhitespace.foreground": "@machineryGray40@",
+    "editorIndentGuide.background1": "@machineryGray40@",
+    "editorIndentGuide.activeBackground1": "@seafoam80@",
+    "editor.findMatchBackground": "@cautionYellow60@",
+    "editor.findMatchHighlightBackground": "@cautionYellow40@",
+    "editor.findRangeHighlightBackground": "@seafoam20@",
+    "editor.wordHighlightBackground": "@seafoam30@",
+    "editor.wordHighlightStrongBackground": "@seafoam50@",
+    "editorBracketMatch.background": "@seafoam40@",
+    "editorBracketMatch.border": "@seafoam@",
+    // Sidebar
+    "sideBar.background": "@industrialCharcoal@",
+    "sideBar.foreground": "@instrumentCream@",
+    "sideBar.border": "@machineryGray@",
+    "sideBarTitle.foreground": "@seafoam@",
+    "sideBarSectionHeader.background": "@charcoalLight@",
+    "sideBarSectionHeader.foreground": "@seafoam@",
+    "sideBarSectionHeader.border": "@machineryGray@",
+    // Activity Bar
+    "activityBar.background": "@industrialCharcoal@",
+    "activityBar.foreground": "@seafoam@",
+    "activityBar.inactiveForeground": "@machineryGray@",
+    "activityBar.border": "@machineryGray@",
+    "activityBarBadge.background": "@hazardOrange@",
+    "activityBarBadge.foreground": "@instrumentCream@",
+    // Status Bar
+    "statusBar.background": "@industrialCharcoal@",
+    "statusBar.foreground": "@instrumentCream@",
+    "statusBar.border": "@machineryGray@",
+    "statusBar.debuggingBackground": "@hazardOrange@",
+    "statusBar.debuggingForeground": "@industrialCharcoal@",
+    "statusBar.noFolderBackground": "@industrialCharcoal@",
+    "statusBarItem.remoteBackground": "@infoBlue@",
+    "statusBarItem.remoteForeground": "@instrumentCream@",
+    // Title Bar
+    "titleBar.activeBackground": "@industrialCharcoal@",
+    "titleBar.activeForeground": "@instrumentCream@",
+    "titleBar.inactiveBackground": "@industrialCharcoal@",
+    "titleBar.inactiveForeground": "@machineryGray@",
+    "titleBar.border": "@machineryGray@",
+    // Tabs
+    "tab.activeBackground": "@industrialCharcoal@",
+    "tab.activeForeground": "@seafoam@",
+    "tab.activeBorder": "@seafoam@",
+    "tab.activeBorderTop": "@transparent@",
+    "tab.inactiveBackground": "@charcoalLight@",
+    "tab.inactiveForeground": "@concreteBase@",
+    "tab.border": "@machineryGray@",
+    "tab.hoverBackground": "@charcoalLight@",
+    "tab.hoverForeground": "@seafoam@",
+    // Panel
+    "panel.background": "@industrialCharcoal@",
+    "panel.border": "@machineryGray@",
+    "panelTitle.activeBorder": "@seafoam@",
+    "panelTitle.activeForeground": "@seafoam@",
+    "panelTitle.inactiveForeground": "@concreteBase@",
+    // Terminal
+    "terminal.background": "@industrialCharcoal@",
+    "terminal.foreground": "@instrumentCream@",
+    "terminal.ansiBlack": "@industrialCharcoal@",
+    "terminal.ansiRed": "@safetyRed@",
+    "terminal.ansiGreen": "@seafoam@",
+    "terminal.ansiYellow": "@cautionYellow@",
+    "terminal.ansiBlue": "@infoBlue@",
+    "terminal.ansiMagenta": "@agedRust@",
+    "terminal.ansiCyan": "@seafoam@",
+    "terminal.ansiWhite": "@instrumentCream@",
+    "terminal.ansiBrightBlack": "@machineryGray@",
+    "terminal.ansiBrightRed": "@hazardOrange@",
+    "terminal.ansiBrightGreen": "@dadoGreen@",
+    "terminal.ansiBrightYellow": "@dustySand@",
+    "terminal.ansiBrightBlue": "@seafoam@",
+    "terminal.ansiBrightMagenta": "@concreteBase@",
+    "terminal.ansiBrightCyan": "@seafoam@",
+    "terminal.ansiBrightWhite": "@instrumentCream@",
+    // Lists and Trees
+    "list.activeSelectionBackground": "@dadoGreen@",
+    "list.activeSelectionForeground": "@instrumentCream@",
+    "list.inactiveSelectionBackground": "@dadoGreen40@",
+    "list.hoverBackground": "@charcoalLight@",
+    "list.hoverForeground": "@seafoam@",
+    "list.focusBackground": "@dadoGreen60@",
+    "list.focusForeground": "@instrumentCream@",
+    "list.highlightForeground": "@seafoam@",
+    // Buttons
+    "button.background": "@seafoam@",
+    "button.foreground": "@industrialCharcoal@",
+    "button.hoverBackground": "@dadoGreen@",
+    // Input
+    "input.background": "@charcoalLight@",
+    "input.border": "@machineryGray@",
+    "input.foreground": "@instrumentCream@",
+    "input.placeholderForeground": "@machineryGray@",
+    "inputOption.activeBorder": "@seafoam@",
+    "inputValidation.errorBackground": "@safetyRed40@",
+    "inputValidation.errorBorder": "@safetyRed@",
+    "inputValidation.warningBackground": "@hazardOrange40@",
+    "inputValidation.warningBorder": "@hazardOrange@",
+    "inputValidation.infoBackground": "@infoBlue40@",
+    "inputValidation.infoBorder": "@infoBlue@",
+    // Dropdown
+    "dropdown.background": "@charcoalLight@",
+    "dropdown.border": "@machineryGray@",
+    "dropdown.foreground": "@instrumentCream@",
+    // Badges
+    "badge.background": "@hazardOrange@",
+    "badge.foreground": "@industrialCharcoal@",
+    // Scrollbar
+    "scrollbarSlider.background": "@machineryGray80@",
+    "scrollbarSlider.hoverBackground": "@machineryGrayCC@",
+    "scrollbarSlider.activeBackground": "@concreteBase@",
+    // Notifications
+    "notificationCenter.border": "@machineryGray@",
+    "notifications.background": "@charcoalLight@",
+    "notifications.border": "@machineryGray@",
+    "notifications.foreground": "@instrumentCream@",
+    "notificationLink.foreground": "@seafoam@",
+    // Breadcrumbs
+    "breadcrumb.background": "@industrialCharcoal@",
+    "breadcrumb.foreground": "@concreteBase@",
+    "breadcrumb.focusForeground": "@seafoam@",
+    "breadcrumb.activeSelectionForeground": "@seafoam@",
+    "breadcrumbPicker.background": "@charcoalLight@",
+    // Git Decorations
+    "gitDecoration.addedResourceForeground": "@seafoam@",
+    "gitDecoration.modifiedResourceForeground": "@hazardOrange@",
+    "gitDecoration.deletedResourceForeground": "@safetyRed@",
+    "gitDecoration.untrackedResourceForeground": "@cautionYellow@",
+    "gitDecoration.ignoredResourceForeground": "@machineryGray@",
+    "gitDecoration.conflictingResourceForeground": "@cautionYellow@",
+    // Diff Editor
+    "diffEditor.insertedTextBackground": "@seafoam20@",
+    "diffEditor.removedTextBackground": "@safetyRed20@",
+    // Peek View
+    "peekView.border": "@seafoam@",
+    "peekViewEditor.background": "@charcoalLight@",
+    "peekViewResult.background": "@industrialCharcoal@",
+    "peekViewTitle.background": "@charcoalLight@",
+    // Merge Conflicts
+    "merge.currentHeaderBackground": "@seafoam40@",
+    "merge.incomingHeaderBackground": "@infoBlue40@",
+    "editorOverviewRuler.currentContentForeground": "@seafoam@",
+    "editorOverviewRuler.incomingContentForeground": "@infoBlue@"
+  },
+  "tokenColors": [
+    {
+      "name": "Comment",
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "@infoBlue@",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "String",
+      "scope": [
+        "string",
+        "string.quoted",
+        "string.template"
+      ],
+      "settings": {
+        "foreground": "@seafoam@"
+      }
+    },
+    {
+      "name": "String Escape",
+      "scope": [
+        "constant.character.escape",
+        "string.regexp"
+      ],
+      "settings": {
+        "foreground": "@dadoGreen@"
+      }
+    },
+    {
+      "name": "Number",
+      "scope": [
+        "constant.numeric",
+        "constant.language.boolean",
+        "constant.language.null"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    },
+    {
+      "name": "Constant",
+      "scope": [
+        "constant",
+        "constant.language"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    },
+    {
+      "name": "Keyword",
+      "scope": [
+        "keyword",
+        "keyword.control",
+        "keyword.operator.new",
+        "storage.type",
+        "storage.modifier"
+      ],
+      "settings": {
+        "foreground": "@hazardOrange@"
+      }
+    },
+    {
+      "name": "Operator",
+      "scope": [
+        "keyword.operator",
+        "punctuation.separator",
+        "punctuation.terminator"
+      ],
+      "settings": {
+        "foreground": "@concreteBase@"
+      }
+    },
+    {
+      "name": "Function",
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call"
+      ],
+      "settings": {
+        "foreground": "@cautionYellow@"
+      }
+    },
+    {
+      "name": "Class/Type",
+      "scope": [
+        "entity.name.type",
+        "entity.name.class",
+        "support.type",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "@infoBlue@"
+      }
+    },
+    {
+      "name": "Variable",
+      "scope": [
+        "variable",
+        "variable.other",
+        "variable.parameter"
+      ],
+      "settings": {
+        "foreground": "@instrumentCream@"
+      }
+    },
+    {
+      "name": "Property",
+      "scope": [
+        "variable.other.property",
+        "variable.other.object.property",
+        "support.variable.property"
+      ],
+      "settings": {
+        "foreground": "@concreteBase@"
+      }
+    },
+    {
+      "name": "Tag",
+      "scope": [
+        "entity.name.tag",
+        "meta.tag"
+      ],
+      "settings": {
+        "foreground": "@hazardOrange@"
+      }
+    },
+    {
+      "name": "Attribute",
+      "scope": [
+        "entity.other.attribute-name"
+      ],
+      "settings": {
+        "foreground": "@agedRust@"
+      }
+    },
+    {
+      "name": "Punctuation",
+      "scope": [
+        "punctuation.definition",
+        "punctuation.section",
+        "meta.brace"
+      ],
+      "settings": {
+        "foreground": "@concreteBase@"
+      }
+    },
+    {
+      "name": "Markup Bold",
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "foreground": "@hazardOrange@",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Markup Italic",
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "name": "Markup Heading",
+      "scope": [
+        "markup.heading"
+      ],
+      "settings": {
+        "foreground": "@seafoam@",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "name": "Markup Link",
+      "scope": [
+        "markup.underline.link"
+      ],
+      "settings": {
+        "foreground": "@infoBlue@"
+      }
+    },
+    {
+      "name": "Markup Code",
+      "scope": [
+        "markup.inline.raw",
+        "markup.fenced_code"
+      ],
+      "settings": {
+        "foreground": "@seafoam@"
+      }
+    },
+    {
+      "name": "Invalid",
+      "scope": [
+        "invalid",
+        "invalid.illegal"
+      ],
+      "settings": {
+        "foreground": "@safetyRed@"
+      }
+    }
+  ]
+}

@@ -1,17 +1,16 @@
 { config, pkgs, lib, inputs, ... }:
 let
   fontSize = if pkgs.stdenv.isDarwin then 13 else 14;
-  vscode-extensions = inputs.nix-vscode-extensions
-    .extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
+  birrenIndustrial = import ../themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
+  vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in
 {
-  imports = [ ./vscode-birren-industrial.nix ];
-
   programs.vscode = {
     enable = true;
     profiles.default = {
       # User settings are handled via VSCode Profile Sync
       extensions = [
+        birrenIndustrial
         vscode-extensions.denoland.vscode-deno
         vscode-extensions.docker.docker
         vscode-extensions.eamodio.gitlens

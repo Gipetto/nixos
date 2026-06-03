@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  birrenIndustrial = import ../../themes/birren-industrial { inherit pkgs; };
+in
 {
   programs.neovim = {
     enable = true;
@@ -13,7 +16,7 @@
       (pkgs.vimUtils.buildVimPlugin {
         pname = "birren-industrial";
         version = "1.0.0";
-        src = ../../themes/birren-industrial/vim;
+        src = birrenIndustrial.vim;
       })
       (nvim-treesitter.withPlugins (p: [
         p.css

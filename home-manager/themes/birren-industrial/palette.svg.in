@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title description">
+  <title id="title">Birren Industrial color palette</title>
+  <desc id="description">Four groups of color swatches for foundations, equipment, operations, and attention.</desc>
+  <rect width="960" height="360" rx="14" fill="@creamLight@"/>
+  <rect x="1" y="1" width="958" height="358" rx="13" fill="none" stroke="@concreteBase@" stroke-width="2"/>
+  <rect width="960" height="6" rx="3" fill="@dadoGreen@"/>
+
+  <g font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="@industrialCharcoal@">
+    <text x="38" y="43" font-size="25" font-weight="600" letter-spacing="0.2">Birren Industrial</text>
+    <text x="38" y="64" font-size="12" fill="@machineryGray@" letter-spacing="1.1">PALETTE / VERSION @version@</text>
+  </g>
+
+  <g font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="@machineryGray@" font-size="11" font-weight="600" letter-spacing="1.4">
+    <text x="38" y="98">FOUNDATIONS</text>
+    <text x="268" y="98">EQUIPMENT</text>
+    <text x="498" y="98">OPERATIONS</text>
+    <text x="728" y="98">ATTENTION</text>
+  </g>
+
+  <g transform="translate(38 116)">
+    <rect width="32" height="32" rx="7" fill="@industrialCharcoal@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Industrial Charcoal</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@industrialCharcoal@</text>
+    </g>
+  </g>
+  <g transform="translate(38 164)">
+    <rect width="32" height="32" rx="7" fill="@charcoalLight@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Charcoal Light</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@charcoalLight@</text>
+    </g>
+  </g>
+  <g transform="translate(38 212)">
+    <rect width="32" height="32" rx="7" fill="@instrumentCream@" stroke="@concreteBase@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Instrument Cream</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@instrumentCream@</text>
+    </g>
+  </g>
+  <g transform="translate(38 260)">
+    <rect width="32" height="32" rx="7" fill="@creamLight@" stroke="@concreteBase@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Cream Light</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@creamLight@</text>
+    </g>
+  </g>
+
+  <g transform="translate(268 116)">
+    <rect width="32" height="32" rx="7" fill="@machineryGray@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Machinery Gray</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@machineryGray@</text>
+    </g>
+  </g>
+  <g transform="translate(268 164)">
+    <rect width="32" height="32" rx="7" fill="@concreteBase@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Concrete Base</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@concreteBase@</text>
+    </g>
+  </g>
+  <g transform="translate(268 212)">
+    <rect width="32" height="32" rx="7" fill="@dustySand@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Dusty Sand</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@dustySand@</text>
+    </g>
+  </g>
+
+  <g transform="translate(498 116)">
+    <rect width="32" height="32" rx="7" fill="@dadoGreen@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Dado Green</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@dadoGreen@</text>
+    </g>
+  </g>
+  <g transform="translate(498 164)">
+    <rect width="32" height="32" rx="7" fill="@seafoam@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Seafoam</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@seafoam@</text>
+    </g>
+  </g>
+  <g transform="translate(498 212)">
+    <rect width="32" height="32" rx="7" fill="@infoBlue@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Info Blue</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@infoBlue@</text>
+    </g>
+  </g>
+
+  <g transform="translate(728 116)">
+    <rect width="32" height="32" rx="7" fill="@agedRust@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Aged Rust</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@agedRust@</text>
+    </g>
+  </g>
+  <g transform="translate(728 164)">
+    <rect width="32" height="32" rx="7" fill="@hazardOrange@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Hazard Orange</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@hazardOrange@</text>
+    </g>
+  </g>
+  <g transform="translate(728 212)">
+    <rect width="32" height="32" rx="7" fill="@safetyRed@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Safety Red</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@safetyRed@</text>
+    </g>
+  </g>
+  <g transform="translate(728 260)">
+    <rect width="32" height="32" rx="7" fill="@cautionYellow@"/>
+    <g transform="translate(43 12)" font-family="ui-sans-serif, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif">
+      <text fill="@industrialCharcoal@" font-size="12" font-weight="500">Caution Yellow</text>
+      <text y="15" fill="@machineryGray@" font-size="11">@cautionYellow@</text>
+    </g>
+  </g>
+</svg>

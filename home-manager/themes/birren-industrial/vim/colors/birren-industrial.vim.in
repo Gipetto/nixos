@@ -1,0 +1,402 @@
+" Birren Industrial — Vim colorscheme (dark + light)
+" Version: @version@
+" Requires: set termguicolors
+"
+" Usage:
+"   Copy to ~/.vim/colors/ (or ~/.config/nvim/colors/ for Neovim)
+"   Then:  colorscheme birren-industrial
+
+highlight clear
+if exists('syntax_on')
+  syntax reset
+endif
+let g:colors_name = 'birren-industrial'
+let g:birren_industrial_version = '@version@'
+
+" ---------- Dark ----------
+if &background ==# 'dark'
+
+  highlight Normal        guifg=@instrumentCream@ guibg=@industrialCharcoal@
+  highlight NormalFloat   guifg=@instrumentCream@ guibg=@charcoalLight@
+  highlight NormalNC      guifg=@instrumentCream@ guibg=@industrialCharcoal@
+
+  " --- Chrome ---
+  highlight LineNr        guifg=@machineryGray@ guibg=NONE
+  highlight CursorLineNr  guifg=@seafoam@ guibg=NONE    gui=bold
+  highlight CursorLine    guibg=@charcoalLight@                gui=NONE
+  highlight CursorColumn  guibg=@charcoalLight@
+  highlight ColorColumn   guibg=@charcoalLight@
+  highlight SignColumn    guifg=@machineryGray@ guibg=NONE
+  highlight FoldColumn    guifg=@machineryGray@ guibg=NONE
+  highlight Folded        guifg=@infoBlue@ guibg=@charcoalLight@  gui=italic
+  highlight VertSplit     guifg=@machineryGray@ guibg=NONE
+  highlight WinSeparator  guifg=@machineryGray@ guibg=NONE
+  highlight StatusLine    guifg=@instrumentCream@ guibg=@charcoalLight@  gui=NONE
+  highlight StatusLineNC  guifg=@machineryGray@ guibg=@charcoalLight@  gui=NONE
+  highlight TabLine       guifg=@concreteBase@ guibg=@charcoalLight@  gui=NONE
+  highlight TabLineFill   guibg=@charcoalLight@                gui=NONE
+  highlight TabLineSel    guifg=@seafoam@ guibg=@industrialCharcoal@  gui=bold
+  highlight WildMenu      guifg=@industrialCharcoal@ guibg=@seafoam@
+
+  " --- Search / Visual ---
+  highlight Visual        guibg=@dadoGreen50@
+  highlight VisualNOS     guibg=@dadoGreen50@
+  highlight Search        guifg=@industrialCharcoal@ guibg=@cautionYellow@
+  highlight IncSearch     guifg=@industrialCharcoal@ guibg=@hazardOrange@  gui=NONE
+  highlight CurSearch     guifg=@industrialCharcoal@ guibg=@cautionYellow@  gui=bold
+  highlight MatchParen    guifg=@seafoam@ guibg=@seafoam40@ gui=bold
+
+  " --- Popup menu ---
+  highlight Pmenu         guifg=@instrumentCream@ guibg=@charcoalLight@
+  highlight PmenuSel      guifg=@instrumentCream@ guibg=@dadoGreen@
+  highlight PmenuSbar     guibg=@charcoalLight@
+  highlight PmenuThumb    guibg=@machineryGray@
+
+  " --- Diff ---
+  highlight DiffAdd       guifg=NONE    guibg=@seafoam20@
+  highlight DiffChange    guifg=NONE    guibg=@infoBlue20@
+  highlight DiffDelete    guifg=@safetyRed@ guibg=@safetyRed20@
+  highlight DiffText      guifg=NONE    guibg=@hazardOrange30@ gui=NONE
+
+  " --- Messages ---
+  highlight ErrorMsg      guifg=@safetyRed@ guibg=NONE     gui=bold
+  highlight WarningMsg    guifg=@hazardOrange@ guibg=NONE
+  highlight MoreMsg       guifg=@seafoam@ guibg=NONE
+  highlight Question      guifg=@seafoam@ guibg=NONE
+  highlight ModeMsg       guifg=@seafoam@ guibg=NONE     gui=bold
+  highlight Title         guifg=@seafoam@ guibg=NONE     gui=bold
+  highlight Directory     guifg=@seafoam@ guibg=NONE
+
+  " --- Spelling ---
+  highlight SpellBad      guisp=@safetyRed@ gui=undercurl
+  highlight SpellCap      guisp=@infoBlue@ gui=undercurl
+  highlight SpellRare     guisp=@agedRust@ gui=undercurl
+  highlight SpellLocal    guisp=@seafoam@ gui=undercurl
+
+  " --- Misc ---
+  highlight NonText       guifg=@machineryGray@ guibg=NONE
+  highlight SpecialKey    guifg=@machineryGray@ guibg=NONE
+  highlight Conceal       guifg=@machineryGray@ guibg=NONE
+  highlight Cursor        guifg=@industrialCharcoal@ guibg=@seafoam@
+  highlight lCursor       guifg=@industrialCharcoal@ guibg=@seafoam@
+
+  " --- Syntax ---
+  highlight Comment       guifg=@infoBlue@ gui=italic
+  highlight String        guifg=@seafoam@
+  highlight Character     guifg=@dadoGreen@
+  highlight Number        guifg=@safetyRed@
+  highlight Float         guifg=@safetyRed@
+  highlight Boolean       guifg=@safetyRed@
+  highlight Constant      guifg=@safetyRed@
+
+  highlight Identifier    guifg=@instrumentCream@ gui=NONE
+  highlight Function      guifg=@cautionYellow@
+
+  highlight Statement     guifg=@hazardOrange@ gui=NONE
+  highlight Conditional   guifg=@hazardOrange@ gui=NONE
+  highlight Repeat        guifg=@hazardOrange@ gui=NONE
+  highlight Label         guifg=@hazardOrange@ gui=NONE
+  highlight Operator      guifg=@concreteBase@
+  highlight Keyword       guifg=@hazardOrange@ gui=NONE
+  highlight Exception     guifg=@hazardOrange@ gui=NONE
+
+  highlight PreProc       guifg=@hazardOrange@
+  highlight Include       guifg=@hazardOrange@
+  highlight Define        guifg=@hazardOrange@
+  highlight Macro         guifg=@hazardOrange@
+  highlight PreCondit     guifg=@hazardOrange@
+
+  highlight Type          guifg=@infoBlue@ gui=NONE
+  highlight StorageClass  guifg=@hazardOrange@ gui=NONE
+  highlight Structure     guifg=@infoBlue@ gui=NONE
+  highlight Typedef       guifg=@infoBlue@ gui=NONE
+
+  highlight Special       guifg=@dadoGreen@
+  highlight SpecialChar   guifg=@dadoGreen@
+  highlight Tag           guifg=@hazardOrange@
+  highlight Delimiter     guifg=@concreteBase@
+  highlight Debug         guifg=@hazardOrange@
+
+  highlight Error         guifg=@safetyRed@ guibg=NONE     gui=bold
+  highlight Todo          guifg=@cautionYellow@ guibg=NONE     gui=bold,italic
+
+  " --- Treesitter / LSP (Neovim 0.8+) ---
+  highlight @comment           guifg=@infoBlue@ gui=italic
+  highlight @string            guifg=@seafoam@
+  highlight @string.escape     guifg=@dadoGreen@
+  highlight @string.regex      guifg=@dadoGreen@
+  highlight @character         guifg=@dadoGreen@
+  highlight @number            guifg=@safetyRed@
+  highlight @boolean           guifg=@safetyRed@
+  highlight @float             guifg=@safetyRed@
+  highlight @constant          guifg=@safetyRed@
+  highlight @constant.builtin  guifg=@safetyRed@
+  highlight @variable          guifg=@instrumentCream@
+  highlight @variable.builtin  guifg=@instrumentCream@
+  highlight @property          guifg=@concreteBase@
+  highlight @field             guifg=@concreteBase@
+  highlight @parameter         guifg=@instrumentCream@
+  highlight @function          guifg=@cautionYellow@
+  highlight @function.builtin  guifg=@cautionYellow@
+  highlight @function.call     guifg=@cautionYellow@
+  highlight @method            guifg=@cautionYellow@
+  highlight @method.call       guifg=@cautionYellow@
+  highlight @constructor       guifg=@infoBlue@
+  highlight @keyword           guifg=@hazardOrange@
+  highlight @keyword.function  guifg=@hazardOrange@
+  highlight @keyword.return    guifg=@hazardOrange@
+  highlight @keyword.operator  guifg=@concreteBase@
+  highlight @conditional       guifg=@hazardOrange@
+  highlight @repeat            guifg=@hazardOrange@
+  highlight @exception         guifg=@hazardOrange@
+  highlight @include           guifg=@hazardOrange@
+  highlight @type              guifg=@infoBlue@
+  highlight @type.builtin      guifg=@infoBlue@
+  highlight @type.qualifier    guifg=@hazardOrange@
+  highlight @storageclass      guifg=@hazardOrange@
+  highlight @attribute         guifg=@agedRust@
+  highlight @tag               guifg=@hazardOrange@
+  highlight @tag.attribute     guifg=@agedRust@
+  highlight @tag.delimiter     guifg=@concreteBase@
+  highlight @punctuation       guifg=@concreteBase@
+  highlight @punctuation.bracket    guifg=@concreteBase@
+  highlight @punctuation.delimiter  guifg=@concreteBase@
+  highlight @punctuation.special    guifg=@concreteBase@
+  highlight @operator          guifg=@concreteBase@
+  highlight @text.title        guifg=@seafoam@ gui=bold
+  highlight @text.literal      guifg=@seafoam@
+  highlight @text.uri          guifg=@infoBlue@ gui=underline
+  highlight @text.strong       guifg=@hazardOrange@ gui=bold
+  highlight @text.emphasis     gui=italic
+
+  " --- Diagnostics (Neovim) ---
+  highlight DiagnosticError          guifg=@safetyRed@
+  highlight DiagnosticWarn           guifg=@hazardOrange@
+  highlight DiagnosticInfo           guifg=@infoBlue@
+  highlight DiagnosticHint           guifg=@seafoam@
+  highlight DiagnosticUnderlineError guisp=@safetyRed@ gui=undercurl
+  highlight DiagnosticUnderlineWarn  guisp=@hazardOrange@ gui=undercurl
+  highlight DiagnosticUnderlineInfo  guisp=@infoBlue@ gui=undercurl
+  highlight DiagnosticUnderlineHint  guisp=@seafoam@ gui=undercurl
+
+  " --- Terminal colors ---
+  if has('nvim')
+    let g:terminal_color_0  = '@industrialCharcoal@'
+    let g:terminal_color_1  = '@safetyRed@'
+    let g:terminal_color_2  = '@seafoam@'
+    let g:terminal_color_3  = '@cautionYellow@'
+    let g:terminal_color_4  = '@infoBlue@'
+    let g:terminal_color_5  = '@agedRust@'
+    let g:terminal_color_6  = '@seafoam@'
+    let g:terminal_color_7  = '@instrumentCream@'
+    let g:terminal_color_8  = '@machineryGray@'
+    let g:terminal_color_9  = '@hazardOrange@'
+    let g:terminal_color_10 = '@dadoGreen@'
+    let g:terminal_color_11 = '@dustySand@'
+    let g:terminal_color_12 = '@seafoam@'
+    let g:terminal_color_13 = '@concreteBase@'
+    let g:terminal_color_14 = '@seafoam@'
+    let g:terminal_color_15 = '@instrumentCream@'
+  elseif has('terminal')
+    let g:terminal_ansi_colors = [
+      \ '@industrialCharcoal@', '@safetyRed@', '@seafoam@', '@cautionYellow@',
+      \ '@infoBlue@', '@agedRust@', '@seafoam@', '@instrumentCream@',
+      \ '@machineryGray@', '@hazardOrange@', '@dadoGreen@', '@dustySand@',
+      \ '@seafoam@', '@concreteBase@', '@seafoam@', '@instrumentCream@',
+      \ ]
+  endif
+
+" ---------- Light ----------
+else
+
+  highlight Normal        guifg=@industrialCharcoal@ guibg=@instrumentCream@
+  highlight NormalFloat   guifg=@industrialCharcoal@ guibg=@creamDark@
+  highlight NormalNC      guifg=@industrialCharcoal@ guibg=@instrumentCream@
+
+  " --- Chrome ---
+  highlight LineNr        guifg=@concreteBase@ guibg=NONE
+  highlight CursorLineNr  guifg=@dadoGreen@ guibg=NONE    gui=bold
+  highlight CursorLine    guibg=@creamDark@                gui=NONE
+  highlight CursorColumn  guibg=@creamDark@
+  highlight ColorColumn   guibg=@creamDark@
+  highlight SignColumn    guifg=@concreteBase@ guibg=NONE
+  highlight FoldColumn    guifg=@concreteBase@ guibg=NONE
+  highlight Folded        guifg=@machineryGray@ guibg=@creamDark@  gui=italic
+  highlight VertSplit     guifg=@concreteBase@ guibg=NONE
+  highlight WinSeparator  guifg=@concreteBase@ guibg=NONE
+  highlight StatusLine    guifg=@industrialCharcoal@ guibg=@creamDark@  gui=NONE
+  highlight StatusLineNC  guifg=@concreteBase@ guibg=@creamDark@  gui=NONE
+  highlight TabLine       guifg=@machineryGray@ guibg=@creamDark@  gui=NONE
+  highlight TabLineFill   guibg=@creamDark@                gui=NONE
+  highlight TabLineSel    guifg=@dadoGreen@ guibg=@instrumentCream@  gui=bold
+  highlight WildMenu      guifg=@instrumentCream@ guibg=@dadoGreen@
+
+  " --- Search / Visual ---
+  highlight Visual        guibg=@dadoGreen50@
+  highlight VisualNOS     guibg=@dadoGreen50@
+  highlight Search        guifg=@industrialCharcoal@ guibg=@cautionYellow@
+  highlight IncSearch     guifg=@industrialCharcoal@ guibg=@hazardOrange@  gui=NONE
+  highlight CurSearch     guifg=@industrialCharcoal@ guibg=@cautionYellow@  gui=bold
+  highlight MatchParen    guifg=@dadoGreen@ guibg=@dadoGreen40@ gui=bold
+
+  " --- Popup menu ---
+  highlight Pmenu         guifg=@industrialCharcoal@ guibg=@creamDark@
+  highlight PmenuSel      guifg=@instrumentCream@ guibg=@dadoGreen@
+  highlight PmenuSbar     guibg=@creamDark@
+  highlight PmenuThumb    guibg=@concreteBase@
+
+  " --- Diff ---
+  highlight DiffAdd       guifg=NONE    guibg=@dadoGreen20@
+  highlight DiffChange    guifg=NONE    guibg=@infoBlue20@
+  highlight DiffDelete    guifg=@safetyRed@ guibg=@safetyRed20@
+  highlight DiffText      guifg=NONE    guibg=@hazardOrange30@ gui=NONE
+
+  " --- Messages ---
+  highlight ErrorMsg      guifg=@safetyRed@ guibg=NONE     gui=bold
+  highlight WarningMsg    guifg=@hazardOrange@ guibg=NONE
+  highlight MoreMsg       guifg=@dadoGreen@ guibg=NONE
+  highlight Question      guifg=@dadoGreen@ guibg=NONE
+  highlight ModeMsg       guifg=@dadoGreen@ guibg=NONE     gui=bold
+  highlight Title         guifg=@dadoGreen@ guibg=NONE     gui=bold
+  highlight Directory     guifg=@dadoGreen@ guibg=NONE
+
+  " --- Spelling ---
+  highlight SpellBad      guisp=@safetyRed@ gui=undercurl
+  highlight SpellCap      guisp=@infoBlue@ gui=undercurl
+  highlight SpellRare     guisp=@agedRust@ gui=undercurl
+  highlight SpellLocal    guisp=@dadoGreen@ gui=undercurl
+
+  " --- Misc ---
+  highlight NonText       guifg=@concreteBase@ guibg=NONE
+  highlight SpecialKey    guifg=@concreteBase@ guibg=NONE
+  highlight Conceal       guifg=@concreteBase@ guibg=NONE
+  highlight Cursor        guifg=@instrumentCream@ guibg=@dadoGreen@
+  highlight lCursor       guifg=@instrumentCream@ guibg=@dadoGreen@
+
+  " --- Syntax ---
+  highlight Comment       guifg=@machineryGray@ gui=italic
+  highlight String        guifg=@dadoGreen@
+  highlight Character     guifg=@seafoam@
+  highlight Number        guifg=@safetyRed@
+  highlight Float         guifg=@safetyRed@
+  highlight Boolean       guifg=@safetyRed@
+  highlight Constant      guifg=@safetyRed@
+
+  highlight Identifier    guifg=@industrialCharcoal@ gui=NONE
+  highlight Function      guifg=@hazardOrange@
+
+  highlight Statement     guifg=@agedRust@ gui=NONE
+  highlight Conditional   guifg=@agedRust@ gui=NONE
+  highlight Repeat        guifg=@agedRust@ gui=NONE
+  highlight Label         guifg=@agedRust@ gui=NONE
+  highlight Operator      guifg=@machineryGray@
+  highlight Keyword       guifg=@agedRust@ gui=NONE
+  highlight Exception     guifg=@agedRust@ gui=NONE
+
+  highlight PreProc       guifg=@agedRust@
+  highlight Include       guifg=@agedRust@
+  highlight Define        guifg=@agedRust@
+  highlight Macro         guifg=@agedRust@
+  highlight PreCondit     guifg=@agedRust@
+
+  highlight Type          guifg=@infoBlue@ gui=NONE
+  highlight StorageClass  guifg=@agedRust@ gui=NONE
+  highlight Structure     guifg=@infoBlue@ gui=NONE
+  highlight Typedef       guifg=@infoBlue@ gui=NONE
+
+  highlight Special       guifg=@seafoam@
+  highlight SpecialChar   guifg=@seafoam@
+  highlight Tag           guifg=@agedRust@
+  highlight Delimiter     guifg=@machineryGray@
+  highlight Debug         guifg=@agedRust@
+
+  highlight Error         guifg=@safetyRed@ guibg=NONE     gui=bold
+  highlight Todo          guifg=@hazardOrange@ guibg=NONE     gui=bold,italic
+
+  " --- Treesitter / LSP (Neovim 0.8+) ---
+  highlight @comment           guifg=@machineryGray@ gui=italic
+  highlight @string            guifg=@dadoGreen@
+  highlight @string.escape     guifg=@seafoam@
+  highlight @string.regex      guifg=@seafoam@
+  highlight @character         guifg=@seafoam@
+  highlight @number            guifg=@safetyRed@
+  highlight @boolean           guifg=@safetyRed@
+  highlight @float             guifg=@safetyRed@
+  highlight @constant          guifg=@safetyRed@
+  highlight @constant.builtin  guifg=@safetyRed@
+  highlight @variable          guifg=@industrialCharcoal@
+  highlight @variable.builtin  guifg=@industrialCharcoal@
+  highlight @property          guifg=@machineryGray@
+  highlight @field             guifg=@machineryGray@
+  highlight @parameter         guifg=@industrialCharcoal@
+  highlight @function          guifg=@hazardOrange@
+  highlight @function.builtin  guifg=@hazardOrange@
+  highlight @function.call     guifg=@hazardOrange@
+  highlight @method            guifg=@hazardOrange@
+  highlight @method.call       guifg=@hazardOrange@
+  highlight @constructor       guifg=@infoBlue@
+  highlight @keyword           guifg=@agedRust@
+  highlight @keyword.function  guifg=@agedRust@
+  highlight @keyword.return    guifg=@agedRust@
+  highlight @keyword.operator  guifg=@machineryGray@
+  highlight @conditional       guifg=@agedRust@
+  highlight @repeat            guifg=@agedRust@
+  highlight @exception         guifg=@agedRust@
+  highlight @include           guifg=@agedRust@
+  highlight @type              guifg=@infoBlue@
+  highlight @type.builtin      guifg=@infoBlue@
+  highlight @type.qualifier    guifg=@agedRust@
+  highlight @storageclass      guifg=@agedRust@
+  highlight @attribute         guifg=@agedRust@
+  highlight @tag               guifg=@agedRust@
+  highlight @tag.attribute     guifg=@agedRust@
+  highlight @tag.delimiter     guifg=@machineryGray@
+  highlight @punctuation       guifg=@machineryGray@
+  highlight @punctuation.bracket    guifg=@machineryGray@
+  highlight @punctuation.delimiter  guifg=@machineryGray@
+  highlight @punctuation.special    guifg=@machineryGray@
+  highlight @operator          guifg=@machineryGray@
+  highlight @text.title        guifg=@dadoGreen@ gui=bold
+  highlight @text.literal      guifg=@dadoGreen@
+  highlight @text.uri          guifg=@infoBlue@ gui=underline
+  highlight @text.strong       guifg=@agedRust@ gui=bold
+  highlight @text.emphasis     gui=italic
+
+  " --- Diagnostics (Neovim) ---
+  highlight DiagnosticError          guifg=@safetyRed@
+  highlight DiagnosticWarn           guifg=@hazardOrange@
+  highlight DiagnosticInfo           guifg=@infoBlue@
+  highlight DiagnosticHint           guifg=@dadoGreen@
+  highlight DiagnosticUnderlineError guisp=@safetyRed@ gui=undercurl
+  highlight DiagnosticUnderlineWarn  guisp=@hazardOrange@ gui=undercurl
+  highlight DiagnosticUnderlineInfo  guisp=@infoBlue@ gui=undercurl
+  highlight DiagnosticUnderlineHint  guisp=@dadoGreen@ gui=undercurl
+
+  " --- Terminal colors ---
+  if has('nvim')
+    let g:terminal_color_0  = '@industrialCharcoal@'
+    let g:terminal_color_1  = '@safetyRed@'
+    let g:terminal_color_2  = '@dadoGreen@'
+    let g:terminal_color_3  = '@hazardOrange@'
+    let g:terminal_color_4  = '@infoBlue@'
+    let g:terminal_color_5  = '@agedRust@'
+    let g:terminal_color_6  = '@dadoGreen@'
+    let g:terminal_color_7  = '@machineryGray@'
+    let g:terminal_color_8  = '@concreteBase@'
+    let g:terminal_color_9  = '@safetyRed@'
+    let g:terminal_color_10 = '@seafoam@'
+    let g:terminal_color_11 = '@cautionYellow@'
+    let g:terminal_color_12 = '@seafoam@'
+    let g:terminal_color_13 = '@agedRust@'
+    let g:terminal_color_14 = '@seafoam@'
+    let g:terminal_color_15 = '@industrialCharcoal@'
+  elseif has('terminal')
+    let g:terminal_ansi_colors = [
+      \ '@industrialCharcoal@', '@safetyRed@', '@dadoGreen@', '@hazardOrange@',
+      \ '@infoBlue@', '@agedRust@', '@dadoGreen@', '@machineryGray@',
+      \ '@concreteBase@', '@safetyRed@', '@seafoam@', '@cautionYellow@',
+      \ '@seafoam@', '@agedRust@', '@seafoam@', '@industrialCharcoal@',
+      \ ]
+  endif
+
+endif
