@@ -56,7 +56,6 @@ in
       ''
         export NODE_OPTIONS="--dns-result-order=ipv4first"
         setopt HIST_FCNTL_LOCK
-        unsetopt SHARE_HISTORY
       ''
 
       # Darwin-specific
