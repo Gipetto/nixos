@@ -2,9 +2,17 @@
 let
   fontSize = if pkgs.stdenv.isDarwin then 13 else 14;
   birrenIndustrial = import ../themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
+  cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
   vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;
 in
 {
+  home.activation.cursorBirrenIndustrialTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    cursorExtensionsDir="${config.home.homeDirectory}/.cursor/extensions"
+    if [ -d "$cursorExtensionsDir" ]; then
+      ln -sfn "${birrenIndustrial}/share/vscode/extensions/shawnp.birren-industrial" "$cursorExtensionsDir/${cursorBirrenIndustrial}"
+    fi
+  '';
+
   programs.vscode = {
     enable = true;
     profiles.default = {

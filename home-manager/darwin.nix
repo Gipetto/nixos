@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   birrenIndustrial = import ./themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
+  cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
 in
 {
   imports = [
@@ -11,6 +12,13 @@ in
 
   xdg.configFile."nix/nix.conf".text = ''
     cores = 10
+  '';
+
+  home.activation.cursorBirrenIndustrialTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    cursorExtensionsDir="${config.home.homeDirectory}/.cursor/extensions"
+    if [ -d "$cursorExtensionsDir" ]; then
+      ln -sfn "${birrenIndustrial}/share/vscode/extensions/shawnp.birren-industrial" "$cursorExtensionsDir/${cursorBirrenIndustrial}"
+    fi
   '';
 
   programs.vscode = {
