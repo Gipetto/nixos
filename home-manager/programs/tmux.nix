@@ -1,8 +1,10 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, home-manager, inputs, ... }:
 {
   programs.tmux = {
     enable = true;
     extraConfig = ''
+      set -g @plugin 'jaclu/tmux-menus'
+
       #set -g utf8
       #set-window-option -g utf8 on
       #set -g status-utf8 on
@@ -37,6 +39,8 @@
       bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
       bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
+
+      run-shell ${inputs.tpm}/tpm
     '';
   };
 }
