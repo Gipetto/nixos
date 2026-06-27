@@ -1,16 +1,16 @@
 { config, pkgs, ... }:
 
 let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gcloud
   ]);
-  # Update hash: version=0.142.0; nix store prefetch-file --json "https://github.com/openai/codex/releases/download/rust-v$version/codex-aarch64-apple-darwin.tar.gz" | jq -r .hash
+  # Update hash: version=0.142.3; nix store prefetch-file --json "https://github.com/openai/codex/releases/download/rust-v$version/codex-aarch64-apple-darwin.tar.gz" | jq -r .hash
   codexPackage = pkgs.stdenvNoCC.mkDerivation rec {
     pname = "codex";
-    version = "0.142.0";
+    version = "0.142.3";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-2qREPEVfSBQ9dQkS+g+R17lFb6UpcvclvBJUrptaNkg=";
+      hash = "sha256-wwMVy0HWbQAPya1mc19CiNn/DH/nSPaPcautcC1y+DI=";
     };
     sourceRoot = ".";
     installPhase = ''
