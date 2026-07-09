@@ -1,33 +1,34 @@
-{ config, pkgs, home-manager, inputs, ... }:
+{ pkgs, inputs, ... }:
+let
+  palette = (import ../themes/birren-industrial { inherit pkgs; }).palette;
+in
 {
   programs.tmux = {
     enable = true;
     extraConfig = ''
       set -g @plugin 'jaclu/tmux-menus'
 
-      #set -g utf8
-      #set-window-option -g utf8 on
-      #set -g status-utf8 on
       set -g mouse on
-
-      set -g default-terminal "xterm-256color"
+      set -g default-terminal "tmux-256color"
+      set -as terminal-overrides ",*:Tc"
+      set-environment -g COLORTERM "truecolor"
+      
       set-window-option -g aggressive-resize off
-      #bind r source-file ~/.tmux.conf \; display-message "Config reloaded"
 
-      # Use Ctrl-a to be more like screen
-      #set -g prefix C-a
-      #unbind C-b
-      #bind C-a send-prefix
-
-      # inactive windows in status bar
-      set-window-option -g window-status-format '#[fg=cyan,dim]#I#[fg=blue]:#[default]#W#[fg=grey,dim]#F'
-      # current or active window in status bar
-      set-window-option -g window-status-current-format '#[bg=blue,fg=cyan,bold]#I#[bg=blue,fg=cyan]:#[fg=white]#W#[fg=dim]#F'
-
-      #setw -g window-status-current-format "|#I:#W|"
+      set -g status-style 'bg=${palette.creamDark},fg=${palette.industrialCharcoal}'
+      set -g status-left-style 'bg=${palette.seafoam},fg=${palette.industrialCharcoal},bold'
+      set -g status-left ' #S '
+      set -g status-right-style 'bg=${palette.creamDark},fg=${palette.industrialCharcoal}'
+      set-window-option -g window-status-style 'bg=${palette.creamDark},fg=${palette.industrialCharcoal}'
+      set-window-option -g window-status-format ' #I:#W#F '
+      set-window-option -g window-status-current-style 'bg=${palette.dadoGreen},fg=${palette.industrialCharcoal},bold'
+      set-window-option -g window-status-current-format ' #I:#W#F '
 
       # shortcut ctrl-b X to kill the session
       bind X kill-session
+
+      # move to next available session when killing session
+      set-option -g detach-on-destroy off
 
       set -g pane-border-lines heavy
       set -g pane-border-indicators arrows

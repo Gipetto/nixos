@@ -55,6 +55,7 @@
       "--header"
       "--time-style=long-iso"
       "--icons=always"
+      "--color=auto"
     ];
     git = true;
     icons = "auto";
