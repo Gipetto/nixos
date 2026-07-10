@@ -45,6 +45,15 @@ in
     "${config.home.homeDirectory}/.nix-profile/bin"
   ];
 
+  programs.zsh.profileExtra = ''
+    # macOS path_helper moves system paths ahead of Home Manager's sessionPath.
+    path=(
+      "${config.home.homeDirectory}/.nix-profile/bin"
+      "${config.home.homeDirectory}/.local/bin"
+      $path
+    )
+  '';
+
   home.sessionVariables = {
     _ZO_EXCLUDE_DIRS = "${config.home.homeDirectory};${config.home.homeDirectory}/Projects/Wander";
     UV_TOOL_DIR = "${config.home.homeDirectory}/.local/share/uv/tools";

@@ -27,9 +27,6 @@ in
       # shortcut ctrl-b X to kill the session
       bind X kill-session
 
-      # move to next available session when killing session
-      set-option -g detach-on-destroy off
-
       set -g pane-border-lines heavy
       set -g pane-border-indicators arrows
 
