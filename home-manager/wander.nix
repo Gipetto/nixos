@@ -8,10 +8,10 @@ let
   # nix store prefetch-file --json "https://github.com/openai/codex/releases/download/rust-vVERSION/codex-package-aarch64-apple-darwin.tar.gz" | jq -r .hash
   codexPackage = pkgs.stdenvNoCC.mkDerivation rec {
     pname = "codex";
-    version = "0.144.0";
+    version = "0.145.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-package-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-RYSiQ/+KZxJQvHFvicWlDtWZF6mDkKz9/6Psts/luzQ=";
+      hash = "sha256-7Ok3Fp1MnpENYIJqbqSueEihbAiUA9Ei5w59pKxBujQ=";
     };
     sourceRoot = ".";
     installPhase = ''
