@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 let
   birrenIndustrial = import ./themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
   cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
@@ -33,7 +33,7 @@ in
     _1password-cli
     docker-client
     iterm2
-    opencode
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode
   ];
 
   targets.darwin = {

@@ -23,6 +23,13 @@
       url = "github:Gipetto/hyprkeys";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    codex-package = {
+      type = "tarball";
+      url = "https://github.com/openai/codex/releases/download/rust-v0.145.0/codex-package-aarch64-apple-darwin.tar.gz";
+      narHash = "sha256-g/WaulBylOtgCcIO/p9Cn+n27LCvFon39iKC0QRDxuY=";
+      flake = false;
+    };
+    opencode.url = "github:anomalyco/opencode/v1.18.3";
   };
 
   outputs = {
