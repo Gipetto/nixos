@@ -1,6 +1,10 @@
 { pkgs, ... }: {
-  home.packages = [ 
-    pkgs.worktrunk 
+  home.packages = [
+    (pkgs.worktrunk.overrideAttrs (old: {
+      nativeCheckInputs =
+        (old.nativeCheckInputs or [ ])
+        ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.ps ];
+    }))
   ];
 
   programs.zsh.initContent = ''
