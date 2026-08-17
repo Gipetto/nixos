@@ -8,6 +8,7 @@ in
 {
   imports = [
     ./programs/codex.nix
+    ./programs/herdr.nix
     ./programs/worktrunk.nix
   ];
 
