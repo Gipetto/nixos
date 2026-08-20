@@ -3,7 +3,7 @@
     (pkgs.worktrunk.overrideAttrs (old: {
       nativeCheckInputs =
         (old.nativeCheckInputs or [ ])
-        ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [ pkgs.darwin.ps ];
+        ++ pkgs.lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ pkgs.darwin.ps ];
     }))
   ];
 

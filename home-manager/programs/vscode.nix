@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 let
-  fontSize = if pkgs.stdenv.isDarwin then 13 else 14;
+  fontSize = if pkgs.stdenv.hostPlatform.isDarwin then 13 else 14;
   birrenIndustrial = import ../themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
   cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
   vscode-extensions = inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace;

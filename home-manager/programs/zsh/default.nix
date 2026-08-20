@@ -59,12 +59,12 @@ in
       ''
 
       # Darwin-specific
-      (lib.optionalString pkgs.stdenv.isDarwin ''
+      (lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
         export IS_MAC=1
       '')
 
       # Linux-specific
-      (lib.optionalString pkgs.stdenv.isLinux ''
+      (lib.optionalString pkgs.stdenv.hostPlatform.isLinux ''
         export IS_LINUX=1
         export ZSH_DISABLE_COMPFIX=true
         if command -v lspci >/dev/null 2>&1 && lspci | grep -q "NVIDIA"; then

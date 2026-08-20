@@ -5,12 +5,12 @@ in
 {
   programs.ghostty = {
     enable = true;
-    package = if pkgs.stdenv.isDarwin then null else pkgs.ghostty;
+    package = if pkgs.stdenv.hostPlatform.isDarwin then null else pkgs.ghostty;
     settings = {
       font-family = "Berkeley Mono";
       font-variation = "wght=500";
       font-size =
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.hostPlatform.isDarwin
         then 13
         else 10.5;
       font-feature = [ "liga=1" "calt=1" ];
@@ -33,7 +33,7 @@ in
       macos-option-as-alt = true;
       scrollback-limit = 16000000;
       keybind =
-        if pkgs.stdenv.isDarwin
+        if pkgs.stdenv.hostPlatform.isDarwin
         then "global:cmd+shift+`=toggle_quick_terminal"
         else "global:super+shift+grave_accent=toggle_quick_terminal";
       window-width = 125;
