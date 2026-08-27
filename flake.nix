@@ -23,7 +23,7 @@
       url = "github:Gipetto/hyprkeys";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    opencode.url = "github:anomalyco/opencode/v1.18.3";
+    opencode.url = "github:anomalyco/opencode/v1.18.23";
   };
 
   outputs = {
