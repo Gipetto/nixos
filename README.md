@@ -25,7 +25,6 @@ If this is a new host:
 - update `flake.nix` to reflect necessary changes
 
 ```sh
-make init
 make rebuild
 ```
 
@@ -43,7 +42,6 @@ make rebuild
 
 ```sh
 cd ~/Projects/nixos
-make init
 make rebuild
 ```
 
@@ -55,10 +53,9 @@ make rebuild
 
 ### Git
 
-- The included `config/gitconfig` is registered as an include in `/etc/gitconfig`
-- The included `config/gitignore` is registered as a global exludes file in `/etc/gitconfig`
-- The declarations in home manager are supplied in `~/.config/git/gitconfig`
-- Local overrides can still be made by adding and populating a `~/.gitconfig` file
+- Home Manager writes the managed configuration to `~/.config/git/config`
+- Global Git ignores are read from `~/.config/git/ignore`
+- Add local overrides to `~/.config/git/config-local`
 
 ### Docs
 
@@ -79,7 +76,7 @@ Find details on Packages, NixOS options and Flakes:
 | Search | `nix search nixpkgs -t name 'package'` |
 | Update flake inputs | `nix flake update` |
 | Apply config (NixOS) | `sudo nixos-rebuild switch --flake .#nab5` |
-| Apply config (Darwin) | `darwin-rebuild switch --flake .#darwinDefault` |
+| Apply config (Darwin) | `make rebuild` |
 | Apply config (Linux HM) | `nix run .#homeConfigurations.tower` |
 
 **A full upgrade cycle consists of:**
@@ -119,19 +116,19 @@ Then
 
 ``` sh
 :lf .
-homeConfigurations."shawnp@darwin".options.programs.zsh
+homeConfigurations."shawn@darwin".options.programs.zsh
 ```
 
 ## Mounting Drives (NixOS)
 
-To permanently mount a drive, update the `configuration.nix` for that host after the drive has been mounted. You many need to prune out Docker overlays before applying with `nixos-rebuild`.
+To permanently mount a drive, update `hosts/<host>/default.nix`. Keep hardware-specific mount definitions in `hosts/<host>/hardware-configuration.nix` when appropriate.
 
 
 ## Test in VM
 
 ```sh
-nixos-rebuild build-vm --flake https://github.com/Gipetto/nixos/tarball/master
-./result/bin/run-nixos-vm
+nixos-rebuild build-vm --flake .#nab5
+./result/bin/run-nab5-vm
 ```
 
 [More Info on VMs](https://nixos.org/manual/nixos/stable/)

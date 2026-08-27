@@ -1,4 +1,4 @@
-.PHONY: help init update rebuild sync check clean
+.PHONY: help update rebuild check clean
 
 PLATFORM := $(shell uname -s)
 HOSTNAME := $(shell hostname -s)
@@ -12,7 +12,6 @@ help:
 	@echo "Available targets:"
 	@echo "  update            - Update flake inputs"
 	@echo "  rebuild           - Rebuild nix"
-	@echo "  sync              - Update and rebuild everything"
 	@echo "  check             - Check flake validity"
 	@echo "  clean             - Clean up old generations"
 
