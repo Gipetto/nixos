@@ -101,7 +101,7 @@
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo,"
-        "$mainMod, J, togglesplit,"
+        "$mainMod, J, layoutmsg, orientationcycle left top"
         "$mainMod, left,  movefocus, l"
         "$mainMod, right, movefocus, r"
         "$mainMod, up,    movefocus, u"
@@ -138,8 +138,8 @@
         "$mainMod, O, layoutmsg, orientationcycle left center right"
         "$mainMod, I, layoutmsg, addmaster"
         "$mainMod, D, layoutmsg, removemaster"
-        "$mainMod, H, splitratio, -0.05"
-        "$mainMod, L, splitratio, +0.05"
+        "$mainMod, H, layoutmsg, mfact -0.05"
+        "$mainMod, L, layoutmsg, mfact +0.05"
       ];
 
       bindm = [

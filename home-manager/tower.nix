@@ -37,6 +37,7 @@
   # Damn you hyprland!
   # Why must I override your cursor?
 	home.pointerCursor = {
+		enable = true;
 		gtk.enable = true;
 		name = "Bibata-Modern-Classic";
 		package = pkgs.bibata-cursors;
