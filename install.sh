@@ -67,17 +67,11 @@ Next steps:
    - macOS: already configured as homeConfigurations.shawn@darwin
    - NixOS machine: add to nixosConfigurations (nab5 and tower already configured)
 
-2. Apply the configuration:
-   On NixOS (nab5, tower):
-     cd $FLAKE_DIR
-     sudo nixos-rebuild switch --flake .#\$(hostname -s)
-   
-   On macOS (darwin):
-     cd $FLAKE_DIR
-    nix run .#hm -- switch -b "bkp-$(date +%Y%m%d%H%M%S)" --flake .#darwin
+2. Apply the configuration and bootstrap git and make:
+     nix shell nixpkgs#git nixpkgs#gnumake \\
+       -c make -C "$FLAKE_DIR" rebuild
 
-3. Or use the Makefile shortcuts:
-     make -C "$FLAKE_DIR" rebuild      # Applies nix config
-     make -C "$FLAKE_DIR" sync         # Does everything
+3. For future rebuilds:
+     make -C "$FLAKE_DIR" rebuild
 
 EOF
