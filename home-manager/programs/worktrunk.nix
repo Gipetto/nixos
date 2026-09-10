@@ -15,7 +15,7 @@
     worktree-path = "{{ repo_path }}/../{{ repo }}.{{ (branch | sanitize)[:35] }}"
 
     [pre-start]
-    sync = "{% if base == default_branch %}git pull{% endif %}"
+    sync = "{% if branch == default_branch %}git pull{% endif %}"
 
     [post-switch]
     copy = "echo -n {{ (branch | sanitize)[:25] }} | pbcopy"
