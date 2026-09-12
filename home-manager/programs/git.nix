@@ -20,7 +20,7 @@ in
       core = {
         abbrev = 10;
         editor = "vim";
-        pager = "bat --paging=always";
+        pager = "bat --paging=always --wrap=never";
         autocrlf = false;
         excludesfile = "${homeDir}/.config/git/ignore";
       };
