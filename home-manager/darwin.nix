@@ -2,6 +2,7 @@
 let
   birrenIndustrial = import ./themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
   cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
+  opencode = import ./programs/opencode.nix { inherit inputs pkgs; };
 in
 {
   imports = [
@@ -33,7 +34,7 @@ in
     _1password-cli
     docker-client
     iterm2
-    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.opencode
+    opencode
   ];
 
   targets.darwin = {
