@@ -12,7 +12,7 @@ let
   system = pkgs.stdenv.hostPlatform.system;
   base = inputs.opencode.packages.${system}.opencode;
 in
-if pkgs.stdenv.isDarwin then
+if pkgs.stdenv.hostPlatform.isDarwin then
   base.overrideAttrs (old: {
     postPatch = (old.postPatch or "") + ''
       substituteInPlace packages/opencode/script/build.ts \
