@@ -100,4 +100,8 @@ in
       };
     };
   };
+
+  xdg.configFile."git/ignore".text = ''
+    ACCEPTANCE.md
+  '';
 }
