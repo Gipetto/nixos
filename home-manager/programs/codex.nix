@@ -3,10 +3,10 @@
 let
   codexPackage = pkgs.stdenvNoCC.mkDerivation rec {
     pname = "codex";
-    version = "0.157.0";
+    version = "0.158.0";
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-package-aarch64-apple-darwin.tar.gz";
-      hash = "sha256-l4Cfkcs1XlVIDNehJvmtJLt7FiIiUV4wKGvKxvupSs0=";
+      hash = "sha256-CfKp/eMY+804TxW0hQwbkJMGePSAVke2ve0ZbM8y9ZA=";
     };
     sourceRoot = ".";
     installPhase = ''
