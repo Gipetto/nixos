@@ -103,5 +103,21 @@ in
 
   xdg.configFile."git/ignore".text = ''
     ACCEPTANCE.md
+
+    # MacOS
+    .DS_Store
+
+    # IDEs
+    .idea
+    nbproject
+    .vscode
+
+    # python
+    *.pyc
+
+    # mprocs
+    mprocs.*
+
+    **/.claude/settings.local.json
   '';
 }
