@@ -9,10 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
-    tpm = {
-      url = "github:tmux-plugins/tpm";
-      flake = false;
-    };
     private-fonts = {
       # Private flake for housing free & paid fonts.
       # Repo is always private to respect the paid font creators.

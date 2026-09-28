@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 let
   palette = (import ../themes/birren-industrial { inherit pkgs; }).palette;
 in
@@ -6,8 +6,6 @@ in
   programs.tmux = {
     enable = true;
     extraConfig = ''
-      set -g @plugin 'jaclu/tmux-menus'
-
       set -g mouse on
       set -g default-terminal "tmux-256color"
       set -as terminal-overrides ",*:Tc"
@@ -24,8 +22,8 @@ in
       set-window-option -g window-status-current-style 'bg=${palette.dadoGreen},fg=${palette.industrialCharcoal},bold'
       set-window-option -g window-status-current-format ' #I:#W#F '
 
-      # shortcut ctrl-b X to kill the session
       bind X kill-session
+      bind s choose-tree -Zw
 
       set -g pane-border-lines heavy
       set -g pane-border-indicators arrows
@@ -38,7 +36,6 @@ in
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
       bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "pbcopy"
 
-      run-shell ${inputs.tpm}/tpm
     '';
   };
 }
