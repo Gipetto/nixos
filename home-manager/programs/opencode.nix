@@ -17,12 +17,8 @@ if pkgs.stdenv.hostPlatform.isDarwin then
     postPatch = (old.postPatch or "") + ''
       substituteInPlace packages/opencode/script/build.ts \
         --replace-fail \
-          '  // Smoke test: only run if binary is for current platform' \
-          '  if (item.os === "darwin") {
-    await $`/usr/bin/codesign --force --sign - dist/''${name}/bin/opencode`
-  }
-
-  // Smoke test: only run if binary is for current platform'
+          'codesign --force --sign - dist/''${name}/bin/opencode' \
+          '/usr/bin/codesign --force --sign - dist/''${name}/bin/opencode'
     '';
   })
 else
