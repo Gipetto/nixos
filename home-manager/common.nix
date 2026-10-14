@@ -14,7 +14,13 @@
     nil          # nix LSP
     nixpkgs-fmt  # nix formatter
     svelte-language-server
-    typescript-language-server
+    # nixpkgs-pinned pnpm deps hash went stale after npm republishes (2026-10);
+    # remove once nixpkgs-unstable carries the upstream fix (NixOS/nixpkgs HEAD has sha256-xR/EF60lVBsITKgH7wCM2wHM46PFQevD51KfCENSUH4= for tls 6.0.2)
+    (typescript-language-server.overrideAttrs (_finalAttrs: previousAttrs: {
+      pnpmDeps = previousAttrs.pnpmDeps.override {
+        hash = "sha256-PmyJb8090pEPc09Tbv8RgdvQpzpba2L8ve87+aVncQU=";
+      };
+    }))
     vscode-langservers-extracted
     ripgrep
     sqlite

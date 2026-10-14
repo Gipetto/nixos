@@ -2,7 +2,7 @@
 let
   birrenIndustrial = import ./themes/birren-industrial/vscode-extension.nix { inherit pkgs; };
   cursorBirrenIndustrial = "shawnp.birren-industrial-${birrenIndustrial.version}";
-  opencode = import ./programs/opencode.nix { inherit inputs pkgs; };
+  opencode = import ./programs/opencode.nix { inherit pkgs; };
 in
 {
   imports = [
