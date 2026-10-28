@@ -12,9 +12,9 @@ in
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ 
-        "git" 
-        "git-prompt" 
+      plugins = [
+        "git"
+        "git-prompt"
       ];
       theme = "wookiee";
       custom = "${config.home.homeDirectory}/.config/oh-my-zsh";
@@ -55,6 +55,7 @@ in
       # Main body
       ''
         export NODE_OPTIONS="--dns-result-order=ipv4first"
+        export OP_BIOMETRIC_UNLOCK_ENABLED=true
         setopt HIST_FCNTL_LOCK
       ''
 
