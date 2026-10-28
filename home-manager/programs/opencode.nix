@@ -6,10 +6,10 @@
 
 pkgs.stdenvNoCC.mkDerivation rec {
   pname = "opencode";
-  version = "1.19.0";
+  version = "1.19.3";
   src = pkgs.fetchurl {
     url = "https://github.com/anomalyco/opencode/releases/download/v${version}/opencode-darwin-arm64.zip";
-    hash = "sha256-DV9RGUjW+/7fm7FnU8CsQmE9zI3nXZ3rfo0M9YTI+6Y=";
+    hash = "sha256-wtD+zSes9uCL4CwfXThGFNB0lVh3ZrzEpr/zlxdJu2Q=";
   };
   sourceRoot = ".";
   nativeBuildInputs = [ pkgs.unzip ];
