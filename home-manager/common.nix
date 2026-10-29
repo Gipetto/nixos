@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     bash
     bat
+    betterleaks
     btop
     curl
     fd
@@ -13,6 +14,7 @@
     lazygit
     nil          # nix LSP
     nixpkgs-fmt  # nix formatter
+    python3
     svelte-language-server
     # pnpm includes platform-specific optional dependencies.
     (typescript-language-server.overrideAttrs (_finalAttrs: previousAttrs: {
