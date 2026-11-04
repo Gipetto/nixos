@@ -56,6 +56,7 @@ in
   '';
 
   home.sessionVariables = {
+    XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
     _ZO_EXCLUDE_DIRS = "${config.home.homeDirectory};${config.home.homeDirectory}/Projects/Wander";
     UV_TOOL_DIR = "${config.home.homeDirectory}/.local/share/uv/tools";
   };
