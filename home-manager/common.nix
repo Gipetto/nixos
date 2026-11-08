@@ -17,7 +17,7 @@
     python3
     svelte-language-server
     # pnpm includes platform-specific optional dependencies.
-    (typescript-language-server.overrideAttrs (_finalAttrs: previousAttrs: {
+    (typescript-language-server.overrideAttrs (_finalAttrs: previousAttrs: lib.optionalAttrs (previousAttrs.version == "6.0.2") {
       pnpmDeps = previousAttrs.pnpmDeps.override {
         hash = if pkgs.stdenv.hostPlatform.isLinux
           then "sha256-xR/EF60lVBsITKgH7wCM2wHM46PFQevD51KfCENSUH4="
