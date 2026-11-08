@@ -89,6 +89,7 @@ in
         up = "!git pull origin \"$(git rev-parse --abbrev-ref HEAD)\"";
         pb = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\"";
         pbu = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"";
+        pbs = "!b=$(git symbolic-ref --quiet --short HEAD) || { echo \"pbs: not on a branch; refusing to push\" >&2; exit 1; }; case \"$b\" in main|master|dev) echo \"pbs: refusing to push protected branch $b\" >&2; exit 1;; esac; git push origin \"$b\"";
         dmerged = "!git branch --merged | egrep -v \"(^\\*|master|dev)\" | xargs git branch -d";
         subup = "!(git submodule sync; git submodule update --init --recursive --remote;)";
         tg = "!git log --tags --simplify-by-decoration --pretty=\"format:[%ai] %C(yellow)%H%Creset - %Cgreen%D%Creset\"";
