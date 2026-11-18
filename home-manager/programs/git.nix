@@ -27,6 +27,22 @@ in
 
       init.defaultBranch = "main";
 
+      # Use gh for GitHub HTTPS credentials instead of the Nix git's
+      # osxkeychain helper. The keychain trusts a helper by its code
+      # signature, and each Nix rebuild of git gets a new ad-hoc signature,
+      # so osxkeychain re-prompts after every git upgrade. The empty entry
+      # clears the inherited osxkeychain helper for these hosts only; other
+      # hosts keep using osxkeychain.
+      credential = let
+        ghHelper.helper = [
+          ""
+          "!${pkgs.gh}/bin/gh auth git-credential"
+        ];
+      in {
+        "https://github.com" = ghHelper;
+        "https://gist.github.com" = ghHelper;
+      };
+
       color.ui = "auto";
 
       diff = {
