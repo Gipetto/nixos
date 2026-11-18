@@ -43,6 +43,10 @@ in
         "https://gist.github.com" = ghHelper;
       };
 
+      # Rewrite GitHub HTTPS remotes to SSH so repos cloned over HTTPS
+      # still authenticate with the SSH key.
+      url."ssh://git@github.com/".insteadOf = "https://github.com/";
+
       color.ui = "auto";
 
       diff = {
