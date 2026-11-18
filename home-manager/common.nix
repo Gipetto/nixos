@@ -27,6 +27,7 @@
     vscode-langservers-extracted
     ripgrep
     sqlite
+    universal-ctags
     uv
     wget
     yq
